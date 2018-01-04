@@ -19,10 +19,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../Content/myStyle.css" type="text/css" />
 
-
-
-
 </head>
+
+
 <body>
     <form runat="server">
         <asp:ScriptManager runat="server">
@@ -55,8 +54,8 @@
                 <div class="container">
 
                     <!-- Navbar brand -->
-                    <a class="navbar-brand" href="..\Default.aspx">
-                        <img src="..\Images\NBDLogoSmall.png" height="30" class="d-inline-block align-top" alt="">
+                    <a class="navbar-brand" href="../Default.aspx">
+                        <img src="../Images/NBDLogoSmall.png" height="30" class="d-inline-block align-top" alt="">
                         NBD
                     </a>
 
