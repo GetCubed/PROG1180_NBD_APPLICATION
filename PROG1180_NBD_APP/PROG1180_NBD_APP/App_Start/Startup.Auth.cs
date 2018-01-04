@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
 using Owin;
+using PROG1180_NBD_APP.DAL;
 using PROG1180_NBD_APP.Models;
 
 namespace PROG1180_NBD_APP

@@ -6,14 +6,104 @@
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="NBD_ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="NBD_ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.NBDLibrary.Properties.Settings.GlobalReference.Default.NBD_ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
-        <Tables />
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClientTableAdapter" GeneratorDataComponentClassName="ClientTableAdapter" Name="Client" UserDataComponentName="ClientTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        CLIENT.cliName, CLIENT.cliAddress, CITY.city, CLIENT.cliProvince, CLIENT.cliPCode, CLIENT.cliPhone, CLIENT.cliConFName + ' ' + CLIENT.cliConLName AS cliConFullName, CLIENT.cliConPosition
+FROM            CLIENT INNER JOIN
+                         CITY ON CLIENT.cityID = CITY.ID
+ORDER BY CLIENT.cliName</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="cliName" DataSetColumn="cliName" />
+              <Mapping SourceColumn="cliAddress" DataSetColumn="cliAddress" />
+              <Mapping SourceColumn="city" DataSetColumn="city" />
+              <Mapping SourceColumn="cliProvince" DataSetColumn="cliProvince" />
+              <Mapping SourceColumn="cliPCode" DataSetColumn="cliPCode" />
+              <Mapping SourceColumn="cliPhone" DataSetColumn="cliPhone" />
+              <Mapping SourceColumn="cliConFullName" DataSetColumn="cliConFullName" />
+              <Mapping SourceColumn="cliConPosition" DataSetColumn="cliConPosition" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
         <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
   <xs:element name="NBD_DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="NBD_DataSet" msprop:Generator_UserDSName="NBD_DataSet">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Client" msprop:Generator_TableClassName="ClientDataTable" msprop:Generator_TableVarName="tableClient" msprop:Generator_RowChangedName="ClientRowChanged" msprop:Generator_TablePropName="Client" msprop:Generator_RowDeletingName="ClientRowDeleting" msprop:Generator_RowChangingName="ClientRowChanging" msprop:Generator_RowEvHandlerName="ClientRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientRowDeleted" msprop:Generator_RowClassName="ClientRow" msprop:Generator_UserTableName="Client" msprop:Generator_RowEvArgName="ClientRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cliName" msprop:Generator_ColumnVarNameInTable="columncliName" msprop:Generator_ColumnPropNameInRow="cliName" msprop:Generator_ColumnPropNameInTable="cliNameColumn" msprop:Generator_UserColumnName="cliName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cliAddress" msprop:Generator_ColumnVarNameInTable="columncliAddress" msprop:Generator_ColumnPropNameInRow="cliAddress" msprop:Generator_ColumnPropNameInTable="cliAddressColumn" msprop:Generator_UserColumnName="cliAddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="city" msprop:Generator_ColumnVarNameInTable="columncity" msprop:Generator_ColumnPropNameInRow="city" msprop:Generator_ColumnPropNameInTable="cityColumn" msprop:Generator_UserColumnName="city">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cliProvince" msprop:Generator_ColumnVarNameInTable="columncliProvince" msprop:Generator_ColumnPropNameInRow="cliProvince" msprop:Generator_ColumnPropNameInTable="cliProvinceColumn" msprop:Generator_UserColumnName="cliProvince" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cliPCode" msprop:Generator_ColumnVarNameInTable="columncliPCode" msprop:Generator_ColumnPropNameInRow="cliPCode" msprop:Generator_ColumnPropNameInTable="cliPCodeColumn" msprop:Generator_UserColumnName="cliPCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cliPhone" msprop:Generator_ColumnVarNameInTable="columncliPhone" msprop:Generator_ColumnPropNameInRow="cliPhone" msprop:Generator_ColumnPropNameInTable="cliPhoneColumn" msprop:Generator_UserColumnName="cliPhone">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cliConFullName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncliConFullName" msprop:Generator_ColumnPropNameInRow="cliConFullName" msprop:Generator_ColumnPropNameInTable="cliConFullNameColumn" msprop:Generator_UserColumnName="cliConFullName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="61" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cliConPosition" msprop:Generator_ColumnVarNameInTable="columncliConPosition" msprop:Generator_ColumnPropNameInRow="cliConPosition" msprop:Generator_ColumnPropNameInTable="cliConPositionColumn" msprop:Generator_UserColumnName="cliConPosition" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>
