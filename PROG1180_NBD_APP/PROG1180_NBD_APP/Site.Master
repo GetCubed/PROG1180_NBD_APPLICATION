@@ -11,10 +11,17 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <!-- material design bootstrap addon -->
+    <link rel="stylesheet" href="../Content/mdb.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../Content/myStyle.css" type="text/css" />
+
 </head>
+
+
 <body>
     <form runat="server">
         <asp:ScriptManager runat="server">
@@ -38,47 +45,119 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+
+        <!-----------------------------------------------------------------------------Main Navigation------------------------------------------------------------------------------>
+
+        <header>
+            <!--Navbar-->
+            <nav class="navbar navbar-expand-lg navbar-dark NBDColourDarkBlue">
+                <div class="container">
+
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand" href="../Default.aspx">
+                        <img src="../Images/NBDLogoSmall.png" height="30" class="d-inline-block align-top" alt="">
+                        NBD
+                    </a>
+
+                    <!-- Collapse button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+
+                    <!-- Collapsible content -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                        <!-- Links -->
+
+
+                        <!-- Dropdown -->
+                        <%
+                            string dropDown = @" 
+                                <li class='nav-item dropdown'>
+                                <a class='nav-link dropdown-toggle' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Dropdown</a>
+                                <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
+                                    <a class='dropdown-item' href='#'>Action</a>
+                                    <a class='dropdown-item' href='#'>Another action</a>
+                                    <a class='dropdown-item' href='#'>Something else here</a>
+                                </div>
+                                 </li> ";
+                        %>
+
+
+                        <ul class="navbar-nav mr-auto">
+                            <%
+                                if (Context.User.Identity.IsAuthenticated)
+                                {
+                                    Response.Write("<li class='nav-item active'><a class='nav-link' href='../PlayGround.aspx'>PlayGround</a></li>");
+                                    Response.Write(dropDown);
+                                    for (int n = 0; n < 3; n++)
+                                    {
+                                        Response.Write("<li class='nav-item'><a class='nav-link' href='../PlayGround.aspx'>PlayGround</a></li>");
+                                    }
+
+                                }
+                            %>
+                        </ul>
+                        <!-------------------------- USER LOGIN NAV ----------------------------->
+                        <ul class="navbar-nav ml-auto">
+
+                            <asp:LoginView runat="server" ViewStateMode="Disabled">
+                                <AnonymousTemplate>
+
+                                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Account/Register">Register</a></li>
+                                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Account/Login">Log in</a></li>
+
+                                </AnonymousTemplate>
+                                <LoggedInTemplate>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../Account/Manage" title="Manage your account">
+                                            <i class="fa fa-user-o pr-2" aria-hidden="true"></i>
+                                            <%: Context.User.Identity.GetUserName()%> 
+
+                                        </a>
+                                    </li>
+                                    <li class="nav-link">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" Style="color: #fff" />
+                                    </li>
+
+
+
+
+                                </LoggedInTemplate>
+                            </asp:LoginView>
+                        </ul>
+
+                        <!-------------------------- USER LOGIN NAV END----------------------------->
+
+
+
+                        <!-- Links -->
+
+                    </div>
+                    <!-- Collapsible content -->
+
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Register</a></li>
-                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
-                </div>
-            </div>
-        </div>
+            </nav>
+            <!--/.Navbar-->
+
+
+
+
+        </header>
+        <!--Main Navigation-->
+
+
+        <!-- -------------------------------------------------------------------NAV END------------------------------------------------------------------------------------------>
+
+
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Natural By Design</p>
             </footer>
         </div>
     </form>
