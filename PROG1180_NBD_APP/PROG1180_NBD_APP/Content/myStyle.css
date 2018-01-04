@@ -1,0 +1,32 @@
+﻿/*********************
+  Custom Colours
+**********************/
+
+.NBDColourDarkBlue {
+    background-color: #0B155B !important;
+}
+
+
+.NBDColourLightBlue {
+    background-color: #2B95D3 !important;
+}
+
+.NBDBackgroundLogo {
+    background-image: url("../Images/NBDLogo.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+
+.btn-primary {
+    background-color: #0B155B;
+}
+
+/*********************
+  HTML ELEMENTS
+**********************/
+body {
+    background-color: #2B95D3;
+    color: white;
+}
