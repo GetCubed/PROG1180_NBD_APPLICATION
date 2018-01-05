@@ -208,6 +208,8 @@
     <Content Include="Content\SiteZ.css" />
     <None Include="DAL\Zcommands" />
     <Content Include="Default.aspx" />
+    <Content Include="DesignBid\DesignBid.aspx" />
+    <Content Include="DesignBid\DesignBids.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
@@ -460,6 +462,20 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignBid\DesignBid.aspx.cs">
+      <DependentUpon>DesignBid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBid\DesignBid.aspx.designer.cs">
+      <DependentUpon>DesignBid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignBid\DesignBids.aspx.cs">
+      <DependentUpon>DesignBids.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBid\DesignBids.aspx.designer.cs">
+      <DependentUpon>DesignBids.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
