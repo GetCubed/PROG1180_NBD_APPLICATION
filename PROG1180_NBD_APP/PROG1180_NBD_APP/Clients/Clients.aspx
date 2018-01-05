@@ -48,13 +48,18 @@
                                             <th class="th-lg">Phone</th>
                                         </tr>
                                     </thead>
-                                    <tbody runat="server" ID="tboClients">
+                                    <tbody runat="server" id="tboClients">
                                     </tbody>
                                 </table>
                             </div>
 
+                            <!-- --- submit button -->
+                            <a href="ClientEdit.aspx" class="btn btn-primary">test-See Edit page</a>
+
                         </div>
                         <!--/.Card content-->
+
+
 
                     </div>
                     <!--/.Card-->
