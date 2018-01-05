@@ -197,6 +197,7 @@
     <Content Include="App_Data\PROG1180_NBD_APP_log.ldf">
       <DependentUpon>PROG1180_NBD_APP.mdf</DependentUpon>
     </Content>
+    <Content Include="Clients\ClientCreate.aspx" />
     <Content Include="Clients\ClientEdit.aspx" />
     <Content Include="Clients\Clients.aspx" />
     <Content Include="Contact.aspx" />
@@ -442,6 +443,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Clients\ClientCreate.aspx.cs">
+      <DependentUpon>ClientCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clients\ClientCreate.aspx.designer.cs">
+      <DependentUpon>ClientCreate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Clients\ClientEdit.aspx.cs">
       <DependentUpon>ClientEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
