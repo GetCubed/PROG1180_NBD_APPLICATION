@@ -212,6 +212,8 @@
     <None Include="DAL\Zcommands" />
     <Content Include="DailyWorkReports\DesignerDailyWorkReport.aspx" />
     <Content Include="DailyWorkReports\DesignerDailyWorkReports.aspx" />
+    <Content Include="DailyWorkReports\ProductionDailyWorkReport.aspx" />
+    <Content Include="DailyWorkReports\ProductionDailyWorkReports.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DesignBids\DesignBid.aspx" />
     <Content Include="DesignBids\DesignBids.aspx" />
@@ -472,6 +474,20 @@
     </Compile>
     <Compile Include="DailyWorkReports\DesignerDailyWorkReports.aspx.designer.cs">
       <DependentUpon>DesignerDailyWorkReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DailyWorkReports\ProductionDailyWorkReport.aspx.cs">
+      <DependentUpon>ProductionDailyWorkReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DailyWorkReports\ProductionDailyWorkReport.aspx.designer.cs">
+      <DependentUpon>ProductionDailyWorkReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DailyWorkReports\ProductionDailyWorkReports.aspx.cs">
+      <DependentUpon>ProductionDailyWorkReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DailyWorkReports\ProductionDailyWorkReports.aspx.designer.cs">
+      <DependentUpon>ProductionDailyWorkReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="DAL\SecurityMigrations\201801042321284_InitialSecurity.cs" />

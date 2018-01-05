@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Designer Daily Work Report" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignerDailyWorkReport.aspx.cs" Inherits="PROG1180_NBD_APP.Daily_Work_Reports.DesignerDailyWorkReport" %>
+﻿<%@ Page Title="Production Daily Work Report" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductionDailyWorkReport.aspx.cs" Inherits="PROG1180_NBD_APP.DailyWorkReports.ProductionDailyWorkReport" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -15,7 +15,7 @@
                     <!--Panel-->
                     <div class="card">
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            <h4>Designer Daily Work Report</h4>
+                            <h4>Production Daily Work Report</h4>
                         </div>
                     </div>
                     <!--/.Panel-->
@@ -83,7 +83,7 @@
                                             <td>600</td>
                                             <td>Johnson</td>
                                         </tr>
-                                        <tr>
+                                       <tr>
                                             <td>cary</td>
                                             <td>5</td>
                                             <td>142</td>
@@ -102,7 +102,7 @@
             </div>
             <!--NBD STAFF-------------------------------------------------------------------------------------------------------->
 
-            <!--------------Labor----------------------------------------------------------------------------------------->
+             <!----------------Materials used------------------------------------------------------------------------------------------>
             <div class="row mb-3">
                 <!--Grid column-->
                 <div class="col-md-12">
@@ -127,20 +127,20 @@
                                             <td>144</td>
                                             <td>installed plants</td>
                                         </tr>
-                                        <tr>
+                                         <tr>
                                             <td>Monica</td>
                                             <td>5</td>
                                             <td>18</td>
                                             <td>144</td>
                                             <td>installed plants</td>
                                         </tr>
-                                        <tr>
+                                         <tr>
                                             <td>Monica</td>
-                                            <td>5</td>
-                                            <td>18</td>
-                                            <td>144</td>
-                                            <td>installed plants</td>
-                                        </tr>
+                                             <td>5</td>
+                                             <td>18</td>
+                                             <td>144</td>
+                                             <td>installed plants</td>
+                                         </tr>
 
                                     </table>
 
@@ -183,7 +183,7 @@
             </div>
             <!--------labor--------------------------------------------------------------------------------------------->
         </div>
-
+           
 
 
     </main>
