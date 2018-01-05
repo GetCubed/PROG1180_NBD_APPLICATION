@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - NBD </title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -69,28 +69,28 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                         <!-- Links -->
-
-
-                        <!-- Dropdown -->
-                        <%
-                            string dropDown = @" 
-                                <li class='nav-item dropdown'>
-                                <a class='nav-link dropdown-toggle' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Dropdown</a>
-                                <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
-                                    <a class='dropdown-item' href='#'>Action</a>
-                                    <a class='dropdown-item' href='#'>Another action</a>
-                                    <a class='dropdown-item' href='#'>Something else here</a>
-                                </div>
-                                 </li> ";
-                        %>
-
-
                         <ul class="navbar-nav mr-auto">
+                            <asp:LoginView ID="RoleLinks" runat="server" ViewStateMode="Disabled">
+                             <RoleGroups>
+                                    <asp:RoleGroup Roles="TestAdmin">
+                                        <ContentTemplate>
+                                            <li class='nav-item dropdown'>
+                                                <a class='nav-link dropdown-toggle' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Dropdown</a>
+                                                <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
+                                                    <a class='dropdown-item' href='#'>Action</a>
+                                                    <a class='dropdown-item' href='#'>Another action</a>
+                                                    <a class='dropdown-item' href='#'>Something else here</a>
+                                                </div>
+                                            </li>
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                        </asp:LoginView>
+
                             <%
-                                if (true)//(Context.User.Identity.IsAuthenticated)
+                                if (Context.User.Identity.IsAuthenticated)
                                 {
                                     Response.Write("<li class='nav-item active'><a class='nav-link' href='../PlayGround.aspx'>PlayGround</a></li>");
-                                    Response.Write(dropDown);
                                     for (int n = 0; n < 3; n++)
                                     {
                                         Response.Write("<li class='nav-item'><a class='nav-link' href='../PlayGround.aspx'>PlayGround</a></li>");
@@ -102,7 +102,8 @@
                         <!-------------------------- USER LOGIN NAV ----------------------------->
                         <ul class="navbar-nav ml-auto">
 
-                            <asp:LoginView runat="server" ViewStateMode="Disabled">
+                            <asp:LoginView ID="UserLinks" runat="server" ViewStateMode="Disabled">
+
                                 <AnonymousTemplate>
 
                                     <li class="nav-item"><a class="nav-link" runat="server" href="~/Account/Register">Register</a></li>
@@ -121,9 +122,6 @@
                                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                                         <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" Style="color: #fff" />
                                     </li>
-
-
-
 
                                 </LoggedInTemplate>
                             </asp:LoginView>

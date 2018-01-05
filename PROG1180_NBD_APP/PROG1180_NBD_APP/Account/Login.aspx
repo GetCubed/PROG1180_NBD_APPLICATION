@@ -37,8 +37,8 @@
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="The password field is required." />
 
                     <!-- login button -->
-                    <div class="col-md-offset-2 col-md-10">
-                        <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-default" />
+                    <div class="col-md-12">
+                        <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-default NBDColourDarkBlue" />
                     </div>
 
 
@@ -55,8 +55,8 @@
 
 
 
-
-            <section id="socialLoginForm">
+            
+            <section id="socialLoginForm" style="display: none">
                 <uc:OpenAuthProviders runat="server" ID="OpenAuthLogin" />
             </section>
 
