@@ -40,22 +40,22 @@ namespace PROG1180_NBD_APP.Clients {
         protected global::System.Web.UI.WebControls.DropDownList ddlProvince;
         
         /// <summary>
-        /// btnFilter control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFilter;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// btnClear control.
+        /// Button2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClear;
+        protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
         /// tboClients control.
