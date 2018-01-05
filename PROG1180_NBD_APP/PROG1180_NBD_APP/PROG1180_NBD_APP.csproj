@@ -213,6 +213,7 @@
     <Content Include="Default.aspx" />
     <Content Include="DesignBids\DesignBid.aspx" />
     <Content Include="DesignBids\DesignBids.aspx" />
+    <Content Include="DesignBudgets\DesignBudgets.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
@@ -479,6 +480,13 @@
     </Compile>
     <Compile Include="DesignBids\DesignBids.aspx.designer.cs">
       <DependentUpon>DesignBids.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudgets.aspx.cs">
+      <DependentUpon>DesignBudgets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudgets.aspx.designer.cs">
+      <DependentUpon>DesignBudgets.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
