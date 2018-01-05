@@ -9,10 +9,11 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClientTableAdapter" GeneratorDataComponentClassName="ClientTableAdapter" Name="Client" UserDataComponentName="ClientTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectName="dbo.CLIENT" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Client.ID, CLIENT.cliName, CLIENT.cliAddress, CITY.city, CLIENT.cliProvince, CLIENT.cliPCode, CLIENT.cliPhone, CLIENT.cliConFName + ' ' + CLIENT.cliConLName AS cliConFullName, CLIENT.cliConPosition
+                    <CommandText>SELECT        CLIENT.cliName, CLIENT.cliAddress + '&lt;br&gt;' + CITY.city + ', ' + CLIENT.cliProvince + '&lt;br&gt;' + CLIENT.cliPCode AS address, CLIENT.cliConFName + ' ' + CLIENT.cliConLName + ', ' + CLIENT.cliConPosition AS contact, 
+                         '(' + LEFT(CLIENT.cliPhone, 3) + ') ' + SUBSTRING(CLIENT.cliPhone, 4, 3) + '-' + RIGHT(CLIENT.cliPhone, 4) AS phone, CLIENT.ID
 FROM            CLIENT INNER JOIN
                          CITY ON CLIENT.cityID = CITY.ID
 ORDER BY CLIENT.cliName</CommandText>
@@ -23,14 +24,10 @@ ORDER BY CLIENT.cliName</CommandText>
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="cliName" DataSetColumn="cliName" />
-              <Mapping SourceColumn="cliAddress" DataSetColumn="cliAddress" />
-              <Mapping SourceColumn="city" DataSetColumn="city" />
-              <Mapping SourceColumn="cliProvince" DataSetColumn="cliProvince" />
-              <Mapping SourceColumn="cliPCode" DataSetColumn="cliPCode" />
-              <Mapping SourceColumn="cliPhone" DataSetColumn="cliPhone" />
-              <Mapping SourceColumn="cliConFullName" DataSetColumn="cliConFullName" />
-              <Mapping SourceColumn="cliConPosition" DataSetColumn="cliConPosition" />
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="address" DataSetColumn="address" />
+              <Mapping SourceColumn="contact" DataSetColumn="contact" />
+              <Mapping SourceColumn="phone" DataSetColumn="phone" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -155,7 +152,7 @@ FROM            LABOUR_SUMMARY INNER JOIN
   <xs:element name="NBD_DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="NBD_DataSet" msprop:Generator_UserDSName="NBD_DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Client" msprop:Generator_TableClassName="ClientDataTable" msprop:Generator_TableVarName="tableClient" msprop:Generator_RowChangedName="ClientRowChanged" msprop:Generator_TablePropName="Client" msprop:Generator_RowDeletingName="ClientRowDeleting" msprop:Generator_RowChangingName="ClientRowChanging" msprop:Generator_RowEvHandlerName="ClientRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientRowDeleted" msprop:Generator_RowClassName="ClientRow" msprop:Generator_UserTableName="Client" msprop:Generator_RowEvArgName="ClientRowChangeEvent">
+        <xs:element name="Client" msprop:Generator_TableClassName="ClientDataTable" msprop:Generator_TableVarName="tableClient" msprop:Generator_TablePropName="Client" msprop:Generator_RowDeletingName="ClientRowDeleting" msprop:Generator_RowChangingName="ClientRowChanging" msprop:Generator_RowEvHandlerName="ClientRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientRowDeleted" msprop:Generator_UserTableName="Client" msprop:Generator_RowChangedName="ClientRowChanged" msprop:Generator_RowEvArgName="ClientRowChangeEvent" msprop:Generator_RowClassName="ClientRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="cliName" msprop:Generator_ColumnVarNameInTable="columncliName" msprop:Generator_ColumnPropNameInRow="cliName" msprop:Generator_ColumnPropNameInTable="cliNameColumn" msprop:Generator_UserColumnName="cliName">
@@ -165,60 +162,32 @@ FROM            LABOUR_SUMMARY INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="cliAddress" msprop:Generator_ColumnVarNameInTable="columncliAddress" msprop:Generator_ColumnPropNameInRow="cliAddress" msprop:Generator_ColumnPropNameInTable="cliAddressColumn" msprop:Generator_UserColumnName="cliAddress" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="city" msprop:Generator_ColumnVarNameInTable="columncity" msprop:Generator_ColumnPropNameInRow="city" msprop:Generator_ColumnPropNameInTable="cityColumn" msprop:Generator_UserColumnName="city">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="cliProvince" msprop:Generator_ColumnVarNameInTable="columncliProvince" msprop:Generator_ColumnPropNameInRow="cliProvince" msprop:Generator_ColumnPropNameInTable="cliProvinceColumn" msprop:Generator_UserColumnName="cliProvince" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="cliPCode" msprop:Generator_ColumnVarNameInTable="columncliPCode" msprop:Generator_ColumnPropNameInRow="cliPCode" msprop:Generator_ColumnPropNameInTable="cliPCodeColumn" msprop:Generator_UserColumnName="cliPCode" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="6" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="cliPhone" msprop:Generator_ColumnVarNameInTable="columncliPhone" msprop:Generator_ColumnPropNameInRow="cliPhone" msprop:Generator_ColumnPropNameInTable="cliPhoneColumn" msprop:Generator_UserColumnName="cliPhone">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="cliConFullName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncliConFullName" msprop:Generator_ColumnPropNameInRow="cliConFullName" msprop:Generator_ColumnPropNameInTable="cliConFullNameColumn" msprop:Generator_UserColumnName="cliConFullName" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="61" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="cliConPosition" msprop:Generator_ColumnVarNameInTable="columncliConPosition" msprop:Generator_ColumnPropNameInRow="cliConPosition" msprop:Generator_ColumnPropNameInTable="cliConPositionColumn" msprop:Generator_UserColumnName="cliConPosition" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="address" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnaddress" msprop:Generator_ColumnPropNameInRow="address" msprop:Generator_ColumnPropNameInTable="addressColumn" msprop:Generator_UserColumnName="address" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="163" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="contact" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncontact" msprop:Generator_ColumnPropNameInRow="contact" msprop:Generator_ColumnPropNameInTable="contactColumn" msprop:Generator_UserColumnName="contact" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="93" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="phone" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnphone" msprop:Generator_ColumnPropNameInRow="phone" msprop:Generator_ColumnPropNameInTable="phoneColumn" msprop:Generator_UserColumnName="phone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Project" msprop:Generator_TableClassName="ProjectDataTable" msprop:Generator_TableVarName="tableProject" msprop:Generator_RowChangedName="ProjectRowChanged" msprop:Generator_TablePropName="Project" msprop:Generator_RowDeletingName="ProjectRowDeleting" msprop:Generator_RowChangingName="ProjectRowChanging" msprop:Generator_RowEvHandlerName="ProjectRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectRowDeleted" msprop:Generator_RowClassName="ProjectRow" msprop:Generator_UserTableName="Project" msprop:Generator_RowEvArgName="ProjectRowChangeEvent">
+        <xs:element name="Project" msprop:Generator_TableClassName="ProjectDataTable" msprop:Generator_TableVarName="tableProject" msprop:Generator_TablePropName="Project" msprop:Generator_RowDeletingName="ProjectRowDeleting" msprop:Generator_RowChangingName="ProjectRowChanging" msprop:Generator_RowEvHandlerName="ProjectRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectRowDeleted" msprop:Generator_UserTableName="Project" msprop:Generator_RowChangedName="ProjectRowChanged" msprop:Generator_RowEvArgName="ProjectRowChangeEvent" msprop:Generator_RowClassName="ProjectRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="projBidDate" msprop:Generator_ColumnVarNameInTable="columnprojBidDate" msprop:Generator_ColumnPropNameInRow="projBidDate" msprop:Generator_ColumnPropNameInTable="projBidDateColumn" msprop:Generator_UserColumnName="projBidDate" type="xs:dateTime" />
@@ -256,7 +225,7 @@ FROM            LABOUR_SUMMARY INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProjectLookup" msprop:Generator_TableClassName="ProjectLookupDataTable" msprop:Generator_TableVarName="tableProjectLookup" msprop:Generator_RowChangedName="ProjectLookupRowChanged" msprop:Generator_TablePropName="ProjectLookup" msprop:Generator_RowDeletingName="ProjectLookupRowDeleting" msprop:Generator_RowChangingName="ProjectLookupRowChanging" msprop:Generator_RowEvHandlerName="ProjectLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectLookupRowDeleted" msprop:Generator_RowClassName="ProjectLookupRow" msprop:Generator_UserTableName="ProjectLookup" msprop:Generator_RowEvArgName="ProjectLookupRowChangeEvent">
+        <xs:element name="ProjectLookup" msprop:Generator_TableClassName="ProjectLookupDataTable" msprop:Generator_TableVarName="tableProjectLookup" msprop:Generator_TablePropName="ProjectLookup" msprop:Generator_RowDeletingName="ProjectLookupRowDeleting" msprop:Generator_RowChangingName="ProjectLookupRowChanging" msprop:Generator_RowEvHandlerName="ProjectLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectLookupRowDeleted" msprop:Generator_UserTableName="ProjectLookup" msprop:Generator_RowChangedName="ProjectLookupRowChanged" msprop:Generator_RowEvArgName="ProjectLookupRowChangeEvent" msprop:Generator_RowClassName="ProjectLookupRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -270,7 +239,7 @@ FROM            LABOUR_SUMMARY INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Worker" msprop:Generator_TableClassName="WorkerDataTable" msprop:Generator_TableVarName="tableWorker" msprop:Generator_RowChangedName="WorkerRowChanged" msprop:Generator_TablePropName="Worker" msprop:Generator_RowDeletingName="WorkerRowDeleting" msprop:Generator_RowChangingName="WorkerRowChanging" msprop:Generator_RowEvHandlerName="WorkerRowChangeEventHandler" msprop:Generator_RowDeletedName="WorkerRowDeleted" msprop:Generator_RowClassName="WorkerRow" msprop:Generator_UserTableName="Worker" msprop:Generator_RowEvArgName="WorkerRowChangeEvent">
+        <xs:element name="Worker" msprop:Generator_TableClassName="WorkerDataTable" msprop:Generator_TableVarName="tableWorker" msprop:Generator_TablePropName="Worker" msprop:Generator_RowDeletingName="WorkerRowDeleting" msprop:Generator_RowChangingName="WorkerRowChanging" msprop:Generator_RowEvHandlerName="WorkerRowChangeEventHandler" msprop:Generator_RowDeletedName="WorkerRowDeleted" msprop:Generator_UserTableName="Worker" msprop:Generator_RowChangedName="WorkerRowChanged" msprop:Generator_RowEvArgName="WorkerRowChangeEvent" msprop:Generator_RowClassName="WorkerRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -284,7 +253,7 @@ FROM            LABOUR_SUMMARY INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MaterialReq" msprop:Generator_TableClassName="MaterialReqDataTable" msprop:Generator_TableVarName="tableMaterialReq" msprop:Generator_RowChangedName="MaterialReqRowChanged" msprop:Generator_TablePropName="MaterialReq" msprop:Generator_RowDeletingName="MaterialReqRowDeleting" msprop:Generator_RowChangingName="MaterialReqRowChanging" msprop:Generator_RowEvHandlerName="MaterialReqRowChangeEventHandler" msprop:Generator_RowDeletedName="MaterialReqRowDeleted" msprop:Generator_RowClassName="MaterialReqRow" msprop:Generator_UserTableName="MaterialReq" msprop:Generator_RowEvArgName="MaterialReqRowChangeEvent">
+        <xs:element name="MaterialReq" msprop:Generator_TableClassName="MaterialReqDataTable" msprop:Generator_TableVarName="tableMaterialReq" msprop:Generator_TablePropName="MaterialReq" msprop:Generator_RowDeletingName="MaterialReqRowDeleting" msprop:Generator_RowChangingName="MaterialReqRowChanging" msprop:Generator_RowEvHandlerName="MaterialReqRowChangeEventHandler" msprop:Generator_RowDeletedName="MaterialReqRowDeleted" msprop:Generator_UserTableName="MaterialReq" msprop:Generator_RowChangedName="MaterialReqRowChanged" msprop:Generator_RowEvArgName="MaterialReqRowChangeEvent" msprop:Generator_RowClassName="MaterialReqRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="matDesc" msprop:Generator_ColumnVarNameInTable="columnmatDesc" msprop:Generator_ColumnPropNameInRow="matDesc" msprop:Generator_ColumnPropNameInTable="matDescColumn" msprop:Generator_UserColumnName="matDesc">
@@ -316,7 +285,7 @@ FROM            LABOUR_SUMMARY INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LabourReq" msprop:Generator_TableClassName="LabourReqDataTable" msprop:Generator_TableVarName="tableLabourReq" msprop:Generator_TablePropName="LabourReq" msprop:Generator_RowDeletingName="LabourReqRowDeleting" msprop:Generator_RowChangingName="LabourReqRowChanging" msprop:Generator_RowEvHandlerName="LabourReqRowChangeEventHandler" msprop:Generator_RowDeletedName="LabourReqRowDeleted" msprop:Generator_UserTableName="LabourReq" msprop:Generator_RowChangedName="LabourReqRowChanged" msprop:Generator_RowEvArgName="LabourReqRowChangeEvent" msprop:Generator_RowClassName="LabourReqRow">
+        <xs:element name="LabourReq" msprop:Generator_TableClassName="LabourReqDataTable" msprop:Generator_TableVarName="tableLabourReq" msprop:Generator_RowChangedName="LabourReqRowChanged" msprop:Generator_TablePropName="LabourReq" msprop:Generator_RowDeletingName="LabourReqRowDeleting" msprop:Generator_RowChangingName="LabourReqRowChanging" msprop:Generator_RowEvHandlerName="LabourReqRowChangeEventHandler" msprop:Generator_RowDeletedName="LabourReqRowDeleted" msprop:Generator_RowClassName="LabourReqRow" msprop:Generator_UserTableName="LabourReq" msprop:Generator_RowEvArgName="LabourReqRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="projectID" msprop:Generator_ColumnVarNameInTable="columnprojectID" msprop:Generator_ColumnPropNameInRow="projectID" msprop:Generator_ColumnPropNameInTable="projectIDColumn" msprop:Generator_UserColumnName="projectID" type="xs:int" />

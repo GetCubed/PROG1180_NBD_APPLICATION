@@ -456,21 +456,13 @@ namespace NBDLibrary {
             
             private global::System.Data.DataColumn columncliName;
             
-            private global::System.Data.DataColumn columncliAddress;
-            
-            private global::System.Data.DataColumn columncity;
-            
-            private global::System.Data.DataColumn columncliProvince;
-            
-            private global::System.Data.DataColumn columncliPCode;
-            
-            private global::System.Data.DataColumn columncliPhone;
-            
-            private global::System.Data.DataColumn columncliConFullName;
-            
-            private global::System.Data.DataColumn columncliConPosition;
-            
             private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnaddress;
+            
+            private global::System.Data.DataColumn columncontact;
+            
+            private global::System.Data.DataColumn columnphone;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -515,65 +507,33 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn cliAddressColumn {
-                get {
-                    return this.columncliAddress;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn cityColumn {
-                get {
-                    return this.columncity;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn cliProvinceColumn {
-                get {
-                    return this.columncliProvince;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn cliPCodeColumn {
-                get {
-                    return this.columncliPCode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn cliPhoneColumn {
-                get {
-                    return this.columncliPhone;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn cliConFullNameColumn {
-                get {
-                    return this.columncliConFullName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn cliConPositionColumn {
-                get {
-                    return this.columncliConPosition;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn IDColumn {
                 get {
                     return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn addressColumn {
+                get {
+                    return this.columnaddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn contactColumn {
+                get {
+                    return this.columncontact;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn phoneColumn {
+                get {
+                    return this.columnphone;
                 }
             }
             
@@ -614,18 +574,14 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ClientRow AddClientRow(string cliName, string cliAddress, string city, string cliProvince, string cliPCode, string cliPhone, string cliConFullName, string cliConPosition) {
+            public ClientRow AddClientRow(string cliName, string address, string contact, string phone) {
                 ClientRow rowClientRow = ((ClientRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cliName,
-                        cliAddress,
-                        city,
-                        cliProvince,
-                        cliPCode,
-                        cliPhone,
-                        cliConFullName,
-                        cliConPosition,
-                        null};
+                        null,
+                        address,
+                        contact,
+                        phone};
                 rowClientRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowClientRow);
                 return rowClientRow;
@@ -656,14 +612,10 @@ namespace NBDLibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columncliName = base.Columns["cliName"];
-                this.columncliAddress = base.Columns["cliAddress"];
-                this.columncity = base.Columns["city"];
-                this.columncliProvince = base.Columns["cliProvince"];
-                this.columncliPCode = base.Columns["cliPCode"];
-                this.columncliPhone = base.Columns["cliPhone"];
-                this.columncliConFullName = base.Columns["cliConFullName"];
-                this.columncliConPosition = base.Columns["cliConPosition"];
                 this.columnID = base.Columns["ID"];
+                this.columnaddress = base.Columns["address"];
+                this.columncontact = base.Columns["contact"];
+                this.columnphone = base.Columns["phone"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -671,42 +623,30 @@ namespace NBDLibrary {
             private void InitClass() {
                 this.columncliName = new global::System.Data.DataColumn("cliName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncliName);
-                this.columncliAddress = new global::System.Data.DataColumn("cliAddress", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncliAddress);
-                this.columncity = new global::System.Data.DataColumn("city", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncity);
-                this.columncliProvince = new global::System.Data.DataColumn("cliProvince", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncliProvince);
-                this.columncliPCode = new global::System.Data.DataColumn("cliPCode", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncliPCode);
-                this.columncliPhone = new global::System.Data.DataColumn("cliPhone", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncliPhone);
-                this.columncliConFullName = new global::System.Data.DataColumn("cliConFullName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncliConFullName);
-                this.columncliConPosition = new global::System.Data.DataColumn("cliConPosition", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncliConPosition);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
+                this.columnaddress = new global::System.Data.DataColumn("address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaddress);
+                this.columncontact = new global::System.Data.DataColumn("contact", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontact);
+                this.columnphone = new global::System.Data.DataColumn("phone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnphone);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columncliName.AllowDBNull = false;
                 this.columncliName.MaxLength = 80;
-                this.columncliAddress.MaxLength = 50;
-                this.columncity.AllowDBNull = false;
-                this.columncity.MaxLength = 50;
-                this.columncliProvince.MaxLength = 50;
-                this.columncliPCode.MaxLength = 6;
-                this.columncliPhone.AllowDBNull = false;
-                this.columncliPhone.MaxLength = 10;
-                this.columncliConFullName.ReadOnly = true;
-                this.columncliConFullName.MaxLength = 61;
-                this.columncliConPosition.MaxLength = 30;
                 this.columnID.AutoIncrement = true;
                 this.columnID.AutoIncrementSeed = -1;
                 this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
+                this.columnaddress.ReadOnly = true;
+                this.columnaddress.MaxLength = 163;
+                this.columncontact.ReadOnly = true;
+                this.columncontact.MaxLength = 93;
+                this.columnphone.ReadOnly = true;
+                this.columnphone.MaxLength = 4000;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2415,108 +2355,6 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string cliAddress {
-                get {
-                    try {
-                        return ((string)(this[this.tableClient.cliAddressColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'cliAddress\' in table \'Client\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableClient.cliAddressColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string city {
-                get {
-                    return ((string)(this[this.tableClient.cityColumn]));
-                }
-                set {
-                    this[this.tableClient.cityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string cliProvince {
-                get {
-                    try {
-                        return ((string)(this[this.tableClient.cliProvinceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'cliProvince\' in table \'Client\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableClient.cliProvinceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string cliPCode {
-                get {
-                    try {
-                        return ((string)(this[this.tableClient.cliPCodeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'cliPCode\' in table \'Client\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableClient.cliPCodeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string cliPhone {
-                get {
-                    return ((string)(this[this.tableClient.cliPhoneColumn]));
-                }
-                set {
-                    this[this.tableClient.cliPhoneColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string cliConFullName {
-                get {
-                    try {
-                        return ((string)(this[this.tableClient.cliConFullNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'cliConFullName\' in table \'Client\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableClient.cliConFullNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string cliConPosition {
-                get {
-                    try {
-                        return ((string)(this[this.tableClient.cliConPositionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'cliConPosition\' in table \'Client\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableClient.cliConPositionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int ID {
                 get {
                     return ((int)(this[this.tableClient.IDColumn]));
@@ -2528,62 +2366,86 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IscliAddressNull() {
-                return this.IsNull(this.tableClient.cliAddressColumn);
+            public string address {
+                get {
+                    try {
+                        return ((string)(this[this.tableClient.addressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'address\' in table \'Client\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClient.addressColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetcliAddressNull() {
-                this[this.tableClient.cliAddressColumn] = global::System.Convert.DBNull;
+            public string contact {
+                get {
+                    try {
+                        return ((string)(this[this.tableClient.contactColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'contact\' in table \'Client\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClient.contactColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IscliProvinceNull() {
-                return this.IsNull(this.tableClient.cliProvinceColumn);
+            public string phone {
+                get {
+                    try {
+                        return ((string)(this[this.tableClient.phoneColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'phone\' in table \'Client\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClient.phoneColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetcliProvinceNull() {
-                this[this.tableClient.cliProvinceColumn] = global::System.Convert.DBNull;
+            public bool IsaddressNull() {
+                return this.IsNull(this.tableClient.addressColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IscliPCodeNull() {
-                return this.IsNull(this.tableClient.cliPCodeColumn);
+            public void SetaddressNull() {
+                this[this.tableClient.addressColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetcliPCodeNull() {
-                this[this.tableClient.cliPCodeColumn] = global::System.Convert.DBNull;
+            public bool IscontactNull() {
+                return this.IsNull(this.tableClient.contactColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IscliConFullNameNull() {
-                return this.IsNull(this.tableClient.cliConFullNameColumn);
+            public void SetcontactNull() {
+                this[this.tableClient.contactColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetcliConFullNameNull() {
-                this[this.tableClient.cliConFullNameColumn] = global::System.Convert.DBNull;
+            public bool IsphoneNull() {
+                return this.IsNull(this.tableClient.phoneColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IscliConPositionNull() {
-                return this.IsNull(this.tableClient.cliConPositionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetcliConPositionNull() {
-                this[this.tableClient.cliConPositionColumn] = global::System.Convert.DBNull;
+            public void SetphoneNull() {
+                this[this.tableClient.phoneColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3426,14 +3288,10 @@ namespace NBDLibrary.NBD_DataSetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Client";
             tableMapping.ColumnMappings.Add("cliName", "cliName");
-            tableMapping.ColumnMappings.Add("cliAddress", "cliAddress");
-            tableMapping.ColumnMappings.Add("city", "city");
-            tableMapping.ColumnMappings.Add("cliProvince", "cliProvince");
-            tableMapping.ColumnMappings.Add("cliPCode", "cliPCode");
-            tableMapping.ColumnMappings.Add("cliPhone", "cliPhone");
-            tableMapping.ColumnMappings.Add("cliConFullName", "cliConFullName");
-            tableMapping.ColumnMappings.Add("cliConPosition", "cliConPosition");
             tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("address", "address");
+            tableMapping.ColumnMappings.Add("contact", "contact");
+            tableMapping.ColumnMappings.Add("phone", "phone");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3450,7 +3308,8 @@ namespace NBDLibrary.NBD_DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Client.ID, CLIENT.cliName, CLIENT.cliAddress, CITY.city, CLIENT.cliProvince, CLIENT.cliPCode, CLIENT.cliPhone, CLIENT.cliConFName + ' ' + CLIENT.cliConLName AS cliConFullName, CLIENT.cliConPosition
+            this._commandCollection[0].CommandText = @"SELECT        CLIENT.cliName, CLIENT.cliAddress + '<br>' + CITY.city + ', ' + CLIENT.cliProvince + '<br>' + CLIENT.cliPCode AS address, CLIENT.cliConFName + ' ' + CLIENT.cliConLName + ', ' + CLIENT.cliConPosition AS contact, 
+                         '(' + LEFT(CLIENT.cliPhone, 3) + ') ' + SUBSTRING(CLIENT.cliPhone, 4, 3) + '-' + RIGHT(CLIENT.cliPhone, 4) AS phone, CLIENT.ID
 FROM            CLIENT INNER JOIN
                          CITY ON CLIENT.cityID = CITY.ID
 ORDER BY CLIENT.cliName";
