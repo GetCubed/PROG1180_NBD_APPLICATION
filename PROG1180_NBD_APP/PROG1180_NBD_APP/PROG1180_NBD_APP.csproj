@@ -223,6 +223,8 @@
     </Content>
     <Content Include="Images\NBDLogo.png" />
     <Content Include="Images\NBDLogoSmall.png" />
+    <Content Include="ProductionPlans\ProductionPlan.aspx" />
+    <Content Include="ProductionPlans\ProductionPlans.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -500,6 +502,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ProductionPlans\ProductionPlan.aspx.cs">
+      <DependentUpon>ProductionPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductionPlans\ProductionPlan.aspx.designer.cs">
+      <DependentUpon>ProductionPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductionPlans\ProductionPlans.aspx.cs">
+      <DependentUpon>ProductionPlans.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductionPlans\ProductionPlans.aspx.designer.cs">
+      <DependentUpon>ProductionPlans.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -524,9 +540,7 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ProductionPlans\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
