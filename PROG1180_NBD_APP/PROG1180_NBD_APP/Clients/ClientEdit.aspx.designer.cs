@@ -10,6 +10,6 @@
 namespace PROG1180_NBD_APP.Clients {
     
     
-    public partial class CreateClient {
+    public partial class ClientEdit {
     }
 }
