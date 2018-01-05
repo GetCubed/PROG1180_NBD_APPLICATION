@@ -13,7 +13,7 @@ namespace PROG1180_NBD_APP.DAL.SecurityMigrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201801042321284_InitialSecurity"; }
+            get { return "201801051841069_InitialSecurity"; }
         }
         
         string IMigrationMetadata.Source
