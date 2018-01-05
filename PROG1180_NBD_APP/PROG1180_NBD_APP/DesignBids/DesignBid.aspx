@@ -168,35 +168,16 @@
                             <div class="row mb-1">
                                 <div class="col-lg-12">
                                     <table class="table">
-                                        <tr>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-
+                                        <thead>
+                                            <tr>
+                                                <th class="th-lg">Quantity</th>
+                                                <th class="th-lg">Description</th>
+                                                <th class="th-lg">Size</th>
+                                                <th class="th-lg">Unit Price</th>
+                                                <th class="th-lg">Extended Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tboPlants" runat="server"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -207,35 +188,16 @@
                             <div class="row mb-1">
                                 <div class="col-lg-12">
                                     <table class="table">
-                                        <tr>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-
+                                        <thead>
+                                            <tr>
+                                                <th class="th-lg">Quantity</th>
+                                                <th class="th-lg">Description</th>
+                                                <th class="th-lg">Size</th>
+                                                <th class="th-lg">Unit Price</th>
+                                                <th class="th-lg">Extended Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tboPottery" runat="server"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -244,35 +206,16 @@
                             <div class="row mb-1">
                                 <div class="col-lg-12">
                                     <table class="table">
-                                        <tr>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                            <th>Client Name</th>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-
+                                        <thead>
+                                            <tr>
+                                                <th class="th-lg">Quantity</th>
+                                                <th class="th-lg">Description</th>
+                                                <th class="th-lg">Size</th>
+                                                <th class="th-lg">Unit Price</th>
+                                                <th class="th-lg">Extended Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tboMaterials" runat="server"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -297,27 +240,15 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <table class="table">
-                                        <tr>
-                                            <td>Client Name</td>
-                                            <td>London Sq Mall</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Client Address</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Contact</td>
-                                            <td>Amy Benson</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Phone</td>
-                                            <td>(408)843-5603</td>
-                                        </tr>
+                                        <thead>
+                                            <tr>
+                                                <th class="th-lg">Hours</th>
+                                                <th class="th-lg">Description</th>
+                                                <th class="th-lg">Unit Price</th>
+                                                <th class="th-lg">Extended Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tboLabour" runat="server"></tbody>
                                     </table>
                                 </div>
 
