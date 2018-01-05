@@ -72,18 +72,23 @@
                         <ul class="navbar-nav mr-auto">
                             <asp:LoginView ID="RoleLinks" runat="server" ViewStateMode="Disabled">
                                 <RoleGroups>
+
                                     <asp:RoleGroup Roles="TestAdmin">
                                         <ContentTemplate>
                                             <li class='nav-item dropdown'>
-                                                <a class='nav-link dropdown-toggle' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Dropdown</a>
+                                                <a class='nav-link dropdown-toggle' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Clients</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
-                                                    <a class='dropdown-item' href='#'>Action</a>
-                                                    <a class='dropdown-item' href='#'>Another action</a>
-                                                    <a class='dropdown-item' href='#'>Something else here</a>
+                                                    <a class='dropdown-item' href='../Clients/Clients'>View Clients</a>
+                                                    <a class='dropdown-item' href='../Clients/CreateClient'>Create Client</a>
                                                 </div>
                                             </li>
                                         </ContentTemplate>
                                     </asp:RoleGroup>
+
+
+
+
+
                                 </RoleGroups>
                             </asp:LoginView>
 
