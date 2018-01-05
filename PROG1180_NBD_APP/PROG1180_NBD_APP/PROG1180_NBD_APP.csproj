@@ -54,6 +54,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NBDLibrary">
+      <HintPath>..\..\NBDLibrary\NBDLibrary\bin\Debug\NBDLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -190,6 +193,12 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="App_Data\PROG1180_NBD_APP.mdf" />
+    <Content Include="App_Data\PROG1180_NBD_APP_log.ldf">
+      <DependentUpon>PROG1180_NBD_APP.mdf</DependentUpon>
+    </Content>
+    <Content Include="Clients\CreateClients.aspx" />
+    <Content Include="Clients\Clients.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -200,7 +209,11 @@
     <Content Include="Content\mdb.css" />
     <Content Include="Content\myStyle.css" />
     <Content Include="Content\SiteZ.css" />
+    <None Include="DAL\Zcommands" />
     <Content Include="Default.aspx" />
+    <Content Include="DesignBids\DesignBid.aspx" />
+    <Content Include="DesignBids\DesignBids.aspx" />
+    <Content Include="DesignBudgets\DesignBudgets.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
@@ -420,6 +433,20 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Clients\CreateClients.aspx.cs">
+      <DependentUpon>CreateClients.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clients\CreateClients.aspx.designer.cs">
+      <DependentUpon>CreateClients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\Clients.aspx.cs">
+      <DependentUpon>Clients.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clients\Clients.aspx.designer.cs">
+      <DependentUpon>Clients.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -427,12 +454,39 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\ApplicationDbContext.cs" />
+    <Compile Include="DAL\SecurityMigrations\201801042321284_InitialSecurity.cs" />
+    <Compile Include="DAL\SecurityMigrations\201801042321284_InitialSecurity.Designer.cs">
+      <DependentUpon>201801042321284_InitialSecurity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SecurityMigrations\Configuration.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignBids\DesignBid.aspx.cs">
+      <DependentUpon>DesignBid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBids\DesignBid.aspx.designer.cs">
+      <DependentUpon>DesignBid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignBids\DesignBids.aspx.cs">
+      <DependentUpon>DesignBids.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBids\DesignBids.aspx.designer.cs">
+      <DependentUpon>DesignBids.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudgets.aspx.cs">
+      <DependentUpon>DesignBudgets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudgets.aspx.designer.cs">
+      <DependentUpon>DesignBudgets.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -462,9 +516,7 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
@@ -481,6 +533,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DAL\SecurityMigrations\201801042321284_InitialSecurity.resx">
+      <DependentUpon>201801042321284_InitialSecurity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
