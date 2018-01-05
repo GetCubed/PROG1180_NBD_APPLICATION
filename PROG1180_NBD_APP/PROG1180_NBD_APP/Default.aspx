@@ -5,10 +5,13 @@
      <!--Main layout-->
     <main class="mt-4">
 
+
+
             <div class="col-md-12">
                 <!--Featured image -->
-                <img src="..\Images\NBDLogo.png" class="img-fluid">
+                <img src="../Images/NBDLogo.png" class="img-fluid">
             </div>
+
 
     </main>
     <!--Main layout-->

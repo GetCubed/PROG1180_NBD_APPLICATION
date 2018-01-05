@@ -13,6 +13,24 @@ namespace PROG1180_NBD_APP {
     public partial class SiteMaster {
         
         /// <summary>
+        /// RoleLinks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LoginView RoleLinks;
+        
+        /// <summary>
+        /// UserLinks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LoginView UserLinks;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>
