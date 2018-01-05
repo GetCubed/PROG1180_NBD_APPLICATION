@@ -229,6 +229,8 @@
     <Content Include="Images\NBDLogoSmall.png" />
     <Content Include="ProductionPlans\ProductionPlan.aspx" />
     <Content Include="ProductionPlans\ProductionPlans.aspx" />
+    <Content Include="Reports\ProjectAdminReport.aspx" />
+    <Content Include="Reports\ProjectAdminReports.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -549,6 +551,20 @@
       <DependentUpon>ProductionPlans.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ProjectAdminReport.aspx.cs">
+      <DependentUpon>ProjectAdminReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ProjectAdminReport.aspx.designer.cs">
+      <DependentUpon>ProjectAdminReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProjectAdminReports.aspx.cs">
+      <DependentUpon>ProjectAdminReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ProjectAdminReports.aspx.designer.cs">
+      <DependentUpon>ProjectAdminReports.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
