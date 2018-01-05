@@ -879,12 +879,6 @@ namespace NBDLibrary {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ProjectDataTable : global::System.Data.TypedTableBase<ProjectRow> {
             
-            private global::System.Data.DataColumn columnprojBidDate;
-            
-            private global::System.Data.DataColumn columnprojEstStart;
-            
-            private global::System.Data.DataColumn columnprojEstEnd;
-            
             private global::System.Data.DataColumn columnprojSite;
             
             private global::System.Data.DataColumn columnprojEstCost;
@@ -896,6 +890,12 @@ namespace NBDLibrary {
             private global::System.Data.DataColumn columnclientID;
             
             private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnbidDate;
+            
+            private global::System.Data.DataColumn columnstartDate;
+            
+            private global::System.Data.DataColumn columnendDate;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -928,30 +928,6 @@ namespace NBDLibrary {
             protected ProjectDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn projBidDateColumn {
-                get {
-                    return this.columnprojBidDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn projEstStartColumn {
-                get {
-                    return this.columnprojEstStart;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn projEstEndColumn {
-                get {
-                    return this.columnprojEstEnd;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1004,6 +980,30 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn bidDateColumn {
+                get {
+                    return this.columnbidDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn startDateColumn {
+                get {
+                    return this.columnstartDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn endDateColumn {
+                get {
+                    return this.columnendDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1039,18 +1039,18 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProjectRow AddProjectRow(System.DateTime projBidDate, string projEstStart, string projEstEnd, string projSite, string projEstCost, int salesAssocID, int clientID, int ID) {
+            public ProjectRow AddProjectRow(string projSite, string projEstCost, int salesAssocID, int clientID, int ID, string bidDate, string startDate, string endDate) {
                 ProjectRow rowProjectRow = ((ProjectRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        projBidDate,
-                        projEstStart,
-                        projEstEnd,
                         projSite,
                         projEstCost,
                         null,
                         salesAssocID,
                         clientID,
-                        ID};
+                        ID,
+                        bidDate,
+                        startDate,
+                        endDate};
                 rowProjectRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProjectRow);
                 return rowProjectRow;
@@ -1080,26 +1080,20 @@ namespace NBDLibrary {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnprojBidDate = base.Columns["projBidDate"];
-                this.columnprojEstStart = base.Columns["projEstStart"];
-                this.columnprojEstEnd = base.Columns["projEstEnd"];
                 this.columnprojSite = base.Columns["projSite"];
                 this.columnprojEstCost = base.Columns["projEstCost"];
                 this.columndesignerID = base.Columns["designerID"];
                 this.columnsalesAssocID = base.Columns["salesAssocID"];
                 this.columnclientID = base.Columns["clientID"];
                 this.columnID = base.Columns["ID"];
+                this.columnbidDate = base.Columns["bidDate"];
+                this.columnstartDate = base.Columns["startDate"];
+                this.columnendDate = base.Columns["endDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnprojBidDate = new global::System.Data.DataColumn("projBidDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnprojBidDate);
-                this.columnprojEstStart = new global::System.Data.DataColumn("projEstStart", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnprojEstStart);
-                this.columnprojEstEnd = new global::System.Data.DataColumn("projEstEnd", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnprojEstEnd);
                 this.columnprojSite = new global::System.Data.DataColumn("projSite", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprojSite);
                 this.columnprojEstCost = new global::System.Data.DataColumn("projEstCost", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1112,11 +1106,14 @@ namespace NBDLibrary {
                 base.Columns.Add(this.columnclientID);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
+                this.columnbidDate = new global::System.Data.DataColumn("bidDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbidDate);
+                this.columnstartDate = new global::System.Data.DataColumn("startDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstartDate);
+                this.columnendDate = new global::System.Data.DataColumn("endDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnendDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
-                this.columnprojBidDate.AllowDBNull = false;
-                this.columnprojEstStart.MaxLength = 10;
-                this.columnprojEstEnd.MaxLength = 10;
                 this.columnprojSite.AllowDBNull = false;
                 this.columnprojSite.MaxLength = 100;
                 this.columnprojEstCost.MaxLength = 10;
@@ -1129,6 +1126,12 @@ namespace NBDLibrary {
                 this.columnclientID.AllowDBNull = false;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnbidDate.ReadOnly = true;
+                this.columnbidDate.MaxLength = 12;
+                this.columnstartDate.ReadOnly = true;
+                this.columnstartDate.MaxLength = 12;
+                this.columnendDate.ReadOnly = true;
+                this.columnendDate.MaxLength = 12;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1833,15 +1836,13 @@ namespace NBDLibrary {
             
             private global::System.Data.DataColumn columnmatType;
             
-            private global::System.Data.DataColumn columnmreqEstQty;
-            
-            private global::System.Data.DataColumn columninvSizeAmnt;
-            
-            private global::System.Data.DataColumn columninvSizeUnit;
-            
-            private global::System.Data.DataColumn columninvList;
-            
             private global::System.Data.DataColumn columnprojectID;
+            
+            private global::System.Data.DataColumn columnsize;
+            
+            private global::System.Data.DataColumn columnqty;
+            
+            private global::System.Data.DataColumn columnunitPrice;
             
             private global::System.Data.DataColumn columnextendedPrice;
             
@@ -1896,41 +1897,33 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn mreqEstQtyColumn {
-                get {
-                    return this.columnmreqEstQty;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn invSizeAmntColumn {
-                get {
-                    return this.columninvSizeAmnt;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn invSizeUnitColumn {
-                get {
-                    return this.columninvSizeUnit;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn invListColumn {
-                get {
-                    return this.columninvList;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn projectIDColumn {
                 get {
                     return this.columnprojectID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn sizeColumn {
+                get {
+                    return this.columnsize;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn qtyColumn {
+                get {
+                    return this.columnqty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn unitPriceColumn {
+                get {
+                    return this.columnunitPrice;
                 }
             }
             
@@ -1979,16 +1972,15 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public MaterialReqRow AddMaterialReqRow(string matDesc, string matType, short mreqEstQty, short invSizeAmnt, string invSizeUnit, decimal invList, int projectID, decimal extendedPrice) {
+            public MaterialReqRow AddMaterialReqRow(string matDesc, string matType, int projectID, string size, short qty, string unitPrice, string extendedPrice) {
                 MaterialReqRow rowMaterialReqRow = ((MaterialReqRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         matDesc,
                         matType,
-                        mreqEstQty,
-                        invSizeAmnt,
-                        invSizeUnit,
-                        invList,
                         projectID,
+                        size,
+                        qty,
+                        unitPrice,
                         extendedPrice};
                 rowMaterialReqRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMaterialReqRow);
@@ -2014,11 +2006,10 @@ namespace NBDLibrary {
             internal void InitVars() {
                 this.columnmatDesc = base.Columns["matDesc"];
                 this.columnmatType = base.Columns["matType"];
-                this.columnmreqEstQty = base.Columns["mreqEstQty"];
-                this.columninvSizeAmnt = base.Columns["invSizeAmnt"];
-                this.columninvSizeUnit = base.Columns["invSizeUnit"];
-                this.columninvList = base.Columns["invList"];
                 this.columnprojectID = base.Columns["projectID"];
+                this.columnsize = base.Columns["size"];
+                this.columnqty = base.Columns["qty"];
+                this.columnunitPrice = base.Columns["unitPrice"];
                 this.columnextendedPrice = base.Columns["extendedPrice"];
             }
             
@@ -2029,25 +2020,27 @@ namespace NBDLibrary {
                 base.Columns.Add(this.columnmatDesc);
                 this.columnmatType = new global::System.Data.DataColumn("matType", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmatType);
-                this.columnmreqEstQty = new global::System.Data.DataColumn("mreqEstQty", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmreqEstQty);
-                this.columninvSizeAmnt = new global::System.Data.DataColumn("invSizeAmnt", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columninvSizeAmnt);
-                this.columninvSizeUnit = new global::System.Data.DataColumn("invSizeUnit", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columninvSizeUnit);
-                this.columninvList = new global::System.Data.DataColumn("invList", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columninvList);
                 this.columnprojectID = new global::System.Data.DataColumn("projectID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprojectID);
-                this.columnextendedPrice = new global::System.Data.DataColumn("extendedPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnsize = new global::System.Data.DataColumn("size", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsize);
+                this.columnqty = new global::System.Data.DataColumn("qty", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnqty);
+                this.columnunitPrice = new global::System.Data.DataColumn("unitPrice", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnunitPrice);
+                this.columnextendedPrice = new global::System.Data.DataColumn("extendedPrice", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnextendedPrice);
                 this.columnmatDesc.AllowDBNull = false;
                 this.columnmatDesc.MaxLength = 50;
                 this.columnmatType.AllowDBNull = false;
                 this.columnmatType.MaxLength = 20;
-                this.columninvSizeUnit.MaxLength = 20;
                 this.columnprojectID.AllowDBNull = false;
+                this.columnsize.ReadOnly = true;
+                this.columnsize.MaxLength = 51;
+                this.columnunitPrice.ReadOnly = true;
+                this.columnunitPrice.MaxLength = 31;
                 this.columnextendedPrice.ReadOnly = true;
+                this.columnextendedPrice.MaxLength = 31;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2183,11 +2176,13 @@ namespace NBDLibrary {
             
             private global::System.Data.DataColumn columnprojectID;
             
-            private global::System.Data.DataColumn columnlsHours;
+            private global::System.Data.DataColumn columnhours;
             
-            private global::System.Data.DataColumn columnwrkTypeDesc;
+            private global::System.Data.DataColumn columndescr;
             
-            private global::System.Data.DataColumn columnwrkTypePrice;
+            private global::System.Data.DataColumn columnunitPrice;
+            
+            private global::System.Data.DataColumn columnextendedPrice;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -2232,25 +2227,33 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn lsHoursColumn {
+            public global::System.Data.DataColumn hoursColumn {
                 get {
-                    return this.columnlsHours;
+                    return this.columnhours;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn wrkTypeDescColumn {
+            public global::System.Data.DataColumn descrColumn {
                 get {
-                    return this.columnwrkTypeDesc;
+                    return this.columndescr;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn wrkTypePriceColumn {
+            public global::System.Data.DataColumn unitPriceColumn {
                 get {
-                    return this.columnwrkTypePrice;
+                    return this.columnunitPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn extendedPriceColumn {
+                get {
+                    return this.columnextendedPrice;
                 }
             }
             
@@ -2291,13 +2294,14 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LabourReqRow AddLabourReqRow(int projectID, short lsHours, string wrkTypeDesc, decimal wrkTypePrice) {
+            public LabourReqRow AddLabourReqRow(int projectID, short hours, string descr, string unitPrice, string extendedPrice) {
                 LabourReqRow rowLabourReqRow = ((LabourReqRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         projectID,
-                        lsHours,
-                        wrkTypeDesc,
-                        wrkTypePrice};
+                        hours,
+                        descr,
+                        unitPrice,
+                        extendedPrice};
                 rowLabourReqRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLabourReqRow);
                 return rowLabourReqRow;
@@ -2321,9 +2325,10 @@ namespace NBDLibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnprojectID = base.Columns["projectID"];
-                this.columnlsHours = base.Columns["lsHours"];
-                this.columnwrkTypeDesc = base.Columns["wrkTypeDesc"];
-                this.columnwrkTypePrice = base.Columns["wrkTypePrice"];
+                this.columnhours = base.Columns["hours"];
+                this.columndescr = base.Columns["descr"];
+                this.columnunitPrice = base.Columns["unitPrice"];
+                this.columnextendedPrice = base.Columns["extendedPrice"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2331,16 +2336,22 @@ namespace NBDLibrary {
             private void InitClass() {
                 this.columnprojectID = new global::System.Data.DataColumn("projectID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprojectID);
-                this.columnlsHours = new global::System.Data.DataColumn("lsHours", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnlsHours);
-                this.columnwrkTypeDesc = new global::System.Data.DataColumn("wrkTypeDesc", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnwrkTypeDesc);
-                this.columnwrkTypePrice = new global::System.Data.DataColumn("wrkTypePrice", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnwrkTypePrice);
+                this.columnhours = new global::System.Data.DataColumn("hours", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhours);
+                this.columndescr = new global::System.Data.DataColumn("descr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndescr);
+                this.columnunitPrice = new global::System.Data.DataColumn("unitPrice", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnunitPrice);
+                this.columnextendedPrice = new global::System.Data.DataColumn("extendedPrice", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnextendedPrice);
                 this.columnprojectID.AllowDBNull = false;
-                this.columnlsHours.AllowDBNull = false;
-                this.columnwrkTypeDesc.AllowDBNull = false;
-                this.columnwrkTypeDesc.MaxLength = 50;
+                this.columnhours.AllowDBNull = false;
+                this.columndescr.AllowDBNull = false;
+                this.columndescr.MaxLength = 50;
+                this.columnunitPrice.ReadOnly = true;
+                this.columnunitPrice.MaxLength = 31;
+                this.columnextendedPrice.ReadOnly = true;
+                this.columnextendedPrice.MaxLength = 31;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3171,49 +3182,6 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime projBidDate {
-                get {
-                    return ((global::System.DateTime)(this[this.tableProject.projBidDateColumn]));
-                }
-                set {
-                    this[this.tableProject.projBidDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string projEstStart {
-                get {
-                    try {
-                        return ((string)(this[this.tableProject.projEstStartColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'projEstStart\' in table \'Project\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProject.projEstStartColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string projEstEnd {
-                get {
-                    try {
-                        return ((string)(this[this.tableProject.projEstEndColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'projEstEnd\' in table \'Project\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProject.projEstEndColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string projSite {
                 get {
                     return ((string)(this[this.tableProject.projSiteColumn]));
@@ -3285,26 +3253,50 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsprojEstStartNull() {
-                return this.IsNull(this.tableProject.projEstStartColumn);
+            public string bidDate {
+                get {
+                    try {
+                        return ((string)(this[this.tableProject.bidDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'bidDate\' in table \'Project\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProject.bidDateColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetprojEstStartNull() {
-                this[this.tableProject.projEstStartColumn] = global::System.Convert.DBNull;
+            public string startDate {
+                get {
+                    try {
+                        return ((string)(this[this.tableProject.startDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'startDate\' in table \'Project\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProject.startDateColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsprojEstEndNull() {
-                return this.IsNull(this.tableProject.projEstEndColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetprojEstEndNull() {
-                this[this.tableProject.projEstEndColumn] = global::System.Convert.DBNull;
+            public string endDate {
+                get {
+                    try {
+                        return ((string)(this[this.tableProject.endDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'endDate\' in table \'Project\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProject.endDateColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3317,6 +3309,42 @@ namespace NBDLibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetprojEstCostNull() {
                 this[this.tableProject.projEstCostColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsbidDateNull() {
+                return this.IsNull(this.tableProject.bidDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetbidDateNull() {
+                this[this.tableProject.bidDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsstartDateNull() {
+                return this.IsNull(this.tableProject.startDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetstartDateNull() {
+                this[this.tableProject.startDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsendDateNull() {
+                return this.IsNull(this.tableProject.endDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetendDateNull() {
+                this[this.tableProject.endDateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3460,70 +3488,6 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public short mreqEstQty {
-                get {
-                    try {
-                        return ((short)(this[this.tableMaterialReq.mreqEstQtyColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'mreqEstQty\' in table \'MaterialReq\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMaterialReq.mreqEstQtyColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public short invSizeAmnt {
-                get {
-                    try {
-                        return ((short)(this[this.tableMaterialReq.invSizeAmntColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'invSizeAmnt\' in table \'MaterialReq\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMaterialReq.invSizeAmntColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string invSizeUnit {
-                get {
-                    try {
-                        return ((string)(this[this.tableMaterialReq.invSizeUnitColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'invSizeUnit\' in table \'MaterialReq\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMaterialReq.invSizeUnitColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal invList {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableMaterialReq.invListColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'invList\' in table \'MaterialReq\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMaterialReq.invListColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int projectID {
                 get {
                     return ((int)(this[this.tableMaterialReq.projectIDColumn]));
@@ -3535,10 +3499,58 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal extendedPrice {
+            public string size {
                 get {
                     try {
-                        return ((decimal)(this[this.tableMaterialReq.extendedPriceColumn]));
+                        return ((string)(this[this.tableMaterialReq.sizeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'size\' in table \'MaterialReq\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMaterialReq.sizeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public short qty {
+                get {
+                    try {
+                        return ((short)(this[this.tableMaterialReq.qtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'qty\' in table \'MaterialReq\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMaterialReq.qtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string unitPrice {
+                get {
+                    try {
+                        return ((string)(this[this.tableMaterialReq.unitPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'unitPrice\' in table \'MaterialReq\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMaterialReq.unitPriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string extendedPrice {
+                get {
+                    try {
+                        return ((string)(this[this.tableMaterialReq.extendedPriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'extendedPrice\' in table \'MaterialReq\' is DBNull.", e);
@@ -3551,50 +3563,38 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsmreqEstQtyNull() {
-                return this.IsNull(this.tableMaterialReq.mreqEstQtyColumn);
+            public bool IssizeNull() {
+                return this.IsNull(this.tableMaterialReq.sizeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetmreqEstQtyNull() {
-                this[this.tableMaterialReq.mreqEstQtyColumn] = global::System.Convert.DBNull;
+            public void SetsizeNull() {
+                this[this.tableMaterialReq.sizeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsinvSizeAmntNull() {
-                return this.IsNull(this.tableMaterialReq.invSizeAmntColumn);
+            public bool IsqtyNull() {
+                return this.IsNull(this.tableMaterialReq.qtyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetinvSizeAmntNull() {
-                this[this.tableMaterialReq.invSizeAmntColumn] = global::System.Convert.DBNull;
+            public void SetqtyNull() {
+                this[this.tableMaterialReq.qtyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsinvSizeUnitNull() {
-                return this.IsNull(this.tableMaterialReq.invSizeUnitColumn);
+            public bool IsunitPriceNull() {
+                return this.IsNull(this.tableMaterialReq.unitPriceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetinvSizeUnitNull() {
-                this[this.tableMaterialReq.invSizeUnitColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsinvListNull() {
-                return this.IsNull(this.tableMaterialReq.invListColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetinvListNull() {
-                this[this.tableMaterialReq.invListColumn] = global::System.Convert.DBNull;
+            public void SetunitPriceNull() {
+                this[this.tableMaterialReq.unitPriceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3637,52 +3637,80 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public short lsHours {
+            public short hours {
                 get {
-                    return ((short)(this[this.tableLabourReq.lsHoursColumn]));
+                    return ((short)(this[this.tableLabourReq.hoursColumn]));
                 }
                 set {
-                    this[this.tableLabourReq.lsHoursColumn] = value;
+                    this[this.tableLabourReq.hoursColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string wrkTypeDesc {
+            public string descr {
                 get {
-                    return ((string)(this[this.tableLabourReq.wrkTypeDescColumn]));
+                    return ((string)(this[this.tableLabourReq.descrColumn]));
                 }
                 set {
-                    this[this.tableLabourReq.wrkTypeDescColumn] = value;
+                    this[this.tableLabourReq.descrColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal wrkTypePrice {
+            public string unitPrice {
                 get {
                     try {
-                        return ((decimal)(this[this.tableLabourReq.wrkTypePriceColumn]));
+                        return ((string)(this[this.tableLabourReq.unitPriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'wrkTypePrice\' in table \'LabourReq\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'unitPrice\' in table \'LabourReq\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableLabourReq.wrkTypePriceColumn] = value;
+                    this[this.tableLabourReq.unitPriceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IswrkTypePriceNull() {
-                return this.IsNull(this.tableLabourReq.wrkTypePriceColumn);
+            public string extendedPrice {
+                get {
+                    try {
+                        return ((string)(this[this.tableLabourReq.extendedPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'extendedPrice\' in table \'LabourReq\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLabourReq.extendedPriceColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetwrkTypePriceNull() {
-                this[this.tableLabourReq.wrkTypePriceColumn] = global::System.Convert.DBNull;
+            public bool IsunitPriceNull() {
+                return this.IsNull(this.tableLabourReq.unitPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetunitPriceNull() {
+                this[this.tableLabourReq.unitPriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsextendedPriceNull() {
+                return this.IsNull(this.tableLabourReq.extendedPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetextendedPriceNull() {
+                this[this.tableLabourReq.extendedPriceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4346,15 +4374,15 @@ ORDER BY CLIENT.cliName";
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Project";
-            tableMapping.ColumnMappings.Add("projBidDate", "projBidDate");
-            tableMapping.ColumnMappings.Add("projEstStart", "projEstStart");
-            tableMapping.ColumnMappings.Add("projEstEnd", "projEstEnd");
             tableMapping.ColumnMappings.Add("projSite", "projSite");
             tableMapping.ColumnMappings.Add("projEstCost", "projEstCost");
             tableMapping.ColumnMappings.Add("designerID", "designerID");
             tableMapping.ColumnMappings.Add("salesAssocID", "salesAssocID");
             tableMapping.ColumnMappings.Add("clientID", "clientID");
             tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("bidDate", "bidDate");
+            tableMapping.ColumnMappings.Add("startDate", "startDate");
+            tableMapping.ColumnMappings.Add("endDate", "endDate");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4371,8 +4399,9 @@ ORDER BY CLIENT.cliName";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        projBidDate, projEstStart, projEstEnd, projSite, projEstCost, desig" +
-                "nerID, salesAssocID, clientID, ID\r\nFROM            PROJECT";
+            this._commandCollection[0].CommandText = @"SELECT        CONVERT(VARCHAR(12), projBidDate, 107) AS bidDate, CONVERT(VARCHAR(12), CONVERT(datetime, projEstStart), 107) AS startDate, CONVERT(VARCHAR(12), CONVERT(datetime, projEstEnd), 107) AS endDate, projSite, 
+                         projEstCost, designerID, salesAssocID, clientID, ID
+FROM            PROJECT";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4828,11 +4857,10 @@ ORDER BY CLIENT.cliName";
             tableMapping.DataSetTable = "MaterialReq";
             tableMapping.ColumnMappings.Add("matDesc", "matDesc");
             tableMapping.ColumnMappings.Add("matType", "matType");
-            tableMapping.ColumnMappings.Add("mreqEstQty", "mreqEstQty");
-            tableMapping.ColumnMappings.Add("invSizeAmnt", "invSizeAmnt");
-            tableMapping.ColumnMappings.Add("invSizeUnit", "invSizeUnit");
-            tableMapping.ColumnMappings.Add("invList", "invList");
             tableMapping.ColumnMappings.Add("projectID", "projectID");
+            tableMapping.ColumnMappings.Add("size", "size");
+            tableMapping.ColumnMappings.Add("qty", "qty");
+            tableMapping.ColumnMappings.Add("unitPrice", "unitPrice");
             tableMapping.ColumnMappings.Add("extendedPrice", "extendedPrice");
             this._adapter.TableMappings.Add(tableMapping);
         }
@@ -4850,8 +4878,8 @@ ORDER BY CLIENT.cliName";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        MATERIAL.matDesc, MATERIAL.matType, INVENTORY.invSizeAmnt, INVENTORY.invSizeUnit, INVENTORY.invList, MATERIAL_REQ.projectID, MATERIAL_REQ.mreqEstQty, 
-                         MATERIAL_REQ.mreqEstQty * INVENTORY.invList AS extendedPrice
+            this._commandCollection[0].CommandText = @"SELECT        MATERIAL.matDesc, MATERIAL.matType, CONVERT(nvarchar, INVENTORY.invSizeAmnt) + ' ' + INVENTORY.invSizeUnit AS size, '$' + CONVERT(nvarchar, INVENTORY.invList) AS unitPrice, MATERIAL_REQ.projectID, 
+                         MATERIAL_REQ.mreqEstQty AS qty, '$' + CONVERT(nvarchar, MATERIAL_REQ.mreqEstQty * INVENTORY.invList) AS extendedPrice
 FROM            MATERIAL INNER JOIN
                          INVENTORY ON MATERIAL.ID = INVENTORY.materialID INNER JOIN
                          MATERIAL_REQ ON INVENTORY.ID = MATERIAL_REQ.inventoryID
@@ -4995,9 +5023,10 @@ ORDER BY extendedPrice";
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "LabourReq";
             tableMapping.ColumnMappings.Add("projectID", "projectID");
-            tableMapping.ColumnMappings.Add("lsHours", "lsHours");
-            tableMapping.ColumnMappings.Add("wrkTypeDesc", "wrkTypeDesc");
-            tableMapping.ColumnMappings.Add("wrkTypePrice", "wrkTypePrice");
+            tableMapping.ColumnMappings.Add("hours", "hours");
+            tableMapping.ColumnMappings.Add("descr", "descr");
+            tableMapping.ColumnMappings.Add("unitPrice", "unitPrice");
+            tableMapping.ColumnMappings.Add("extendedPrice", "extendedPrice");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -5014,10 +5043,10 @@ ORDER BY extendedPrice";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        LABOUR_SUMMARY.projectID, LABOUR_SUMMARY.lsHours, WORKER_TYPE.wrkTy" +
-                "peDesc, WORKER_TYPE.wrkTypePrice\r\nFROM            LABOUR_SUMMARY INNER JOIN\r\n   " +
-                "                      WORKER_TYPE ON LABOUR_SUMMARY.workerTypeID = WORKER_TYPE.I" +
-                "D";
+            this._commandCollection[0].CommandText = @"SELECT        LABOUR_SUMMARY.projectID, LABOUR_SUMMARY.lsHours AS hours, WORKER_TYPE.wrkTypeDesc AS descr, '$' + CONVERT(nvarchar, WORKER_TYPE.wrkTypePrice) AS unitPrice, '$' + CONVERT(nvarchar, 
+                         LABOUR_SUMMARY.lsHours * WORKER_TYPE.wrkTypePrice) AS extendedPrice
+FROM            LABOUR_SUMMARY INNER JOIN
+                         WORKER_TYPE ON LABOUR_SUMMARY.workerTypeID = WORKER_TYPE.ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

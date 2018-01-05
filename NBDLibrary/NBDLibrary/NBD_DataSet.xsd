@@ -38,7 +38,8 @@ ORDER BY CLIENT.cliName</CommandText>
               <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectName="dbo.PROJECT" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        projBidDate, projEstStart, projEstEnd, projSite, projEstCost, designerID, salesAssocID, clientID, ID
+                    <CommandText>SELECT        CONVERT(VARCHAR(12), projBidDate, 107) AS bidDate, CONVERT(VARCHAR(12), CONVERT(datetime, projEstStart), 107) AS startDate, CONVERT(VARCHAR(12), CONVERT(datetime, projEstEnd), 107) AS endDate, projSite, 
+                         projEstCost, designerID, salesAssocID, clientID, ID
 FROM            PROJECT</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -46,15 +47,15 @@ FROM            PROJECT</CommandText>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="projBidDate" DataSetColumn="projBidDate" />
-              <Mapping SourceColumn="projEstStart" DataSetColumn="projEstStart" />
-              <Mapping SourceColumn="projEstEnd" DataSetColumn="projEstEnd" />
               <Mapping SourceColumn="projSite" DataSetColumn="projSite" />
               <Mapping SourceColumn="projEstCost" DataSetColumn="projEstCost" />
               <Mapping SourceColumn="designerID" DataSetColumn="designerID" />
               <Mapping SourceColumn="salesAssocID" DataSetColumn="salesAssocID" />
               <Mapping SourceColumn="clientID" DataSetColumn="clientID" />
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="bidDate" DataSetColumn="bidDate" />
+              <Mapping SourceColumn="startDate" DataSetColumn="startDate" />
+              <Mapping SourceColumn="endDate" DataSetColumn="endDate" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -101,8 +102,8 @@ FROM            WORKER</CommandText>
               <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        MATERIAL.matDesc, MATERIAL.matType, INVENTORY.invSizeAmnt, INVENTORY.invSizeUnit, INVENTORY.invList, MATERIAL_REQ.projectID, MATERIAL_REQ.mreqEstQty, 
-                         MATERIAL_REQ.mreqEstQty * INVENTORY.invList AS extendedPrice
+                    <CommandText>SELECT        MATERIAL.matDesc, MATERIAL.matType, CONVERT(nvarchar, INVENTORY.invSizeAmnt) + ' ' + INVENTORY.invSizeUnit AS size, '$' + CONVERT(nvarchar, INVENTORY.invList) AS unitPrice, MATERIAL_REQ.projectID, 
+                         MATERIAL_REQ.mreqEstQty AS qty, '$' + CONVERT(nvarchar, MATERIAL_REQ.mreqEstQty * INVENTORY.invList) AS extendedPrice
 FROM            MATERIAL INNER JOIN
                          INVENTORY ON MATERIAL.ID = INVENTORY.materialID INNER JOIN
                          MATERIAL_REQ ON INVENTORY.ID = MATERIAL_REQ.inventoryID
@@ -115,11 +116,10 @@ ORDER BY extendedPrice</CommandText>
             <Mappings>
               <Mapping SourceColumn="matDesc" DataSetColumn="matDesc" />
               <Mapping SourceColumn="matType" DataSetColumn="matType" />
-              <Mapping SourceColumn="mreqEstQty" DataSetColumn="mreqEstQty" />
-              <Mapping SourceColumn="invSizeAmnt" DataSetColumn="invSizeAmnt" />
-              <Mapping SourceColumn="invSizeUnit" DataSetColumn="invSizeUnit" />
-              <Mapping SourceColumn="invList" DataSetColumn="invList" />
               <Mapping SourceColumn="projectID" DataSetColumn="projectID" />
+              <Mapping SourceColumn="size" DataSetColumn="size" />
+              <Mapping SourceColumn="qty" DataSetColumn="qty" />
+              <Mapping SourceColumn="unitPrice" DataSetColumn="unitPrice" />
               <Mapping SourceColumn="extendedPrice" DataSetColumn="extendedPrice" />
             </Mappings>
             <Sources />
@@ -129,7 +129,8 @@ ORDER BY extendedPrice</CommandText>
               <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        LABOUR_SUMMARY.projectID, LABOUR_SUMMARY.lsHours, WORKER_TYPE.wrkTypeDesc, WORKER_TYPE.wrkTypePrice
+                    <CommandText>SELECT        LABOUR_SUMMARY.projectID, LABOUR_SUMMARY.lsHours AS hours, WORKER_TYPE.wrkTypeDesc AS descr, '$' + CONVERT(nvarchar, WORKER_TYPE.wrkTypePrice) AS unitPrice, '$' + CONVERT(nvarchar, 
+                         LABOUR_SUMMARY.lsHours * WORKER_TYPE.wrkTypePrice) AS extendedPrice
 FROM            LABOUR_SUMMARY INNER JOIN
                          WORKER_TYPE ON LABOUR_SUMMARY.workerTypeID = WORKER_TYPE.ID</CommandText>
                     <Parameters />
@@ -139,9 +140,10 @@ FROM            LABOUR_SUMMARY INNER JOIN
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="projectID" DataSetColumn="projectID" />
-              <Mapping SourceColumn="lsHours" DataSetColumn="lsHours" />
-              <Mapping SourceColumn="wrkTypeDesc" DataSetColumn="wrkTypeDesc" />
-              <Mapping SourceColumn="wrkTypePrice" DataSetColumn="wrkTypePrice" />
+              <Mapping SourceColumn="hours" DataSetColumn="hours" />
+              <Mapping SourceColumn="descr" DataSetColumn="descr" />
+              <Mapping SourceColumn="unitPrice" DataSetColumn="unitPrice" />
+              <Mapping SourceColumn="extendedPrice" DataSetColumn="extendedPrice" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -235,21 +237,6 @@ FROM            CLIENT</CommandText>
         <xs:element name="Project" msprop:Generator_TableClassName="ProjectDataTable" msprop:Generator_TableVarName="tableProject" msprop:Generator_TablePropName="Project" msprop:Generator_RowDeletingName="ProjectRowDeleting" msprop:Generator_RowChangingName="ProjectRowChanging" msprop:Generator_RowEvHandlerName="ProjectRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectRowDeleted" msprop:Generator_UserTableName="Project" msprop:Generator_RowChangedName="ProjectRowChanged" msprop:Generator_RowEvArgName="ProjectRowChangeEvent" msprop:Generator_RowClassName="ProjectRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="projBidDate" msprop:Generator_ColumnVarNameInTable="columnprojBidDate" msprop:Generator_ColumnPropNameInRow="projBidDate" msprop:Generator_ColumnPropNameInTable="projBidDateColumn" msprop:Generator_UserColumnName="projBidDate" type="xs:dateTime" />
-              <xs:element name="projEstStart" msprop:Generator_ColumnVarNameInTable="columnprojEstStart" msprop:Generator_ColumnPropNameInRow="projEstStart" msprop:Generator_ColumnPropNameInTable="projEstStartColumn" msprop:Generator_UserColumnName="projEstStart" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="projEstEnd" msprop:Generator_ColumnVarNameInTable="columnprojEstEnd" msprop:Generator_ColumnPropNameInRow="projEstEnd" msprop:Generator_ColumnPropNameInTable="projEstEndColumn" msprop:Generator_UserColumnName="projEstEnd" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="projSite" msprop:Generator_ColumnVarNameInTable="columnprojSite" msprop:Generator_ColumnPropNameInRow="projSite" msprop:Generator_ColumnPropNameInTable="projSiteColumn" msprop:Generator_UserColumnName="projSite">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -268,6 +255,27 @@ FROM            CLIENT</CommandText>
               <xs:element name="salesAssocID" msprop:Generator_ColumnVarNameInTable="columnsalesAssocID" msprop:Generator_ColumnPropNameInRow="salesAssocID" msprop:Generator_ColumnPropNameInTable="salesAssocIDColumn" msprop:Generator_UserColumnName="salesAssocID" type="xs:int" />
               <xs:element name="clientID" msprop:Generator_ColumnVarNameInTable="columnclientID" msprop:Generator_ColumnPropNameInRow="clientID" msprop:Generator_ColumnPropNameInTable="clientIDColumn" msprop:Generator_UserColumnName="clientID" type="xs:int" />
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="bidDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnbidDate" msprop:Generator_ColumnPropNameInRow="bidDate" msprop:Generator_ColumnPropNameInTable="bidDateColumn" msprop:Generator_UserColumnName="bidDate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="startDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnstartDate" msprop:Generator_ColumnPropNameInRow="startDate" msprop:Generator_ColumnPropNameInTable="startDateColumn" msprop:Generator_UserColumnName="startDate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="endDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnendDate" msprop:Generator_ColumnPropNameInRow="endDate" msprop:Generator_ColumnPropNameInTable="endDateColumn" msprop:Generator_UserColumnName="endDate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -317,18 +325,29 @@ FROM            CLIENT</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="mreqEstQty" msprop:Generator_ColumnVarNameInTable="columnmreqEstQty" msprop:Generator_ColumnPropNameInRow="mreqEstQty" msprop:Generator_ColumnPropNameInTable="mreqEstQtyColumn" msprop:Generator_UserColumnName="mreqEstQty" type="xs:short" minOccurs="0" />
-              <xs:element name="invSizeAmnt" msprop:Generator_ColumnVarNameInTable="columninvSizeAmnt" msprop:Generator_ColumnPropNameInRow="invSizeAmnt" msprop:Generator_ColumnPropNameInTable="invSizeAmntColumn" msprop:Generator_UserColumnName="invSizeAmnt" type="xs:short" minOccurs="0" />
-              <xs:element name="invSizeUnit" msprop:Generator_ColumnVarNameInTable="columninvSizeUnit" msprop:Generator_ColumnPropNameInRow="invSizeUnit" msprop:Generator_ColumnPropNameInTable="invSizeUnitColumn" msprop:Generator_UserColumnName="invSizeUnit" minOccurs="0">
+              <xs:element name="projectID" msprop:Generator_ColumnVarNameInTable="columnprojectID" msprop:Generator_ColumnPropNameInRow="projectID" msprop:Generator_ColumnPropNameInTable="projectIDColumn" msprop:Generator_UserColumnName="projectID" type="xs:int" />
+              <xs:element name="size" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsize" msprop:Generator_ColumnPropNameInRow="size" msprop:Generator_ColumnPropNameInTable="sizeColumn" msprop:Generator_UserColumnName="size" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
+                    <xs:maxLength value="51" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="invList" msprop:Generator_ColumnVarNameInTable="columninvList" msprop:Generator_ColumnPropNameInRow="invList" msprop:Generator_ColumnPropNameInTable="invListColumn" msprop:Generator_UserColumnName="invList" type="xs:decimal" minOccurs="0" />
-              <xs:element name="projectID" msprop:Generator_ColumnVarNameInTable="columnprojectID" msprop:Generator_ColumnPropNameInRow="projectID" msprop:Generator_ColumnPropNameInTable="projectIDColumn" msprop:Generator_UserColumnName="projectID" type="xs:int" />
-              <xs:element name="extendedPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnextendedPrice" msprop:Generator_ColumnPropNameInRow="extendedPrice" msprop:Generator_ColumnPropNameInTable="extendedPriceColumn" msprop:Generator_UserColumnName="extendedPrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:short" minOccurs="0" />
+              <xs:element name="unitPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnunitPrice" msprop:Generator_ColumnPropNameInRow="unitPrice" msprop:Generator_ColumnPropNameInTable="unitPriceColumn" msprop:Generator_UserColumnName="unitPrice" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="31" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="extendedPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnextendedPrice" msprop:Generator_ColumnPropNameInRow="extendedPrice" msprop:Generator_ColumnPropNameInTable="extendedPriceColumn" msprop:Generator_UserColumnName="extendedPrice" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="31" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -336,15 +355,28 @@ FROM            CLIENT</CommandText>
           <xs:complexType>
             <xs:sequence>
               <xs:element name="projectID" msprop:Generator_ColumnVarNameInTable="columnprojectID" msprop:Generator_ColumnPropNameInRow="projectID" msprop:Generator_ColumnPropNameInTable="projectIDColumn" msprop:Generator_UserColumnName="projectID" type="xs:int" />
-              <xs:element name="lsHours" msprop:Generator_ColumnVarNameInTable="columnlsHours" msprop:Generator_ColumnPropNameInRow="lsHours" msprop:Generator_ColumnPropNameInTable="lsHoursColumn" msprop:Generator_UserColumnName="lsHours" type="xs:short" />
-              <xs:element name="wrkTypeDesc" msprop:Generator_ColumnVarNameInTable="columnwrkTypeDesc" msprop:Generator_ColumnPropNameInRow="wrkTypeDesc" msprop:Generator_ColumnPropNameInTable="wrkTypeDescColumn" msprop:Generator_UserColumnName="wrkTypeDesc">
+              <xs:element name="hours" msprop:Generator_ColumnVarNameInTable="columnhours" msprop:Generator_ColumnPropNameInRow="hours" msprop:Generator_ColumnPropNameInTable="hoursColumn" msprop:Generator_UserColumnName="hours" type="xs:short" />
+              <xs:element name="descr" msprop:Generator_ColumnVarNameInTable="columndescr" msprop:Generator_ColumnPropNameInRow="descr" msprop:Generator_ColumnPropNameInTable="descrColumn" msprop:Generator_UserColumnName="descr">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="wrkTypePrice" msprop:Generator_ColumnVarNameInTable="columnwrkTypePrice" msprop:Generator_ColumnPropNameInRow="wrkTypePrice" msprop:Generator_ColumnPropNameInTable="wrkTypePriceColumn" msprop:Generator_UserColumnName="wrkTypePrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="unitPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnunitPrice" msprop:Generator_ColumnPropNameInRow="unitPrice" msprop:Generator_ColumnPropNameInTable="unitPriceColumn" msprop:Generator_UserColumnName="unitPrice" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="31" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="extendedPrice" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnextendedPrice" msprop:Generator_ColumnPropNameInRow="extendedPrice" msprop:Generator_ColumnPropNameInTable="extendedPriceColumn" msprop:Generator_UserColumnName="extendedPrice" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="31" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
