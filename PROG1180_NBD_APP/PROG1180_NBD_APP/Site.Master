@@ -15,9 +15,9 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <!-- material design bootstrap addon -->
-    <link rel="stylesheet" href="../Content/mdb.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/mdb.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../Content/myStyle.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/myStyle.css" type="text/css" />
 
 </head>
 
@@ -111,7 +111,7 @@
                                 </AnonymousTemplate>
                                 <LoggedInTemplate>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../Account/Manage" title="Manage your account">
+                                        <a class="nav-link" href="~/Account/Manage" title="Manage your account">
                                             <i class="fa fa-user-o pr-2" aria-hidden="true"></i>
                                             <%: Context.User.Identity.GetUserName()%> 
 
