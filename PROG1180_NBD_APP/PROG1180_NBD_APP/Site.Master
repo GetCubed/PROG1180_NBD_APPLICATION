@@ -118,6 +118,13 @@
                                                 </div>
                                             </li>
 
+                                              <li class='nav-item dropdown'>
+                                                <a class='nav-link dropdown-toggle' id='navbarProjectAdminReport' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Project Admin Report</a>
+                                                <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
+                                                    <a class='dropdown-item' href='../Reports/ProjectAdminReports'>Project Admin Reports</a>
+                                                </div>
+                                            </li>
+
 
                                         </ContentTemplate>
                                     </asp:RoleGroup>
@@ -128,9 +135,7 @@
 
                                 </RoleGroups>
                             </asp:LoginView>
-
-                            <li class='nav-item'><a class='nav-link' href='../PlayGround.aspx'>Link</a></li>
-
+       
                         </ul>
                         <!-------------------------- USER LOGIN NAV ----------------------------->
                         <ul class="navbar-nav ml-auto">

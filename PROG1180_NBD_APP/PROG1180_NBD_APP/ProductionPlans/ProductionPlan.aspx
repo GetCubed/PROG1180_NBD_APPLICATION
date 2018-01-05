@@ -169,7 +169,7 @@
                                 </div>
                             </div>
 
-                            
+
                             <h6 class="black-text">Materials</h6>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
@@ -199,7 +199,7 @@
                                 </div>
                             </div>
 
-                            
+
                             <h6 class="black-text">Tools</h6>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
@@ -238,7 +238,7 @@
             <!---Material Requirements-------------------------------------------------------------------------------------------------------->
 
 
-              <!----------Labor Requirements------------------------------------------------------------------------------------------------->
+            <!----------Labor Requirements------------------------------------------------------------------------------------------------->
             <div class="row mb-3">
                 <!--Grid column-->
                 <div class="col-md-12">
@@ -267,7 +267,7 @@
                                             <td>123 Mall Drive, Scotts Valley</td>
                                         </tr>
 
-                                         <tr>
+                                        <tr>
                                             <td>123 Mall Drive, Scotts Valley</td>
                                             <td>123 Mall Drive, Scotts Valley</td>
                                             <td>123 Mall Drive, Scotts Valley</td>
@@ -276,7 +276,7 @@
                                             <td>123 Mall Drive, Scotts Valley</td>
                                         </tr>
 
-                                         <tr>
+                                        <tr>
                                             <td>123 Mall Drive, Scotts Valley</td>
                                             <td>123 Mall Drive, Scotts Valley</td>
                                             <td>123 Mall Drive, Scotts Valley</td>
@@ -285,7 +285,7 @@
                                             <td>123 Mall Drive, Scotts Valley</td>
                                         </tr>
 
-                                         <tr>
+                                        <tr>
                                             <td>123 Mall Drive, Scotts Valley</td>
                                             <td>123 Mall Drive, Scotts Valley</td>
                                             <td>123 Mall Drive, Scotts Valley</td>
@@ -306,7 +306,7 @@
             </div>
             <!---Material Requirements-------------------------------------------------------------------------------------------------------->
 
-            
+
             <!--Client Info-------------------------------------------------------------------------------------------------------->
             <div class="row mb-3">
                 <!--Grid column-->
@@ -350,8 +350,8 @@
                 <!--Grid column-->
             </div>
             <!--Client Info-------------------------------------------------------------------------------------------------------->
+        </div>
 
-           
     </main>
     <!--Main layout-->
 
