@@ -71,7 +71,7 @@
                         <!-- Links -->
                         <ul class="navbar-nav mr-auto">
                             <asp:LoginView ID="RoleLinks" runat="server" ViewStateMode="Disabled">
-                             <RoleGroups>
+                                <RoleGroups>
                                     <asp:RoleGroup Roles="TestAdmin">
                                         <ContentTemplate>
                                             <li class='nav-item dropdown'>
@@ -85,19 +85,10 @@
                                         </ContentTemplate>
                                     </asp:RoleGroup>
                                 </RoleGroups>
-                        </asp:LoginView>
+                            </asp:LoginView>
 
-                            <%
-                                if (Context.User.Identity.IsAuthenticated)
-                                {
-                                    Response.Write("<li class='nav-item active'><a class='nav-link' href='../PlayGround.aspx'>PlayGround</a></li>");
-                                    for (int n = 0; n < 3; n++)
-                                    {
-                                        Response.Write("<li class='nav-item'><a class='nav-link' href='../PlayGround.aspx'>PlayGround</a></li>");
-                                    }
+                            <li class='nav-item'><a class='nav-link' href='../PlayGround.aspx'>PlayGround</a></li>
 
-                                }
-                            %>
                         </ul>
                         <!-------------------------- USER LOGIN NAV ----------------------------->
                         <ul class="navbar-nav ml-auto">
@@ -111,9 +102,9 @@
 
                                 </AnonymousTemplate>
                                 <LoggedInTemplate>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="~/Account/Manage" title="Manage your account">
-                                            <i class="fa fa-user-o pr-2" aria-hidden="true"></i>
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="../Account/Manage" title="Manage your account">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
                                             <%: Context.User.Identity.GetUserName()%> 
 
                                         </a>
