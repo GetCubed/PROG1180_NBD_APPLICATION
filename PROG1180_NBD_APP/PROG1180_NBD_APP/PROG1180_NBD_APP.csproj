@@ -195,10 +195,6 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="App_Data\NBD_SB.mdf" />
     <Content Include="App_Data\NBD_SB_log.ldf" />
-    <Content Include="App_Data\PROG1180_NBD_APP.mdf" />
-    <Content Include="App_Data\PROG1180_NBD_APP_log.ldf">
-      <DependentUpon>PROG1180_NBD_APP.mdf</DependentUpon>
-    </Content>
     <Content Include="Clients\ClientCreate.aspx" />
     <Content Include="Clients\ClientEdit.aspx" />
     <Content Include="Clients\Clients.aspx" />
