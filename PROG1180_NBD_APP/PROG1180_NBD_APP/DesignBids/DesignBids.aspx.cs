@@ -54,7 +54,7 @@ namespace PROG1180_NBD_APP.DesignBid
                     HtmlGenericControl tr = new HtmlGenericControl();
                     tr.TagName = "tr";
 
-                    string[] fields = new string[] { "cliName", "bidDate", "bidAmount", "Designer", "Sales Assoc" };// the fields to be displayed
+                    string[] fields = new string[] { "cliName", "bidDate", "bidAmount", "designerID", "salesAssocID" };// the fields to be displayed
 
                     // create a new cell for each display field in the row
                     for (int i = 0; i < fields.Length; i++)
