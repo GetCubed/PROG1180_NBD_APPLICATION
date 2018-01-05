@@ -20,7 +20,7 @@
                             Clients
                         </div>
                         <!--/Card header-->
-
+                        <asp:Label ID="lblStatus" runat="server"></asp:Label>
 
                         <!--Card content-->
                         <div class="card-body card-text">
@@ -30,43 +30,13 @@
                                 <table class="table ">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th class="th-lg">First column</th>
-                                            <th class="th-lg">Second column</th>
-                                            <th class="th-lg">Third column</th>
-                                            <th class="th-lg">Fourth column</th>
-                                            <th class="th-lg">Fifth column</th>
-                                            <th class="th-lg">Sixth column</th>
+                                            <th class="th-lg">Client</th>
+                                            <th class="th-lg">Address</th>
+                                            <th class="th-lg">Contact</th>
+                                            <th class="th-lg">Phone</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                        </tr>
+                                    <tbody runat="server" ID="tboClients">
                                     </tbody>
                                 </table>
                             </div>
