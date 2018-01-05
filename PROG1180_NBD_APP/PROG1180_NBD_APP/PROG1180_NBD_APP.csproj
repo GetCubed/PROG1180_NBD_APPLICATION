@@ -196,10 +196,6 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="App_Data\NBD_SB.mdf" />
     <Content Include="App_Data\NBD_SB_log.ldf" />
-    <Content Include="App_Data\PROG1180_NBD_APP.mdf" />
-    <Content Include="App_Data\PROG1180_NBD_APP_log.ldf">
-      <DependentUpon>PROG1180_NBD_APP.mdf</DependentUpon>
-    </Content>
     <Content Include="Clients\ClientCreate.aspx" />
     <Content Include="Clients\ClientEdit.aspx" />
     <Content Include="Clients\Clients.aspx" />
@@ -503,9 +499,9 @@
       <DependentUpon>ProductionDailyWorkReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAL\ApplicationDbContext.cs" />
-    <Compile Include="DAL\SecurityMigrations\201801042321284_InitialSecurity.cs" />
-    <Compile Include="DAL\SecurityMigrations\201801042321284_InitialSecurity.Designer.cs">
-      <DependentUpon>201801042321284_InitialSecurity.cs</DependentUpon>
+    <Compile Include="DAL\SecurityMigrations\201801051841069_InitialSecurity.cs" />
+    <Compile Include="DAL\SecurityMigrations\201801051841069_InitialSecurity.Designer.cs">
+      <DependentUpon>201801051841069_InitialSecurity.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\SecurityMigrations\Configuration.cs" />
     <Compile Include="Default.aspx.cs">
@@ -599,7 +595,11 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DAL\SecurityMigrations\201801051841069_InitialSecurity.resx">
+      <DependentUpon>201801051841069_InitialSecurity.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
@@ -616,11 +616,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DAL\SecurityMigrations\201801042321284_InitialSecurity.resx">
-      <DependentUpon>201801042321284_InitialSecurity.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
