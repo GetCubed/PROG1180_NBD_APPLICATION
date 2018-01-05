@@ -53,6 +53,8 @@
                                 </table>
                             </div>
 
+                             <!-- --- submit button -->
+                            <a href="ClientEdit.aspx" class="btn btn-primary">Client Edit Test </a>
                         </div>
                         <!--/.Card content-->
 
