@@ -5,7 +5,19 @@
     <main class="mt-5">
 
         <div class="container">
-
+            Client Name
+            <asp:TextBox ID="txtClientName" runat="server" class="form-control"></asp:TextBox>
+            City
+            <asp:DropDownList ID="ddlCity" runat="server" AppendDataBoundItems="True" DataSourceID="odsCities" DataTextField="city" DataValueField="cityID">
+                <asp:ListItem Selected="True" Value="0">All Cities</asp:ListItem>
+            </asp:DropDownList>
+            Province/State
+            <asp:DropDownList ID="ddlProvince" runat="server" AppendDataBoundItems="True" DataSourceID="odsProvinces" DataTextField="cliProvince" DataValueField="cliProvince">
+                <asp:ListItem Selected="True" Value="0">All Provinces/States</asp:ListItem>
+            </asp:DropDownList>
+            <asp:Button ID="btnFilter" runat="server" Text="Filter Results" OnClick="btnFilter_Click"/>
+           
+            <asp:Button ID="btnClear" runat="server" Text="Clear Filters" CausesValidation="False" OnClick="btnClear_Click"/>
            
             <!--Grid row--------------------------------------------------------------------------------------------------------->
             <div class="row">
@@ -21,7 +33,6 @@
                             Clients
                         </div>
                         <!--/Card header-->
-                        <asp:Label ID="lblStatus" runat="server"></asp:Label>
 
                         <!--Card content-->
                         <div class="card-body card-text">
@@ -31,7 +42,7 @@
                                 <table class="table ">
                                     <thead>
                                         <tr>
-                                            <th class="th-lg">Client</th>
+                                            <th class="th-lg">Client Name</th>
                                             <th class="th-lg">Address</th>
                                             <th class="th-lg">Contact</th>
                                             <th class="th-lg">Phone</th>
@@ -56,6 +67,10 @@
         </div>
     </main>
     <!--Main layout-->
+
+
+    <asp:ObjectDataSource ID="odsCities" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="NBDLibrary.NBD_DataSetTableAdapters.CityListTableAdapter"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="odsProvinces" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="NBDLibrary.NBD_DataSetTableAdapters.ProvinceListTableAdapter"></asp:ObjectDataSource>
 
 
 </asp:Content>

@@ -37,10 +37,47 @@ namespace PROG1180_NBD_APP.Clients
         {
             if (dsNBD.Client.Count > 0)
             {
+                // select and display all Clients
                 rows = dsNBD.Client.Select();
                 DisplayClients();
             }
-            
+        }
+
+        protected void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (dsNBD.Client.Count > 0)
+            {
+                tboClients.Controls.Clear(); // clear existing results
+
+                // select and display filtered Client list
+                rows = dsNBD.Client.Select(GetClientCriteria());
+                DisplayClients();
+            }
+        }
+
+        // builds and returns a WHERE clause string for selecting Clients
+        // based on the filters specified by the user
+        private string GetClientCriteria()
+        {
+            string criteria = "";
+            // client name (contains)
+            if (txtClientName.Text.Length > 0)
+                criteria = "cliName LIKE '*" + txtClientName.Text + "*'";
+            // city
+            if (ddlCity.SelectedValue != "0")
+                criteria += And(criteria) + "cityID = " + ddlCity.SelectedValue;
+            // province/state
+            if (ddlProvince.SelectedValue != "0")
+                criteria += And(criteria) + "cliProvince = '" + ddlProvince.SelectedValue + "'";
+
+            return criteria;
+        }
+
+        // returns " AND " if the argument string's length is > 0 -- otherwise returns ""
+        // useful for building a WHERE clause with potentially many conditions
+        private string And(string s)
+        {
+            return s.Length > 0 ? " AND " : "";
         }
 
         private void DisplayClients()
@@ -65,6 +102,13 @@ namespace PROG1180_NBD_APP.Clients
                 // append the row to the table body
                 tboClients.Controls.Add(tr);
             }
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            txtClientName.Text = "";
+            ddlCity.SelectedValue = "0";
+            ddlProvince.SelectedValue = "0";
         }
     }
 }
