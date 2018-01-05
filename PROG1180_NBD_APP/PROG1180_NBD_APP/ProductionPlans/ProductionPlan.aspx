@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Design Budget" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductionPlan.aspx.cs" Inherits="PROG1180_NBD_APP.ProductionPlans.ProductionPlan" %>
+﻿<%@ Page Title="Production Plan" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductionPlan.aspx.cs" Inherits="PROG1180_NBD_APP.ProductionPlans.ProductionPlan" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="mt-5">
