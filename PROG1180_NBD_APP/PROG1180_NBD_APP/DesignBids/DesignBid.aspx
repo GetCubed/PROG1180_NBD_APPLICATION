@@ -37,12 +37,12 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Client Name</td>
-                                            <td>London Sq Mall</td>
+                                            <td>Client Name:</td>
+                                            <td runat="server" id="tdClientName"></td>
                                         </tr>
                                         <tr>
-                                            <td>Client Address</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>Address:</td>
+                                            <td runat="server" id="tdClientAddress"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -50,12 +50,12 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Contact</td>
-                                            <td>Amy Benson</td>
+                                            <td>Contact:</td>
+                                            <td runat="server" id="tdClientContact"></td>
                                         </tr>
                                         <tr>
-                                            <td>Phone</td>
-                                            <td>(408)843-5603</td>
+                                            <td>Phone:</td>
+                                            <td runat="server" id="tdClientPhone"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -81,12 +81,9 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Client Name</td>
-                                            <td>London Sq Mall</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Client Address</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>Sales Assoc:</td>
+                                            <td runat="server" id="tdSalesAssoc"></td>
+                                            
                                         </tr>
                                     </table>
                                 </div>
@@ -94,12 +91,8 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Contact</td>
-                                            <td>Amy Benson</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Phone</td>
-                                            <td>(408)843-5603</td>
+                                            <td>Designer:</td>
+                                            <td runat="server" id="tdDesigner"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -125,12 +118,16 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Client Name</td>
-                                            <td>London Sq Mall</td>
+                                            <td>Bid Date:</td>
+                                            <td runat="server" id="tdBidDate"></td>
                                         </tr>
                                         <tr>
-                                            <td>Client Address</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>Est. Begin Date:</td>
+                                            <td runat="server" id="tdBeginDate"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Est. Compl. Date:</td>
+                                            <td runat="server" id="tdEndDate"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -138,12 +135,12 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Contact</td>
-                                            <td>Amy Benson</td>
+                                            <td>Project Site:</td>
+                                            <td runat="server" id="tdProjectSite"></td>
                                         </tr>
                                         <tr>
-                                            <td>Phone</td>
-                                            <td>(408)843-5603</td>
+                                            <td>Bid Amount:</td>
+                                            <td runat="server" id="tdBidAmount"></td>
                                         </tr>
                                     </table>
                                 </div>

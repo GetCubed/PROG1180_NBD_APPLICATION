@@ -19,7 +19,7 @@
 
                         <!--Card header-->
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            <h4>Design Bids</h4>
+                            <h4>Design Budgets</h4>
                         </div>
                         <!--/Card header-->
 
@@ -84,7 +84,7 @@
 
 
             </div>
-            <a href="DesignBid" class="btn btn-primary">Bid Test</a>
+            <a href="DesignBudget" class="btn btn-primary">Budget Test</a>
         </div>
     </main>
     <!--Main layout-->
