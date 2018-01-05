@@ -80,7 +80,7 @@
                                                 <a class='nav-link dropdown-toggle' id='navbarClients' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Clients</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../Clients/Clients'>View Clients</a>
-                                                    <a class='dropdown-item' href='../Clients/CreateClient'>Create Client</a>
+                                                    <a class='dropdown-item' href='../Clients/ClientCreate'>Create Client</a>
                                                 </div>
                                             </li>
 
