@@ -30,7 +30,7 @@
 
                         <!--Card header-->
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            Clients
+                            <h4>Clients</h4>
                         </div>
                         <!--/Card header-->
 

@@ -211,8 +211,10 @@
     <Content Include="Content\SiteZ.css" />
     <None Include="DAL\Zcommands" />
     <Content Include="Default.aspx" />
-    <Content Include="DesignBid\DesignBid.aspx" />
-    <Content Include="DesignBid\DesignBids.aspx" />
+    <Content Include="DesignBids\DesignBid.aspx" />
+    <Content Include="DesignBids\DesignBids.aspx" />
+    <Content Include="DesignBudgets\DesignBudget.aspx" />
+    <Content Include="DesignBudgets\DesignBudgets.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
@@ -466,19 +468,33 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesignBid\DesignBid.aspx.cs">
+    <Compile Include="DesignBids\DesignBid.aspx.cs">
       <DependentUpon>DesignBid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DesignBid\DesignBid.aspx.designer.cs">
+    <Compile Include="DesignBids\DesignBid.aspx.designer.cs">
       <DependentUpon>DesignBid.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DesignBid\DesignBids.aspx.cs">
+    <Compile Include="DesignBids\DesignBids.aspx.cs">
       <DependentUpon>DesignBids.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DesignBid\DesignBids.aspx.designer.cs">
+    <Compile Include="DesignBids\DesignBids.aspx.designer.cs">
       <DependentUpon>DesignBids.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudget.aspx.cs">
+      <DependentUpon>DesignBudget.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudget.aspx.designer.cs">
+      <DependentUpon>DesignBudget.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudgets.aspx.cs">
+      <DependentUpon>DesignBudgets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudgets.aspx.designer.cs">
+      <DependentUpon>DesignBudgets.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
