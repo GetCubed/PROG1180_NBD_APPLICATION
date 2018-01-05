@@ -77,12 +77,23 @@
                                     <asp:RoleGroup Roles="TestAdmin">
                                         <ContentTemplate>
                                             <li class='nav-item dropdown'>
-                                                <a class='nav-link dropdown-toggle' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Clients</a>
+                                                <a class='nav-link dropdown-toggle' id='navbarClients' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Clients</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../Clients/Clients'>View Clients</a>
                                                     <a class='dropdown-item' href='../Clients/CreateClient'>Create Client</a>
                                                 </div>
                                             </li>
+
+                                            <li class='nav-item dropdown'>
+                                                <a class='nav-link dropdown-toggle' id='navbarDesignBid' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Bids</a>
+                                                <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
+                                                    <a class='dropdown-item' href='../DesignBid/DesignBids'>Bids</a>
+                                                    <a class='dropdown-item' href='../Clients/CreateClient'>Create Bid</a>
+                                                </div>
+                                            </li>
+
+
+
                                         </ContentTemplate>
                                     </asp:RoleGroup>
 
