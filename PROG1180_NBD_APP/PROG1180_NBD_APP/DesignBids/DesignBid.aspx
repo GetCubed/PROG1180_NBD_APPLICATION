@@ -8,14 +8,14 @@
 
 
             <!--Grid row--------------------------------------------------------------------------------------------------------->
-            <div class="row mb-5">
+            <div class="row mb-3">
 
                 <!--Grid column-->
                 <div class="col-lg-12">
                     <!--Panel-->
                     <div class="card">
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            <h2>Design Bid</h2>
+                            <h4>Design Bid</h4>
                         </div>
                     </div>
                     <!--/.Panel-->
@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <!--Panel-->
                     <div class="card card-body">
-                        <h4 class="card-title black-text">Client Info</h4>
+                        <h5 class="card-title black-text">Client Info</h5>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -75,7 +75,7 @@
                 <div class="col-md-12">
                     <!--Panel-->
                     <div class="card card-body">
-                        <h4 class="card-title black-text">NBD Staff</h4>
+                        <h5 class="card-title black-text">NBD Staff</h5>
                         <div class="card-body ">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -119,8 +119,8 @@
                 <div class="col-md-12">
                     <!--Panel-->
                     <div class="card card-body">
-                        <h4 class="card-title black-text">Project</h4>
-                        <div class="card-body card-text">
+                        <h5 class="card-title black-text">Project</h5>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <table class="table">
@@ -164,11 +164,11 @@
                 <div class="col-md-12">
                     <!--Panel-->
                     <div class="card card-body">
-                        <h4 class="card-title black-text">Material Requirements</h4>
-                        <div class="card-body card-text">
+                        <h5 class="card-title black-text">Material Requirements</h5>
+                        <div class="card-body">
 
-                            <h6 class="black-text">Material Requirements</h6>
-                            <div class="row mb-3">
+                            <h6 class="black-text">Plants</h6>
+                            <div class="row mb-1">
                                 <div class="col-lg-12">
                                     <table class="table">
                                         <tr>
@@ -207,7 +207,7 @@
 
 
                             <h6 class="black-text">Pottery</h6>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                                 <div class="col-lg-12">
                                     <table class="table">
                                         <tr>
@@ -243,42 +243,42 @@
                                 </div>
                             </div>
 
-                            <h6 class="black-text">Materials<h6>
-                                <div class="row mb-3">
-                                    <div class="col-lg-12">
-                                        <table class="table">
-                                            <tr>
-                                                <th>Client Name</th>
-                                                <th>Client Name</th>
-                                                <th>Client Name</th>
-                                                <th>Client Name</th>
-                                                <th>Client Name</th>
-                                            </tr>
-                                            <tr>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                            </tr>
-                                            <tr>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                            </tr>
-                                            <tr>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                                <td>123 Mall Drive, Scotts Valley</td>
-                                            </tr>
+                            <h6 class="black-text">Materials</h6>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <table class="table">
+                                        <tr>
+                                            <th>Client Name</th>
+                                            <th>Client Name</th>
+                                            <th>Client Name</th>
+                                            <th>Client Name</th>
+                                            <th>Client Name</th>
+                                        </tr>
+                                        <tr>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                        </tr>
+                                        <tr>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                        </tr>
+                                        <tr>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>123 Mall Drive, Scotts Valley</td>
+                                        </tr>
 
-                                        </table>
-                                    </div>
+                                    </table>
                                 </div>
+                            </div>
                         </div>
                     </div>
                     <!--/.Panel-->
@@ -295,8 +295,8 @@
                 <div class="col-md-12">
                     <!--Panel-->
                     <div class="card card-body">
-                        <h4 class="card-title black-text">Labor Requirements</h4>
-                        <div class="card-body card-text">
+                        <h5 class="card-title black-text">Labor Requirements</h5>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <table class="table">

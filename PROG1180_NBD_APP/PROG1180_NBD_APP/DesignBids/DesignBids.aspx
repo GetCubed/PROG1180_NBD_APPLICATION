@@ -19,7 +19,7 @@
 
                         <!--Card header-->
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            Design Bids
+                            <h4>Design Bids</h4>
                         </div>
                         <!--/Card header-->
 

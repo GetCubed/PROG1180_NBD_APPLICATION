@@ -86,7 +86,7 @@
                                             <li class='nav-item dropdown'>
                                                 <a class='nav-link dropdown-toggle' id='navbarDesignBid' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Bids</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
-                                                    <a class='dropdown-item' href='../DesignBid/DesignBids'>Bids</a>
+                                                    <a class='dropdown-item' href='../DesignBids/DesignBids'>Bids</a>
                                                     <a class='dropdown-item' href='../Clients/CreateClient'>Create Bid</a>
                                                 </div>
                                             </li>
