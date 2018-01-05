@@ -895,6 +895,8 @@ namespace NBDLibrary {
             
             private global::System.Data.DataColumn columnclientID;
             
+            private global::System.Data.DataColumn columnID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ProjectDataTable() {
@@ -994,6 +996,14 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1029,7 +1039,7 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProjectRow AddProjectRow(System.DateTime projBidDate, string projEstStart, string projEstEnd, string projSite, string projEstCost, int salesAssocID, int clientID) {
+            public ProjectRow AddProjectRow(System.DateTime projBidDate, string projEstStart, string projEstEnd, string projSite, string projEstCost, int salesAssocID, int clientID, int ID) {
                 ProjectRow rowProjectRow = ((ProjectRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         projBidDate,
@@ -1039,10 +1049,18 @@ namespace NBDLibrary {
                         projEstCost,
                         null,
                         salesAssocID,
-                        clientID};
+                        clientID,
+                        ID};
                 rowProjectRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProjectRow);
                 return rowProjectRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProjectRow FindByID(int ID) {
+                return ((ProjectRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1070,6 +1088,7 @@ namespace NBDLibrary {
                 this.columndesignerID = base.Columns["designerID"];
                 this.columnsalesAssocID = base.Columns["salesAssocID"];
                 this.columnclientID = base.Columns["clientID"];
+                this.columnID = base.Columns["ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1091,6 +1110,10 @@ namespace NBDLibrary {
                 base.Columns.Add(this.columnsalesAssocID);
                 this.columnclientID = new global::System.Data.DataColumn("clientID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnclientID);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
                 this.columnprojBidDate.AllowDBNull = false;
                 this.columnprojEstStart.MaxLength = 10;
                 this.columnprojEstEnd.MaxLength = 10;
@@ -1104,6 +1127,8 @@ namespace NBDLibrary {
                 this.columndesignerID.ReadOnly = true;
                 this.columnsalesAssocID.AllowDBNull = false;
                 this.columnclientID.AllowDBNull = false;
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1241,6 +1266,8 @@ namespace NBDLibrary {
             
             private global::System.Data.DataColumn columnprojName;
             
+            private global::System.Data.DataColumn columnclientID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ProjectLookupDataTable() {
@@ -1292,6 +1319,14 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn clientIDColumn {
+                get {
+                    return this.columnclientID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1327,11 +1362,12 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProjectLookupRow AddProjectLookupRow(int ID, string projName) {
+            public ProjectLookupRow AddProjectLookupRow(int ID, string projName, int clientID) {
                 ProjectLookupRow rowProjectLookupRow = ((ProjectLookupRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
-                        projName};
+                        projName,
+                        clientID};
                 rowProjectLookupRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProjectLookupRow);
                 return rowProjectLookupRow;
@@ -1363,6 +1399,7 @@ namespace NBDLibrary {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnprojName = base.Columns["projName"];
+                this.columnclientID = base.Columns["clientID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1372,12 +1409,15 @@ namespace NBDLibrary {
                 base.Columns.Add(this.columnID);
                 this.columnprojName = new global::System.Data.DataColumn("projName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprojName);
+                this.columnclientID = new global::System.Data.DataColumn("clientID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnclientID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnprojName.AllowDBNull = false;
                 this.columnprojName.MaxLength = 100;
+                this.columnclientID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3234,6 +3274,17 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableProject.IDColumn]));
+                }
+                set {
+                    this[this.tableProject.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsprojEstStartNull() {
                 return this.IsNull(this.tableProject.projEstStartColumn);
             }
@@ -3302,6 +3353,17 @@ namespace NBDLibrary {
                 }
                 set {
                     this[this.tableProjectLookup.projNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int clientID {
+                get {
+                    return ((int)(this[this.tableProjectLookup.clientIDColumn]));
+                }
+                set {
+                    this[this.tableProjectLookup.clientIDColumn] = value;
                 }
             }
         }
@@ -4292,6 +4354,7 @@ ORDER BY CLIENT.cliName";
             tableMapping.ColumnMappings.Add("designerID", "designerID");
             tableMapping.ColumnMappings.Add("salesAssocID", "salesAssocID");
             tableMapping.ColumnMappings.Add("clientID", "clientID");
+            tableMapping.ColumnMappings.Add("ID", "ID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4309,7 +4372,7 @@ ORDER BY CLIENT.cliName";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        projBidDate, projEstStart, projEstEnd, projSite, projEstCost, desig" +
-                "nerID, salesAssocID, clientID\r\nFROM            PROJECT";
+                "nerID, salesAssocID, clientID, ID\r\nFROM            PROJECT";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4450,6 +4513,7 @@ ORDER BY CLIENT.cliName";
             tableMapping.DataSetTable = "ProjectLookup";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("projName", "projName");
+            tableMapping.ColumnMappings.Add("clientID", "clientID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4466,22 +4530,21 @@ ORDER BY CLIENT.cliName";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        ID, projName\r\nFROM            PROJECT\r\nWHERE        (clientID = @Cl" +
-                "ientID)\r\nORDER BY projName";
+            this._commandCollection[0].CommandText = "SELECT        ID, projName, clientID\r\nFROM            PROJECT\r\nORDER BY projName";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "clientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual NBD_DataSet.ProjectLookupDataTable GetData(int ClientID) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(NBD_DataSet.ProjectLookupDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ClientID));
-            NBD_DataSet.ProjectLookupDataTable dataTable = new NBD_DataSet.ProjectLookupDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
     }
     

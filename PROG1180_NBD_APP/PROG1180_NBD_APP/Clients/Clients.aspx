@@ -1,5 +1,14 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Clients.aspx.cs" Inherits="PROG1180_NBD_APP.Clients.Clients" %>
 
+<asp:Content ContentPlaceHolderID="headPlaceHolder" runat="server">
+    <script type="text/javascript">
+        function redirectToBid(ddlID)
+        {
+            window.location.replace("../DesignBids/DesignBid?Project=" + $("#" + ddlID).val());
+        }
+    </script>
+</asp:Content>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <main class="mt-5">
@@ -46,6 +55,7 @@
                                             <th class="th-lg">Address</th>
                                             <th class="th-lg">Contact</th>
                                             <th class="th-lg">Phone</th>
+                                            <th class="th-lg">Design Bids</th>
                                         </tr>
                                     </thead>
                                     <tbody runat="server" ID="tboClients">
