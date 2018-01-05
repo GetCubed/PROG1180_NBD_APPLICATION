@@ -32,13 +32,11 @@
                                 <table class="table ">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th class="th-lg">First column</th>
-                                            <th class="th-lg">Second column</th>
-                                            <th class="th-lg">Third column</th>
-                                            <th class="th-lg">Fourth column</th>
-                                            <th class="th-lg">Fifth column</th>
-                                            <th class="th-lg">Sixth column</th>
+                                            <th class="th-lg">Client</th>
+                                            <th class="th-lg">Bid Date</th>
+                                            <th class="th-lg">Bid Amount</th>
+                                            <th class="th-lg">Designer</th>
+                                            <th class="th-lg">Sales Assoc</th>
                                         </tr>
                                     </thead>
                                     <tbody>

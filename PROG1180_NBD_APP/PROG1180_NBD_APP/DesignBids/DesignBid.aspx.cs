@@ -1,4 +1,6 @@
-﻿using NBDLibrary;
+﻿// Clydesdale Solutions
+// Ken Henderson
+using NBDLibrary;
 using NBDLibrary.NBD_DataSetTableAdapters;
 using System;
 using System.Collections.Generic;
