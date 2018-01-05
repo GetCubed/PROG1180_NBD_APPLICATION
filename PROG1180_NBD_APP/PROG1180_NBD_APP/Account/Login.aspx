@@ -38,7 +38,7 @@
 
                     <!-- login button -->
                     <div class="col-md-12">
-                        <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-default NBDColourDarkBlue" />
+                        <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-primary NBDColourDarkBlue" />
                     </div>
 
 
