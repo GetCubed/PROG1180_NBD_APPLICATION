@@ -210,6 +210,8 @@
     <Content Include="Content\myStyle.css" />
     <Content Include="Content\SiteZ.css" />
     <None Include="DAL\Zcommands" />
+    <Content Include="DailyWorkReports\DesignerDailyWorkReport.aspx" />
+    <Content Include="DailyWorkReports\DesignerDailyWorkReports.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DesignBids\DesignBid.aspx" />
     <Content Include="DesignBids\DesignBids.aspx" />
@@ -456,6 +458,20 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DailyWorkReports\DesignerDailyWorkReport.aspx.cs">
+      <DependentUpon>DesignerDailyWorkReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DailyWorkReports\DesignerDailyWorkReport.aspx.designer.cs">
+      <DependentUpon>DesignerDailyWorkReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DailyWorkReports\DesignerDailyWorkReports.aspx.cs">
+      <DependentUpon>DesignerDailyWorkReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DailyWorkReports\DesignerDailyWorkReports.aspx.designer.cs">
+      <DependentUpon>DesignerDailyWorkReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="DAL\SecurityMigrations\201801042321284_InitialSecurity.cs" />
