@@ -1,12 +1,13 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Clients.aspx.cs" Inherits="PROG1180_NBD_APP.Clients.Clients" %>
+﻿<%@ Page Title="Design Bids" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignBids.aspx.cs" Inherits="PROG1180_NBD_APP.DesignBid.DesignBids" %>
+
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
     <main class="mt-5">
 
         <div class="container">
 
-           
+
+
             <!--Grid row--------------------------------------------------------------------------------------------------------->
             <div class="row">
 
@@ -18,7 +19,7 @@
 
                         <!--Card header-->
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            Clients
+                            Design Bids
                         </div>
                         <!--/Card header-->
 
@@ -83,6 +84,7 @@
 
 
             </div>
+            <a href="DesignBid" class="btn btn-primary">Bid Test</a>
         </div>
     </main>
     <!--Main layout-->
