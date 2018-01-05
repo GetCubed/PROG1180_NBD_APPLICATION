@@ -1,4 +1,4 @@
-﻿Enable-Enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory DAL\SecurityMigrations
+﻿Enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory DAL\SecurityMigrations
 Add-Migration -ConfigurationTypeName PROG1180_NBD_APP.DAL.SecurityMigrations.Configuration
 Update-Database -ConfigurationTypeName PROG1180_NBD_APP.DAL.SecurityMigrations.Configuration
 
