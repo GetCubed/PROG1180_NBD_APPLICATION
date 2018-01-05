@@ -82,7 +82,7 @@
                                                 <a class='nav-link dropdown-toggle' id='navbarClients' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Clients</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../Clients/Clients'>View Clients</a>
-                                                    <a class='dropdown-item' href='../Clients/CreateClient'>Create Client</a>
+                                                    <a class='dropdown-item' href='../Clients/ClientCreate'>Create Client</a>
                                                 </div>
                                             </li>
 
@@ -120,6 +120,13 @@
                                                 </div>
                                             </li>
 
+                                              <li class='nav-item dropdown'>
+                                                <a class='nav-link dropdown-toggle' id='navbarReports' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Reports</a>
+                                                <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
+                                                    <a class='dropdown-item' href='../Reports/ProjectAdminReports'>Project Admin Reports</a>
+                                                </div>
+                                            </li>
+
 
                                         </ContentTemplate>
                                     </asp:RoleGroup>
@@ -131,8 +138,7 @@
                                 </RoleGroups>
                             </asp:LoginView>
 
-                            <li class='nav-item'><a class='nav-link' href='../PlayGround.aspx'>Link</a></li>
-
+ 
                         </ul>
                         <!-------------------------- USER LOGIN NAV ----------------------------->
                         <ul class="navbar-nav ml-auto">
