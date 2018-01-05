@@ -92,6 +92,14 @@
                                                 </div>
                                             </li>
 
+                                             <li class='nav-item dropdown'>
+                                                <a class='nav-link dropdown-toggle' id='navbarDesignBudget' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Budgets</a>
+                                                <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
+                                                    <a class='dropdown-item' href='../DesignBudgets/DesignBudgets'>Budgets</a>
+                                                    <a class='dropdown-item' href='../Clients/CreateClient'>Create Budget</a>
+                                                </div>
+                                            </li>
+
 
 
                                         </ContentTemplate>
@@ -104,7 +112,7 @@
                                 </RoleGroups>
                             </asp:LoginView>
 
-                            <li class='nav-item'><a class='nav-link' href='../PlayGround.aspx'>PlayGround</a></li>
+                            <li class='nav-item'><a class='nav-link' href='../PlayGround.aspx'>Link</a></li>
 
                         </ul>
                         <!-------------------------- USER LOGIN NAV ----------------------------->
