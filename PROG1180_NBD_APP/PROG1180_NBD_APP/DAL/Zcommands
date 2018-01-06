@@ -2,3 +2,5 @@
 Add-Migration -ConfigurationTypeName PROG1180_NBD_APP.DAL.SecurityMigrations.Configuration
 Update-Database -ConfigurationTypeName PROG1180_NBD_APP.DAL.SecurityMigrations.Configuration
 
+sqllocaldb stop MSSQLLocalDB
+sqllocaldb delete MSSQLLocalDB
