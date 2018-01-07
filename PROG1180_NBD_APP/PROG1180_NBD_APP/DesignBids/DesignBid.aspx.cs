@@ -18,6 +18,7 @@ namespace PROG1180_NBD_APP.DesignBid
     {
         // data reference
         private static NBD_DataSet dsNBD;
+        private static string catcher;
 
         static DesignBid()
         {
@@ -36,7 +37,7 @@ namespace PROG1180_NBD_APP.DesignBid
                 daMatReq.Fill(dsNBD.MaterialReq);
                 daLabReq.Fill(dsNBD.LabourReq);
             }
-            catch { }
+            catch (DataException dex){ catcher = dex.Message; }// added a dex catcher
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -71,7 +72,8 @@ namespace PROG1180_NBD_APP.DesignBid
                 tdClientPhone.InnerText = row["phone"].ToString();
 
                 // NBD staff
-                row = dsNBD.Worker.FindByID(Convert.ToInt32(project["salesAssocID"]));
+                //row = dsNBD.Worker.FindByID(Convert.ToInt32(project["salesAssocID"]));
+                row = dsNBD.Worker.FindByID(4); //Hard coded Bob
                 tdSalesAssoc.InnerText = row["fullName"].ToString();
                 row = dsNBD.Worker.FindByID(Convert.ToInt32(project["designerID"]));
                 tdDesigner.InnerText = row["fullName"].ToString();

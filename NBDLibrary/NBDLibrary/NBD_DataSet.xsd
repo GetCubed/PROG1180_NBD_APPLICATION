@@ -39,7 +39,7 @@ ORDER BY CLIENT.cliName</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        CONVERT(VARCHAR(12), projBidDate, 107) AS bidDate, CONVERT(VARCHAR(12), CONVERT(datetime, projEstStart), 107) AS startDate, CONVERT(VARCHAR(12), CONVERT(datetime, projEstEnd), 107) AS endDate, projSite, 
-                         projEstCost, designerID, salesAssocID, clientID, ID
+                         projEstCost, designerID, clientID, ID
 FROM            PROJECT</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -50,7 +50,6 @@ FROM            PROJECT</CommandText>
               <Mapping SourceColumn="projSite" DataSetColumn="projSite" />
               <Mapping SourceColumn="projEstCost" DataSetColumn="projEstCost" />
               <Mapping SourceColumn="designerID" DataSetColumn="designerID" />
-              <Mapping SourceColumn="salesAssocID" DataSetColumn="salesAssocID" />
               <Mapping SourceColumn="clientID" DataSetColumn="clientID" />
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
               <Mapping SourceColumn="bidDate" DataSetColumn="bidDate" />
@@ -202,9 +201,9 @@ ORDER BY CLIENT.cliName</CommandText>
               <Mapping SourceColumn="cliName" DataSetColumn="cliName" />
               <Mapping SourceColumn="clientID" DataSetColumn="clientID" />
               <Mapping SourceColumn="designerID" DataSetColumn="designerID" />
-              <Mapping SourceColumn="salesAssocID" DataSetColumn="salesAssocID" />
               <Mapping SourceColumn="bidDate" DataSetColumn="bidDate" />
               <Mapping SourceColumn="bidAmount" DataSetColumn="bidAmount" />
+              <Mapping SourceColumn="salesAssocID" DataSetColumn="salesAssocID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -277,7 +276,6 @@ ORDER BY CLIENT.cliName</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="designerID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columndesignerID" msprop:Generator_ColumnPropNameInRow="designerID" msprop:Generator_ColumnPropNameInTable="designerIDColumn" msprop:Generator_UserColumnName="designerID" type="xs:int" />
-              <xs:element name="salesAssocID" msprop:Generator_ColumnVarNameInTable="columnsalesAssocID" msprop:Generator_ColumnPropNameInRow="salesAssocID" msprop:Generator_ColumnPropNameInTable="salesAssocIDColumn" msprop:Generator_UserColumnName="salesAssocID" type="xs:int" />
               <xs:element name="clientID" msprop:Generator_ColumnVarNameInTable="columnclientID" msprop:Generator_ColumnPropNameInRow="clientID" msprop:Generator_ColumnPropNameInTable="clientIDColumn" msprop:Generator_UserColumnName="clientID" type="xs:int" />
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
               <xs:element name="bidDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnbidDate" msprop:Generator_ColumnPropNameInRow="bidDate" msprop:Generator_ColumnPropNameInTable="bidDateColumn" msprop:Generator_UserColumnName="bidDate" minOccurs="0">
@@ -445,7 +443,6 @@ ORDER BY CLIENT.cliName</CommandText>
               </xs:element>
               <xs:element name="clientID" msprop:Generator_ColumnVarNameInTable="columnclientID" msprop:Generator_ColumnPropNameInRow="clientID" msprop:Generator_ColumnPropNameInTable="clientIDColumn" msprop:Generator_UserColumnName="clientID" type="xs:int" />
               <xs:element name="designerID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columndesignerID" msprop:Generator_ColumnPropNameInRow="designerID" msprop:Generator_ColumnPropNameInTable="designerIDColumn" msprop:Generator_UserColumnName="designerID" type="xs:int" />
-              <xs:element name="salesAssocID" msprop:Generator_ColumnVarNameInTable="columnsalesAssocID" msprop:Generator_ColumnPropNameInRow="salesAssocID" msprop:Generator_ColumnPropNameInTable="salesAssocIDColumn" msprop:Generator_UserColumnName="salesAssocID" type="xs:int" />
               <xs:element name="bidDate" msprop:Generator_ColumnVarNameInTable="columnbidDate" msprop:Generator_ColumnPropNameInRow="bidDate" msprop:Generator_ColumnPropNameInTable="bidDateColumn" msprop:Generator_UserColumnName="bidDate" type="xs:dateTime" />
               <xs:element name="bidAmount" msprop:Generator_ColumnVarNameInTable="columnbidAmount" msprop:Generator_ColumnPropNameInRow="bidAmount" msprop:Generator_ColumnPropNameInTable="bidAmountColumn" msprop:Generator_UserColumnName="bidAmount" minOccurs="0">
                 <xs:simpleType>
@@ -454,6 +451,7 @@ ORDER BY CLIENT.cliName</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="salesAssocID" msprop:Generator_ColumnVarNameInTable="columnsalesAssocID" msprop:Generator_ColumnPropNameInRow="salesAssocID" msprop:Generator_ColumnPropNameInTable="salesAssocIDColumn" msprop:Generator_UserColumnName="salesAssocID" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -480,4 +478,12 @@ ORDER BY CLIENT.cliName</CommandText>
       <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK_PROJECT_CLIENT" msdata:parent="Client" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT" msprop:Generator_ParentPropName="ClientRow" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT" msprop:Generator_UserParentTable="Client" />
+      <msdata:Relationship name="FK_PROJECT_WORKER" msdata:parent="Worker" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="designerID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_WORKER" msprop:Generator_RelationVarName="relationFK_PROJECT_WORKER" msprop:Generator_UserParentTable="Worker" msprop:Generator_ParentPropName="WorkerRow" />
+      <msdata:Relationship name="FK_PROJECT_CLIENT1" msdata:parent="BidLookup" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT1" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT1" msprop:Generator_UserParentTable="BidLookup" msprop:Generator_ParentPropName="BidLookupRow" />
+      <msdata:Relationship name="FK_PROJECT_CLIENT2" msdata:parent="BidLookup" msdata:child="ProjectLookup" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="ProjectLookup" msprop:Generator_ChildPropName="GetProjectLookupRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT2" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT2" msprop:Generator_UserParentTable="BidLookup" msprop:Generator_ParentPropName="BidLookupRow" />
+    </xs:appinfo>
+  </xs:annotation>
 </xs:schema>
