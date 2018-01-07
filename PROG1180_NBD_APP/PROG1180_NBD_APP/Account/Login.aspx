@@ -44,8 +44,8 @@
 
                 </div>
                 <div class="card-footer text-muted NBDColourDarkBlue white-text">
-                    <span style="display: none">
-                        <asp:CheckBox type="hidden" runat="server" ID="RememberMe" />
+                    <span>
+                        <asp:CheckBox type="hidden" runat="server" ID="RememberMe" checked="true"/>
                         <asp:Label runat="server" AssociatedControlID="RememberMe">Remember me?</asp:Label>
                         <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user</asp:HyperLink>
                     </span>
