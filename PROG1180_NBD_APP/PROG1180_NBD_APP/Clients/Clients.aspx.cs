@@ -110,6 +110,11 @@ namespace PROG1180_NBD_APP.Clients
                     HtmlGenericControl tdBids = new HtmlGenericControl();
                     tdBids.TagName = "td";
 
+                    // create an extra cell for the Client's Design Bid list
+                    HtmlGenericControl tdClientEdit = new HtmlGenericControl();
+                    tdClientEdit.TagName = "td";
+                    tdClientEdit.InnerHtml = "<a href='ClientEdit.aspx' class='btn btn-primary py-1'>Edit</a>";
+
                     // select the client's bids
                     DataRow[] bids = dsNBD.ProjectLookup.Select("clientID = " + clientID);
 
@@ -131,6 +136,7 @@ namespace PROG1180_NBD_APP.Clients
 
                     // add the content to the row and append the row to the table body
                     tr.Controls.Add(tdBids);
+                    tr.Controls.Add(tdClientEdit);
                     tboClients.Controls.Add(tr);
                 }
             }

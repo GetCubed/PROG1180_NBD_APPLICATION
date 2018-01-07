@@ -958,6 +958,8 @@ namespace NBDLibrary {
             
             private global::System.Data.DataColumn columnendDate;
             
+            private global::System.Data.DataColumn columnsalesAssocID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ProjectDataTable() {
@@ -1057,6 +1059,14 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn salesAssocIDColumn {
+                get {
+                    return this.columnsalesAssocID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1092,7 +1102,7 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProjectRow AddProjectRow(string projSite, string projEstCost, ClientRow parentClientRowByFK_PROJECT_CLIENT, int ID, string bidDate, string startDate, string endDate) {
+            public ProjectRow AddProjectRow(string projSite, string projEstCost, ClientRow parentClientRowByFK_PROJECT_CLIENT, int ID, string bidDate, string startDate, string endDate, int salesAssocID) {
                 ProjectRow rowProjectRow = ((ProjectRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         projSite,
@@ -1102,7 +1112,8 @@ namespace NBDLibrary {
                         ID,
                         bidDate,
                         startDate,
-                        endDate};
+                        endDate,
+                        salesAssocID};
                 if ((parentClientRowByFK_PROJECT_CLIENT != null)) {
                     columnValuesArray[3] = parentClientRowByFK_PROJECT_CLIENT[1];
                 }
@@ -1143,6 +1154,7 @@ namespace NBDLibrary {
                 this.columnbidDate = base.Columns["bidDate"];
                 this.columnstartDate = base.Columns["startDate"];
                 this.columnendDate = base.Columns["endDate"];
+                this.columnsalesAssocID = base.Columns["salesAssocID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1164,6 +1176,8 @@ namespace NBDLibrary {
                 base.Columns.Add(this.columnstartDate);
                 this.columnendDate = new global::System.Data.DataColumn("endDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnendDate);
+                this.columnsalesAssocID = new global::System.Data.DataColumn("salesAssocID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsalesAssocID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnprojSite.AllowDBNull = false;
@@ -1183,6 +1197,7 @@ namespace NBDLibrary {
                 this.columnstartDate.MaxLength = 12;
                 this.columnendDate.ReadOnly = true;
                 this.columnendDate.MaxLength = 12;
+                this.columnsalesAssocID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3708,6 +3723,17 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int salesAssocID {
+                get {
+                    return ((int)(this[this.tableProject.salesAssocIDColumn]));
+                }
+                set {
+                    this[this.tableProject.salesAssocIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ClientRow ClientRow {
                 get {
                     return ((ClientRow)(this.GetParentRow(this.Table.ParentRelations["FK_PROJECT_CLIENT"])));
@@ -5009,6 +5035,7 @@ ORDER BY CLIENT.cliName";
             tableMapping.ColumnMappings.Add("bidDate", "bidDate");
             tableMapping.ColumnMappings.Add("startDate", "startDate");
             tableMapping.ColumnMappings.Add("endDate", "endDate");
+            tableMapping.ColumnMappings.Add("salesAssocID", "salesAssocID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -5026,7 +5053,7 @@ ORDER BY CLIENT.cliName";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        CONVERT(VARCHAR(12), projBidDate, 107) AS bidDate, CONVERT(VARCHAR(12), CONVERT(datetime, projEstStart), 107) AS startDate, CONVERT(VARCHAR(12), CONVERT(datetime, projEstEnd), 107) AS endDate, projSite, 
-                         projEstCost, designerID, clientID, ID
+                         projEstCost, designerID, salesAssocID, clientID, ID
 FROM            PROJECT";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
