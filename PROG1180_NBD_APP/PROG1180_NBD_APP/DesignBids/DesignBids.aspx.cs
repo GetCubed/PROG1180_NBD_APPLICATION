@@ -68,9 +68,10 @@ namespace PROG1180_NBD_APP.DesignBid
                     // create an extra cell for the select buttons
                     HtmlGenericControl tdSelectBid = new HtmlGenericControl();
                     tdSelectBid.TagName = "td";
-                    tdSelectBid.InnerHtml = "";
+                    tdSelectBid.InnerHtml = "<a href='DesignBid?Project=1' class='btn btn-primary' style='padding: 0.1rem 1.5rem';> View Bid</a>";
 
                     tr.Controls.Add(tdSelectBid);
+                    tboDesignBids.Controls.Add(tr);
                 }
             }
         }

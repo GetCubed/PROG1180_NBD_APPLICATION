@@ -110,6 +110,15 @@ namespace PROG1180_NBD_APP.Clients
                     HtmlGenericControl tdBids = new HtmlGenericControl();
                     tdBids.TagName = "td";
 
+                    // create an extra cell for the Client's Design Bid list
+                    HtmlGenericControl tdViewClient = new HtmlGenericControl();
+                    tdBids.TagName = "td";
+
+                    // create an extra cell for the select buttons
+                    HtmlGenericControl tdEditClient = new HtmlGenericControl();
+                    tdEditClient.TagName = "td";
+                    tdEditClient.InnerHtml = "<a href='../Clients/ClientEdit' class='btn btn-primary' style='padding: 0.1rem 1.5rem';> Edit Client</a>";                  
+
                     // select the client's bids
                     DataRow[] bids = dsNBD.ProjectLookup.Select("clientID = " + clientID);
 
@@ -117,6 +126,7 @@ namespace PROG1180_NBD_APP.Clients
                     {
                         // build a string for the ddl
                         string dropdown = "<select id='ddl" + clientID + "' onchange='redirectToBid(this.getAttribute(\"id\"))'><option selected>Select to View Bid...</option>";
+                       
 
                         foreach (DataRow r in bids)
                             dropdown += "<option value = '" + r["ID"].ToString() + "'>" + r["projName"].ToString() + "</option>";
@@ -124,14 +134,18 @@ namespace PROG1180_NBD_APP.Clients
                         dropdown += "</select>";
 
                         // put the ddl in the cell
-                        tdBids.InnerHtml = dropdown;
+                        tdBids.InnerHtml = dropdown;                  
                     }
                     else
                         tdBids.InnerHtml = "None";
 
+                    
+
                     // add the content to the row and append the row to the table body
                     tr.Controls.Add(tdBids);
+                    tr.Controls.Add(tdEditClient);
                     tboClients.Controls.Add(tr);
+                    
                 }
             }
             else

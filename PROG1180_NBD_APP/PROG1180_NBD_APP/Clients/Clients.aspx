@@ -131,15 +131,13 @@
                                             <th class="th-lg">Contact</th>
                                             <th class="th-lg">Phone</th>
                                             <th class="th-lg">Design Bids</th>
+                                            <th class="th-lg"></th>
                                         </tr>
                                     </thead>
                                     <tbody runat="server" id="tboClients">
                                     </tbody>
                                 </table>
                             </div>
-
-                            <!-- --- submit button -->
-                            <a href="ClientEdit.aspx" class="btn btn-primary">Client Edit Test </a>
                         </div>
                         <!--/.Card content-->
 

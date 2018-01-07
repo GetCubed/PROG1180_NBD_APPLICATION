@@ -72,7 +72,7 @@
                 <div class="col-md-12">
                     <!--Panel-->
                     <div class="card card-body">
-                        <h5 class="card-title black-text">Bid Stage Projects</h5>
+                        <h5 class="card-title black-text">Production Stage</h5>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12">

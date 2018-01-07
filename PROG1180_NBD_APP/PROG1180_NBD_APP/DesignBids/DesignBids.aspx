@@ -37,37 +37,10 @@
                                             <th class="th-lg">Bid Amount</th>
                                             <th class="th-lg">Designer</th>
                                             <th class="th-lg">Sales Assoc</th>
+                                            <th class="th-lg"></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody id="tboDesignBids" runat="server"></tbody>
                                 </table>
                             </div>
 
@@ -82,7 +55,7 @@
 
 
             </div>
-            <a href="DesignBid" class="btn btn-primary">Bid Test</a>
+           
         </div>
     </main>
     <!--Main layout-->
