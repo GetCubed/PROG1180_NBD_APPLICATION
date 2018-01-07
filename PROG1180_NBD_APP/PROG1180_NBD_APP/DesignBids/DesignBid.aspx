@@ -17,6 +17,14 @@
                         <div class="card-header NBDColourDarkBlue white-text text-center">
                             <h4>Design Bid</h4>
                         </div>
+                        <div>
+                             <!-- --- submit button -->
+                            <a href="DesignBid.aspx?Project=1&Edit=true" class="btn btn-primary">Edit Design Bid </a>
+                            <a href="DesignBids.aspx" class="btn btn-primary">Delete Design Bid </a>
+                         
+                        </div>
+
+
                     </div>
                     <!--/.Panel-->
                 </div>

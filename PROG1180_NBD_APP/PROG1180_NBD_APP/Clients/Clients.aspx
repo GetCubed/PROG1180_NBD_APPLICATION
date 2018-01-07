@@ -4,7 +4,7 @@
     <script type="text/javascript">
         function redirectToBid(ddlID) {
             window.location.replace("../DesignBids/DesignBid?Project=" + $("#" + ddlID).val());
-        }
+        }     
     </script>
 </asp:Content>
 
