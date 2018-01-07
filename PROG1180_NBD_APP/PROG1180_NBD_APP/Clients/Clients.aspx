@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Clients.aspx.cs" Inherits="PROG1180_NBD_APP.Clients.Clients" %>
+﻿<%@ Page Title="Clients" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Clients.aspx.cs" Inherits="PROG1180_NBD_APP.Clients.Clients" %>
 
 <asp:Content ContentPlaceHolderID="headPlaceHolder" runat="server">
     <script type="text/javascript">
@@ -131,15 +131,13 @@
                                             <th class="th-lg">Contact</th>
                                             <th class="th-lg">Phone</th>
                                             <th class="th-lg">Design Bids</th>
+                                            <th class="th-lg"></th>
                                         </tr>
                                     </thead>
                                     <tbody runat="server" id="tboClients">
                                     </tbody>
                                 </table>
                             </div>
-
-                            <!-- --- submit button -->
-                            <a href="ClientEdit.aspx" class="btn btn-primary">Client Edit Test </a>
                         </div>
                         <!--/.Card content-->
 

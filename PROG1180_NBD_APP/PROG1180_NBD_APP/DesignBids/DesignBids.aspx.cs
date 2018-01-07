@@ -54,7 +54,7 @@ namespace PROG1180_NBD_APP.DesignBid
                     HtmlGenericControl tr = new HtmlGenericControl();
                     tr.TagName = "tr";
 
-                    string[] fields = new string[] { "cliName", "bidDate", "bidAmount", "designerID" };//, "salesAssocID" };// the fields to be displayed
+                    string[] fields = new string[] { "cliName", "bidDate", "bidAmount", "designerID", "salesAssocID" };// the fields to be displayed
 
                     // create a new cell for each display field in the row
                     for (int i = 0; i < fields.Length; i++)
@@ -68,9 +68,10 @@ namespace PROG1180_NBD_APP.DesignBid
                     // create an extra cell for the select buttons
                     HtmlGenericControl tdSelectBid = new HtmlGenericControl();
                     tdSelectBid.TagName = "td";
-                    tdSelectBid.InnerHtml = "";
+                    tdSelectBid.InnerHtml = "<a href='DesignBid?Project=1' class='btn btn-primary py-1'>View</a>";
 
                     tr.Controls.Add(tdSelectBid);
+                    tboDesignBids.Controls.Add(tr);
                 }
             }
         }
