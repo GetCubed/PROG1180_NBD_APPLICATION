@@ -42,6 +42,14 @@ namespace NBDLibrary {
         
         private BidLookupDataTable tableBidLookup;
         
+        private global::System.Data.DataRelation relationFK_PROJECT_CLIENT;
+        
+        private global::System.Data.DataRelation relationFK_PROJECT_WORKER;
+        
+        private global::System.Data.DataRelation relationFK_PROJECT_CLIENT1;
+        
+        private global::System.Data.DataRelation relationFK_PROJECT_CLIENT2;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -386,6 +394,10 @@ namespace NBDLibrary {
                     this.tableBidLookup.InitVars();
                 }
             }
+            this.relationFK_PROJECT_CLIENT = this.Relations["FK_PROJECT_CLIENT"];
+            this.relationFK_PROJECT_WORKER = this.Relations["FK_PROJECT_WORKER"];
+            this.relationFK_PROJECT_CLIENT1 = this.Relations["FK_PROJECT_CLIENT1"];
+            this.relationFK_PROJECT_CLIENT2 = this.Relations["FK_PROJECT_CLIENT2"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -414,6 +426,22 @@ namespace NBDLibrary {
             base.Tables.Add(this.tableProvinceList);
             this.tableBidLookup = new BidLookupDataTable();
             base.Tables.Add(this.tableBidLookup);
+            this.relationFK_PROJECT_CLIENT = new global::System.Data.DataRelation("FK_PROJECT_CLIENT", new global::System.Data.DataColumn[] {
+                        this.tableClient.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableProject.clientIDColumn}, false);
+            this.Relations.Add(this.relationFK_PROJECT_CLIENT);
+            this.relationFK_PROJECT_WORKER = new global::System.Data.DataRelation("FK_PROJECT_WORKER", new global::System.Data.DataColumn[] {
+                        this.tableWorker.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableProject.designerIDColumn}, false);
+            this.Relations.Add(this.relationFK_PROJECT_WORKER);
+            this.relationFK_PROJECT_CLIENT1 = new global::System.Data.DataRelation("FK_PROJECT_CLIENT1", new global::System.Data.DataColumn[] {
+                        this.tableBidLookup.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableProject.clientIDColumn}, false);
+            this.Relations.Add(this.relationFK_PROJECT_CLIENT1);
+            this.relationFK_PROJECT_CLIENT2 = new global::System.Data.DataRelation("FK_PROJECT_CLIENT2", new global::System.Data.DataColumn[] {
+                        this.tableBidLookup.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableProjectLookup.clientIDColumn}, false);
+            this.Relations.Add(this.relationFK_PROJECT_CLIENT2);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -920,8 +948,6 @@ namespace NBDLibrary {
             
             private global::System.Data.DataColumn columndesignerID;
             
-            private global::System.Data.DataColumn columnsalesAssocID;
-            
             private global::System.Data.DataColumn columnclientID;
             
             private global::System.Data.DataColumn columnID;
@@ -931,6 +957,8 @@ namespace NBDLibrary {
             private global::System.Data.DataColumn columnstartDate;
             
             private global::System.Data.DataColumn columnendDate;
+            
+            private global::System.Data.DataColumn columnsalesAssocID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -991,14 +1019,6 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn salesAssocIDColumn {
-                get {
-                    return this.columnsalesAssocID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn clientIDColumn {
                 get {
                     return this.columnclientID;
@@ -1039,6 +1059,14 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn salesAssocIDColumn {
+                get {
+                    return this.columnsalesAssocID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1074,18 +1102,21 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProjectRow AddProjectRow(string projSite, string projEstCost, int salesAssocID, int clientID, int ID, string bidDate, string startDate, string endDate) {
+            public ProjectRow AddProjectRow(string projSite, string projEstCost, ClientRow parentClientRowByFK_PROJECT_CLIENT, int ID, string bidDate, string startDate, string endDate, int salesAssocID) {
                 ProjectRow rowProjectRow = ((ProjectRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         projSite,
                         projEstCost,
                         null,
-                        salesAssocID,
-                        clientID,
+                        null,
                         ID,
                         bidDate,
                         startDate,
-                        endDate};
+                        endDate,
+                        salesAssocID};
+                if ((parentClientRowByFK_PROJECT_CLIENT != null)) {
+                    columnValuesArray[3] = parentClientRowByFK_PROJECT_CLIENT[1];
+                }
                 rowProjectRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProjectRow);
                 return rowProjectRow;
@@ -1118,12 +1149,12 @@ namespace NBDLibrary {
                 this.columnprojSite = base.Columns["projSite"];
                 this.columnprojEstCost = base.Columns["projEstCost"];
                 this.columndesignerID = base.Columns["designerID"];
-                this.columnsalesAssocID = base.Columns["salesAssocID"];
                 this.columnclientID = base.Columns["clientID"];
                 this.columnID = base.Columns["ID"];
                 this.columnbidDate = base.Columns["bidDate"];
                 this.columnstartDate = base.Columns["startDate"];
                 this.columnendDate = base.Columns["endDate"];
+                this.columnsalesAssocID = base.Columns["salesAssocID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1135,8 +1166,6 @@ namespace NBDLibrary {
                 base.Columns.Add(this.columnprojEstCost);
                 this.columndesignerID = new global::System.Data.DataColumn("designerID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndesignerID);
-                this.columnsalesAssocID = new global::System.Data.DataColumn("salesAssocID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnsalesAssocID);
                 this.columnclientID = new global::System.Data.DataColumn("clientID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnclientID);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1147,6 +1176,8 @@ namespace NBDLibrary {
                 base.Columns.Add(this.columnstartDate);
                 this.columnendDate = new global::System.Data.DataColumn("endDate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnendDate);
+                this.columnsalesAssocID = new global::System.Data.DataColumn("salesAssocID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsalesAssocID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnprojSite.AllowDBNull = false;
@@ -1157,7 +1188,6 @@ namespace NBDLibrary {
                 this.columndesignerID.AutoIncrementStep = -1;
                 this.columndesignerID.AllowDBNull = false;
                 this.columndesignerID.ReadOnly = true;
-                this.columnsalesAssocID.AllowDBNull = false;
                 this.columnclientID.AllowDBNull = false;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
@@ -1167,6 +1197,7 @@ namespace NBDLibrary {
                 this.columnstartDate.MaxLength = 12;
                 this.columnendDate.ReadOnly = true;
                 this.columnendDate.MaxLength = 12;
+                this.columnsalesAssocID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1400,12 +1431,15 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProjectLookupRow AddProjectLookupRow(int ID, string projName, int clientID) {
+            public ProjectLookupRow AddProjectLookupRow(int ID, string projName, BidLookupRow parentBidLookupRowByFK_PROJECT_CLIENT2) {
                 ProjectLookupRow rowProjectLookupRow = ((ProjectLookupRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         projName,
-                        clientID};
+                        null};
+                if ((parentBidLookupRowByFK_PROJECT_CLIENT2 != null)) {
+                    columnValuesArray[2] = parentBidLookupRowByFK_PROJECT_CLIENT2[0];
+                }
                 rowProjectLookupRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProjectLookupRow);
                 return rowProjectLookupRow;
@@ -3039,11 +3073,11 @@ namespace NBDLibrary {
             
             private global::System.Data.DataColumn columndesignerID;
             
-            private global::System.Data.DataColumn columnsalesAssocID;
-            
             private global::System.Data.DataColumn columnbidDate;
             
             private global::System.Data.DataColumn columnbidAmount;
+            
+            private global::System.Data.DataColumn columnsalesAssocID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -3112,14 +3146,6 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn salesAssocIDColumn {
-                get {
-                    return this.columnsalesAssocID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn bidDateColumn {
                 get {
                     return this.columnbidDate;
@@ -3131,6 +3157,14 @@ namespace NBDLibrary {
             public global::System.Data.DataColumn bidAmountColumn {
                 get {
                     return this.columnbidAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn salesAssocIDColumn {
+                get {
+                    return this.columnsalesAssocID;
                 }
             }
             
@@ -3171,16 +3205,16 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public BidLookupRow AddBidLookupRow(int ID, string cliName, int clientID, int salesAssocID, System.DateTime bidDate, string bidAmount) {
+            public BidLookupRow AddBidLookupRow(int ID, string cliName, int clientID, System.DateTime bidDate, string bidAmount, int salesAssocID) {
                 BidLookupRow rowBidLookupRow = ((BidLookupRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         cliName,
                         clientID,
                         null,
-                        salesAssocID,
                         bidDate,
-                        bidAmount};
+                        bidAmount,
+                        salesAssocID};
                 rowBidLookupRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBidLookupRow);
                 return rowBidLookupRow;
@@ -3214,9 +3248,9 @@ namespace NBDLibrary {
                 this.columncliName = base.Columns["cliName"];
                 this.columnclientID = base.Columns["clientID"];
                 this.columndesignerID = base.Columns["designerID"];
-                this.columnsalesAssocID = base.Columns["salesAssocID"];
                 this.columnbidDate = base.Columns["bidDate"];
                 this.columnbidAmount = base.Columns["bidAmount"];
+                this.columnsalesAssocID = base.Columns["salesAssocID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3230,12 +3264,12 @@ namespace NBDLibrary {
                 base.Columns.Add(this.columnclientID);
                 this.columndesignerID = new global::System.Data.DataColumn("designerID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndesignerID);
-                this.columnsalesAssocID = new global::System.Data.DataColumn("salesAssocID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnsalesAssocID);
                 this.columnbidDate = new global::System.Data.DataColumn("bidDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbidDate);
                 this.columnbidAmount = new global::System.Data.DataColumn("bidAmount", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbidAmount);
+                this.columnsalesAssocID = new global::System.Data.DataColumn("salesAssocID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsalesAssocID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
@@ -3248,9 +3282,9 @@ namespace NBDLibrary {
                 this.columndesignerID.AutoIncrementStep = -1;
                 this.columndesignerID.AllowDBNull = false;
                 this.columndesignerID.ReadOnly = true;
-                this.columnsalesAssocID.AllowDBNull = false;
                 this.columnbidDate.AllowDBNull = false;
                 this.columnbidAmount.MaxLength = 10;
+                this.columnsalesAssocID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3552,6 +3586,17 @@ namespace NBDLibrary {
             public void SetcliProvinceNull() {
                 this[this.tableClient.cliProvinceColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProjectRow[] GetProjectRows() {
+                if ((this.Table.ChildRelations["FK_PROJECT_CLIENT"] == null)) {
+                    return new ProjectRow[0];
+                }
+                else {
+                    return ((ProjectRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PROJECT_CLIENT"])));
+                }
+            }
         }
         
         /// <summary>
@@ -3603,17 +3648,6 @@ namespace NBDLibrary {
                 }
                 set {
                     this[this.tableProject.designerIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int salesAssocID {
-                get {
-                    return ((int)(this[this.tableProject.salesAssocIDColumn]));
-                }
-                set {
-                    this[this.tableProject.salesAssocIDColumn] = value;
                 }
             }
             
@@ -3684,6 +3718,50 @@ namespace NBDLibrary {
                 }
                 set {
                     this[this.tableProject.endDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int salesAssocID {
+                get {
+                    return ((int)(this[this.tableProject.salesAssocIDColumn]));
+                }
+                set {
+                    this[this.tableProject.salesAssocIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientRow ClientRow {
+                get {
+                    return ((ClientRow)(this.GetParentRow(this.Table.ParentRelations["FK_PROJECT_CLIENT"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PROJECT_CLIENT"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public WorkerRow WorkerRow {
+                get {
+                    return ((WorkerRow)(this.GetParentRow(this.Table.ParentRelations["FK_PROJECT_WORKER"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PROJECT_WORKER"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public BidLookupRow BidLookupRow {
+                get {
+                    return ((BidLookupRow)(this.GetParentRow(this.Table.ParentRelations["FK_PROJECT_CLIENT1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PROJECT_CLIENT1"]);
                 }
             }
             
@@ -3782,6 +3860,17 @@ namespace NBDLibrary {
                     this[this.tableProjectLookup.clientIDColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public BidLookupRow BidLookupRow {
+                get {
+                    return ((BidLookupRow)(this.GetParentRow(this.Table.ParentRelations["FK_PROJECT_CLIENT2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_PROJECT_CLIENT2"]);
+                }
+            }
         }
         
         /// <summary>
@@ -3835,6 +3924,17 @@ namespace NBDLibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetfullNameNull() {
                 this[this.tableWorker.fullNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProjectRow[] GetProjectRows() {
+                if ((this.Table.ChildRelations["FK_PROJECT_WORKER"] == null)) {
+                    return new ProjectRow[0];
+                }
+                else {
+                    return ((ProjectRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PROJECT_WORKER"])));
+                }
             }
         }
         
@@ -4259,17 +4359,6 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int salesAssocID {
-                get {
-                    return ((int)(this[this.tableBidLookup.salesAssocIDColumn]));
-                }
-                set {
-                    this[this.tableBidLookup.salesAssocIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime bidDate {
                 get {
                     return ((global::System.DateTime)(this[this.tableBidLookup.bidDateColumn]));
@@ -4297,6 +4386,17 @@ namespace NBDLibrary {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int salesAssocID {
+                get {
+                    return ((int)(this[this.tableBidLookup.salesAssocIDColumn]));
+                }
+                set {
+                    this[this.tableBidLookup.salesAssocIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsbidAmountNull() {
                 return this.IsNull(this.tableBidLookup.bidAmountColumn);
             }
@@ -4305,6 +4405,28 @@ namespace NBDLibrary {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetbidAmountNull() {
                 this[this.tableBidLookup.bidAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProjectRow[] GetProjectRows() {
+                if ((this.Table.ChildRelations["FK_PROJECT_CLIENT1"] == null)) {
+                    return new ProjectRow[0];
+                }
+                else {
+                    return ((ProjectRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PROJECT_CLIENT1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ProjectLookupRow[] GetProjectLookupRows() {
+                if ((this.Table.ChildRelations["FK_PROJECT_CLIENT2"] == null)) {
+                    return new ProjectLookupRow[0];
+                }
+                else {
+                    return ((ProjectLookupRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PROJECT_CLIENT2"])));
+                }
             }
         }
         
@@ -4908,12 +5030,12 @@ ORDER BY CLIENT.cliName";
             tableMapping.ColumnMappings.Add("projSite", "projSite");
             tableMapping.ColumnMappings.Add("projEstCost", "projEstCost");
             tableMapping.ColumnMappings.Add("designerID", "designerID");
-            tableMapping.ColumnMappings.Add("salesAssocID", "salesAssocID");
             tableMapping.ColumnMappings.Add("clientID", "clientID");
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("bidDate", "bidDate");
             tableMapping.ColumnMappings.Add("startDate", "startDate");
             tableMapping.ColumnMappings.Add("endDate", "endDate");
+            tableMapping.ColumnMappings.Add("salesAssocID", "salesAssocID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -6030,9 +6152,9 @@ FROM            LABOUR_SUMMARY INNER JOIN
             tableMapping.ColumnMappings.Add("cliName", "cliName");
             tableMapping.ColumnMappings.Add("clientID", "clientID");
             tableMapping.ColumnMappings.Add("designerID", "designerID");
-            tableMapping.ColumnMappings.Add("salesAssocID", "salesAssocID");
             tableMapping.ColumnMappings.Add("bidDate", "bidDate");
             tableMapping.ColumnMappings.Add("bidAmount", "bidAmount");
+            tableMapping.ColumnMappings.Add("salesAssocID", "salesAssocID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

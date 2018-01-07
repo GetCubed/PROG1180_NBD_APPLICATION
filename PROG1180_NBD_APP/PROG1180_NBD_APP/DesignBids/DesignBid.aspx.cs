@@ -18,6 +18,7 @@ namespace PROG1180_NBD_APP.DesignBid
     {
         // data reference
         private static NBD_DataSet dsNBD;
+        private static string catcher;
 
         static DesignBid()
         {
@@ -36,7 +37,7 @@ namespace PROG1180_NBD_APP.DesignBid
                 daMatReq.Fill(dsNBD.MaterialReq);
                 daLabReq.Fill(dsNBD.LabourReq);
             }
-            catch { }
+            catch (DataException dex){ catcher = dex.Message; }// added a dex catcher
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -44,24 +45,26 @@ namespace PROG1180_NBD_APP.DesignBid
             if (IsPostBack) return;
 
             string projectID = Request.QueryString["Project"]; // get the passed projectID from the url
+            bool editStatus = Convert.ToBoolean(Request.QueryString["Edit"]); // get the passed Edit Status
 
             if (projectID != null && Regex.IsMatch(projectID, @"^\d+$")) // make sure projectID is numeric
-                DisplayBid(Convert.ToInt32(projectID));
+                DisplayBid(Convert.ToInt32(projectID), editStatus);
         }
 
         // displays all info for the selected Project's Design Bid
-        private void DisplayBid(int projectID)
+        private void DisplayBid(int projectID, bool editStatus)
         {
             DataRow project = dsNBD.Project.FindByID(projectID);
 
             if (project != null)
             {
-                // project info
-                tdBidDate.InnerText = project["bidDate"].ToString();
-                tdBeginDate.InnerText = project["startDate"].ToString();
-                tdEndDate.InnerText = project["endDate"].ToString();
-                tdProjectSite.InnerText = project["projSite"].ToString();
-                tdBidAmount.InnerText = "$" + project["projEstCost"].ToString();
+                // project info   
+                tdBidDate.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["bidDate"].ToString() + " '>" : project["bidDate"].ToString();
+                tdBeginDate.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["startDate"].ToString() + " '>" : project["startDate"].ToString();
+                tdEndDate.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["endDate"].ToString() + " '>" : project["endDate"].ToString();
+                tdProjectSite.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["projSite"].ToString() + " '>" : project["projSite"].ToString();
+                tdBidAmount.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + "$" + project["projEstCost"].ToString() + " '>" : "$" + project["projEstCost"].ToString();
+
 
                 // client info
                 DataRow row = dsNBD.Client.FindByID(Convert.ToInt32(project["clientID"]));
@@ -71,7 +74,8 @@ namespace PROG1180_NBD_APP.DesignBid
                 tdClientPhone.InnerText = row["phone"].ToString();
 
                 // NBD staff
-                row = dsNBD.Worker.FindByID(Convert.ToInt32(project["salesAssocID"]));
+                //row = dsNBD.Worker.FindByID(Convert.ToInt32(project["salesAssocID"]));
+                row = dsNBD.Worker.FindByID(4); //Hard coded Bob
                 tdSalesAssoc.InnerText = row["fullName"].ToString();
                 row = dsNBD.Worker.FindByID(Convert.ToInt32(project["designerID"]));
                 tdDesigner.InnerText = row["fullName"].ToString();

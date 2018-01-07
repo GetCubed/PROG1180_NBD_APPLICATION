@@ -17,6 +17,23 @@
                         <div class="card-header NBDColourDarkBlue white-text text-center">
                             <h4>Design Bid</h4>
                         </div>
+                        <div class="row text-center">
+
+                            <div class="col-lg-4">
+                                <a href="DesignBid.aspx?Project=1&Edit=true" class="btn btn-primary py-2">Edit </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="DesignBids.aspx" class="btn btn-primary py-2"">Delete</a>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="btn btn-primary active py-2"" data-toggle="buttons">
+                                    Approved
+                                <input type="checkbox" checked="checked">
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <!--/.Panel-->
                 </div>
@@ -37,11 +54,11 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Client Name:</td>
+                                            <th>Client Name:</th>
                                             <td runat="server" id="tdClientName"></td>
                                         </tr>
                                         <tr>
-                                            <td>Address:</td>
+                                            <th>Address:</h6>
                                             <td runat="server" id="tdClientAddress"></td>
                                         </tr>
                                     </table>
@@ -50,11 +67,11 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Contact:</td>
+                                            <th>Contact:</th>
                                             <td runat="server" id="tdClientContact"></td>
                                         </tr>
                                         <tr>
-                                            <td>Phone:</td>
+                                            <th>Phone:</th>
                                             <td runat="server" id="tdClientPhone"></td>
                                         </tr>
                                     </table>
@@ -81,7 +98,7 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Sales Assoc:</td>
+                                            <th>Sales Assoc:</th>
                                             <td runat="server" id="tdSalesAssoc"></td>
                                             
                                         </tr>
@@ -91,7 +108,7 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Designer:</td>
+                                            <th>Designer:</th>
                                             <td runat="server" id="tdDesigner"></td>
                                         </tr>
                                     </table>
@@ -118,15 +135,15 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Bid Date:</td>
+                                            <th>Bid Date:</th>
                                             <td runat="server" id="tdBidDate"></td>
                                         </tr>
                                         <tr>
-                                            <td>Est. Begin Date:</td>
+                                            <th>Est. Begin Date:</th>
                                             <td runat="server" id="tdBeginDate"></td>
                                         </tr>
                                         <tr>
-                                            <td>Est. Compl. Date:</td>
+                                            <th>Est. Compl. Date:</th>
                                             <td runat="server" id="tdEndDate"></td>
                                         </tr>
                                     </table>
@@ -135,11 +152,11 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Project Site:</td>
+                                            <th>Project Site:</th>
                                             <td runat="server" id="tdProjectSite"></td>
                                         </tr>
                                         <tr>
-                                            <td>Bid Amount:</td>
+                                            <th>Bid Amount:</th>
                                             <td runat="server" id="tdBidAmount"></td>
                                         </tr>
                                     </table>
