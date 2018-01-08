@@ -152,7 +152,7 @@ FROM            LABOUR_SUMMARY INNER JOIN
               <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        CLIENT.cityID, CITY.city
+                    <CommandText>SELECT DISTINCT CITY.city, CLIENT.cityID
 FROM            CITY INNER JOIN
                          CLIENT ON CITY.ID = CLIENT.cityID</CommandText>
                     <Parameters />
@@ -171,7 +171,7 @@ FROM            CITY INNER JOIN
               <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectName="dbo.CLIENT" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        cliProvince
+                    <CommandText>SELECT DISTINCT cliProvince
 FROM            CLIENT</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -188,7 +188,13 @@ FROM            CLIENT</CommandText>
               <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        PROJECT.ID, CLIENT.cliName, PROJECT.clientID, PROJECT.designerID, PROJECT.salesAssocID, PROJECT.projBidDate AS bidDate, PROJECT.projEstCost AS bidAmount
+                    <CommandText>SELECT        PROJECT.ID, CLIENT.cliName, PROJECT.clientID,
+                             (SELECT        wrkFName + ' ' + wrkLName AS Expr1
+                               FROM            WORKER
+                               WHERE        (ID = PROJECT.designerID)) AS designer,
+                             (SELECT        wrkFName + ' ' + wrkLName AS Expr1
+                               FROM            WORKER AS WORKER_1
+                               WHERE        (ID = PROJECT.salesAssocID)) AS salesAssoc, CONVERT(VARCHAR(12), CONVERT(datetime, PROJECT.projBidDate), 107) AS bidDate, '$' + CONVERT(nvarchar, PROJECT.projEstCost) AS bidAmount
 FROM            PROJECT INNER JOIN
                          CLIENT ON PROJECT.clientID = CLIENT.ID
 ORDER BY CLIENT.cliName</CommandText>
@@ -201,10 +207,10 @@ ORDER BY CLIENT.cliName</CommandText>
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
               <Mapping SourceColumn="cliName" DataSetColumn="cliName" />
               <Mapping SourceColumn="clientID" DataSetColumn="clientID" />
-              <Mapping SourceColumn="designerID" DataSetColumn="designerID" />
-              <Mapping SourceColumn="bidDate" DataSetColumn="bidDate" />
               <Mapping SourceColumn="bidAmount" DataSetColumn="bidAmount" />
-              <Mapping SourceColumn="salesAssocID" DataSetColumn="salesAssocID" />
+              <Mapping SourceColumn="designer" DataSetColumn="designer" />
+              <Mapping SourceColumn="salesAssoc" DataSetColumn="salesAssoc" />
+              <Mapping SourceColumn="bidDate" DataSetColumn="bidDate" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -216,7 +222,7 @@ ORDER BY CLIENT.cliName</CommandText>
   <xs:element name="NBD_DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="NBD_DataSet" msprop:Generator_UserDSName="NBD_DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Client" msprop:Generator_TableClassName="ClientDataTable" msprop:Generator_TableVarName="tableClient" msprop:Generator_TablePropName="Client" msprop:Generator_RowDeletingName="ClientRowDeleting" msprop:Generator_RowChangingName="ClientRowChanging" msprop:Generator_RowEvHandlerName="ClientRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientRowDeleted" msprop:Generator_UserTableName="Client" msprop:Generator_RowChangedName="ClientRowChanged" msprop:Generator_RowEvArgName="ClientRowChangeEvent" msprop:Generator_RowClassName="ClientRow">
+        <xs:element name="Client" msprop:Generator_TableClassName="ClientDataTable" msprop:Generator_TableVarName="tableClient" msprop:Generator_RowChangedName="ClientRowChanged" msprop:Generator_TablePropName="Client" msprop:Generator_RowDeletingName="ClientRowDeleting" msprop:Generator_RowChangingName="ClientRowChanging" msprop:Generator_RowEvHandlerName="ClientRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientRowDeleted" msprop:Generator_RowClassName="ClientRow" msprop:Generator_UserTableName="Client" msprop:Generator_RowEvArgName="ClientRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="cliName" msprop:Generator_ColumnVarNameInTable="columncliName" msprop:Generator_ColumnPropNameInRow="cliName" msprop:Generator_ColumnPropNameInTable="cliNameColumn" msprop:Generator_UserColumnName="cliName">
@@ -259,7 +265,7 @@ ORDER BY CLIENT.cliName</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Project" msprop:Generator_TableClassName="ProjectDataTable" msprop:Generator_TableVarName="tableProject" msprop:Generator_TablePropName="Project" msprop:Generator_RowDeletingName="ProjectRowDeleting" msprop:Generator_RowChangingName="ProjectRowChanging" msprop:Generator_RowEvHandlerName="ProjectRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectRowDeleted" msprop:Generator_UserTableName="Project" msprop:Generator_RowChangedName="ProjectRowChanged" msprop:Generator_RowEvArgName="ProjectRowChangeEvent" msprop:Generator_RowClassName="ProjectRow">
+        <xs:element name="Project" msprop:Generator_TableClassName="ProjectDataTable" msprop:Generator_TableVarName="tableProject" msprop:Generator_RowChangedName="ProjectRowChanged" msprop:Generator_TablePropName="Project" msprop:Generator_RowDeletingName="ProjectRowDeleting" msprop:Generator_RowChangingName="ProjectRowChanging" msprop:Generator_RowEvHandlerName="ProjectRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectRowDeleted" msprop:Generator_RowClassName="ProjectRow" msprop:Generator_UserTableName="Project" msprop:Generator_RowEvArgName="ProjectRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="projSite" msprop:Generator_ColumnVarNameInTable="columnprojSite" msprop:Generator_ColumnPropNameInRow="projSite" msprop:Generator_ColumnPropNameInTable="projSiteColumn" msprop:Generator_UserColumnName="projSite">
@@ -304,7 +310,7 @@ ORDER BY CLIENT.cliName</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProjectLookup" msprop:Generator_TableClassName="ProjectLookupDataTable" msprop:Generator_TableVarName="tableProjectLookup" msprop:Generator_TablePropName="ProjectLookup" msprop:Generator_RowDeletingName="ProjectLookupRowDeleting" msprop:Generator_RowChangingName="ProjectLookupRowChanging" msprop:Generator_RowEvHandlerName="ProjectLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectLookupRowDeleted" msprop:Generator_UserTableName="ProjectLookup" msprop:Generator_RowChangedName="ProjectLookupRowChanged" msprop:Generator_RowEvArgName="ProjectLookupRowChangeEvent" msprop:Generator_RowClassName="ProjectLookupRow">
+        <xs:element name="ProjectLookup" msprop:Generator_TableClassName="ProjectLookupDataTable" msprop:Generator_TableVarName="tableProjectLookup" msprop:Generator_RowChangedName="ProjectLookupRowChanged" msprop:Generator_TablePropName="ProjectLookup" msprop:Generator_RowDeletingName="ProjectLookupRowDeleting" msprop:Generator_RowChangingName="ProjectLookupRowChanging" msprop:Generator_RowEvHandlerName="ProjectLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectLookupRowDeleted" msprop:Generator_RowClassName="ProjectLookupRow" msprop:Generator_UserTableName="ProjectLookup" msprop:Generator_RowEvArgName="ProjectLookupRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -319,7 +325,7 @@ ORDER BY CLIENT.cliName</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Worker" msprop:Generator_TableClassName="WorkerDataTable" msprop:Generator_TableVarName="tableWorker" msprop:Generator_TablePropName="Worker" msprop:Generator_RowDeletingName="WorkerRowDeleting" msprop:Generator_RowChangingName="WorkerRowChanging" msprop:Generator_RowEvHandlerName="WorkerRowChangeEventHandler" msprop:Generator_RowDeletedName="WorkerRowDeleted" msprop:Generator_UserTableName="Worker" msprop:Generator_RowChangedName="WorkerRowChanged" msprop:Generator_RowEvArgName="WorkerRowChangeEvent" msprop:Generator_RowClassName="WorkerRow">
+        <xs:element name="Worker" msprop:Generator_TableClassName="WorkerDataTable" msprop:Generator_TableVarName="tableWorker" msprop:Generator_RowChangedName="WorkerRowChanged" msprop:Generator_TablePropName="Worker" msprop:Generator_RowDeletingName="WorkerRowDeleting" msprop:Generator_RowChangingName="WorkerRowChanging" msprop:Generator_RowEvHandlerName="WorkerRowChangeEventHandler" msprop:Generator_RowDeletedName="WorkerRowDeleted" msprop:Generator_RowClassName="WorkerRow" msprop:Generator_UserTableName="Worker" msprop:Generator_RowEvArgName="WorkerRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -333,7 +339,7 @@ ORDER BY CLIENT.cliName</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MaterialReq" msprop:Generator_TableClassName="MaterialReqDataTable" msprop:Generator_TableVarName="tableMaterialReq" msprop:Generator_TablePropName="MaterialReq" msprop:Generator_RowDeletingName="MaterialReqRowDeleting" msprop:Generator_RowChangingName="MaterialReqRowChanging" msprop:Generator_RowEvHandlerName="MaterialReqRowChangeEventHandler" msprop:Generator_RowDeletedName="MaterialReqRowDeleted" msprop:Generator_UserTableName="MaterialReq" msprop:Generator_RowChangedName="MaterialReqRowChanged" msprop:Generator_RowEvArgName="MaterialReqRowChangeEvent" msprop:Generator_RowClassName="MaterialReqRow">
+        <xs:element name="MaterialReq" msprop:Generator_TableClassName="MaterialReqDataTable" msprop:Generator_TableVarName="tableMaterialReq" msprop:Generator_RowChangedName="MaterialReqRowChanged" msprop:Generator_TablePropName="MaterialReq" msprop:Generator_RowDeletingName="MaterialReqRowDeleting" msprop:Generator_RowChangingName="MaterialReqRowChanging" msprop:Generator_RowEvHandlerName="MaterialReqRowChangeEventHandler" msprop:Generator_RowDeletedName="MaterialReqRowDeleted" msprop:Generator_RowClassName="MaterialReqRow" msprop:Generator_UserTableName="MaterialReq" msprop:Generator_RowEvArgName="MaterialReqRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="matDesc" msprop:Generator_ColumnVarNameInTable="columnmatDesc" msprop:Generator_ColumnPropNameInRow="matDesc" msprop:Generator_ColumnPropNameInTable="matDescColumn" msprop:Generator_UserColumnName="matDesc">
@@ -376,7 +382,7 @@ ORDER BY CLIENT.cliName</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LabourReq" msprop:Generator_TableClassName="LabourReqDataTable" msprop:Generator_TableVarName="tableLabourReq" msprop:Generator_RowChangedName="LabourReqRowChanged" msprop:Generator_TablePropName="LabourReq" msprop:Generator_RowDeletingName="LabourReqRowDeleting" msprop:Generator_RowChangingName="LabourReqRowChanging" msprop:Generator_RowEvHandlerName="LabourReqRowChangeEventHandler" msprop:Generator_RowDeletedName="LabourReqRowDeleted" msprop:Generator_RowClassName="LabourReqRow" msprop:Generator_UserTableName="LabourReq" msprop:Generator_RowEvArgName="LabourReqRowChangeEvent">
+        <xs:element name="LabourReq" msprop:Generator_TableClassName="LabourReqDataTable" msprop:Generator_TableVarName="tableLabourReq" msprop:Generator_TablePropName="LabourReq" msprop:Generator_RowDeletingName="LabourReqRowDeleting" msprop:Generator_RowChangingName="LabourReqRowChanging" msprop:Generator_RowEvHandlerName="LabourReqRowChangeEventHandler" msprop:Generator_RowDeletedName="LabourReqRowDeleted" msprop:Generator_UserTableName="LabourReq" msprop:Generator_RowChangedName="LabourReqRowChanged" msprop:Generator_RowEvArgName="LabourReqRowChangeEvent" msprop:Generator_RowClassName="LabourReqRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="projectID" msprop:Generator_ColumnVarNameInTable="columnprojectID" msprop:Generator_ColumnPropNameInRow="projectID" msprop:Generator_ColumnPropNameInTable="projectIDColumn" msprop:Generator_UserColumnName="projectID" type="xs:int" />
@@ -405,7 +411,7 @@ ORDER BY CLIENT.cliName</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CityList" msprop:Generator_TableClassName="CityListDataTable" msprop:Generator_TableVarName="tableCityList" msprop:Generator_RowChangedName="CityListRowChanged" msprop:Generator_TablePropName="CityList" msprop:Generator_RowDeletingName="CityListRowDeleting" msprop:Generator_RowChangingName="CityListRowChanging" msprop:Generator_RowEvHandlerName="CityListRowChangeEventHandler" msprop:Generator_RowDeletedName="CityListRowDeleted" msprop:Generator_RowClassName="CityListRow" msprop:Generator_UserTableName="CityList" msprop:Generator_RowEvArgName="CityListRowChangeEvent">
+        <xs:element name="CityList" msprop:Generator_TableClassName="CityListDataTable" msprop:Generator_TableVarName="tableCityList" msprop:Generator_TablePropName="CityList" msprop:Generator_RowDeletingName="CityListRowDeleting" msprop:Generator_RowChangingName="CityListRowChanging" msprop:Generator_RowEvHandlerName="CityListRowChangeEventHandler" msprop:Generator_RowDeletedName="CityListRowDeleted" msprop:Generator_UserTableName="CityList" msprop:Generator_RowChangedName="CityListRowChanged" msprop:Generator_RowEvArgName="CityListRowChangeEvent" msprop:Generator_RowClassName="CityListRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="cityID" msprop:Generator_ColumnVarNameInTable="columncityID" msprop:Generator_ColumnPropNameInRow="cityID" msprop:Generator_ColumnPropNameInTable="cityIDColumn" msprop:Generator_UserColumnName="cityID" type="xs:int" minOccurs="0" />
@@ -419,7 +425,7 @@ ORDER BY CLIENT.cliName</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProvinceList" msprop:Generator_TableClassName="ProvinceListDataTable" msprop:Generator_TableVarName="tableProvinceList" msprop:Generator_RowChangedName="ProvinceListRowChanged" msprop:Generator_TablePropName="ProvinceList" msprop:Generator_RowDeletingName="ProvinceListRowDeleting" msprop:Generator_RowChangingName="ProvinceListRowChanging" msprop:Generator_RowEvHandlerName="ProvinceListRowChangeEventHandler" msprop:Generator_RowDeletedName="ProvinceListRowDeleted" msprop:Generator_RowClassName="ProvinceListRow" msprop:Generator_UserTableName="ProvinceList" msprop:Generator_RowEvArgName="ProvinceListRowChangeEvent">
+        <xs:element name="ProvinceList" msprop:Generator_TableClassName="ProvinceListDataTable" msprop:Generator_TableVarName="tableProvinceList" msprop:Generator_TablePropName="ProvinceList" msprop:Generator_RowDeletingName="ProvinceListRowDeleting" msprop:Generator_RowChangingName="ProvinceListRowChanging" msprop:Generator_RowEvHandlerName="ProvinceListRowChangeEventHandler" msprop:Generator_RowDeletedName="ProvinceListRowDeleted" msprop:Generator_UserTableName="ProvinceList" msprop:Generator_RowChangedName="ProvinceListRowChanged" msprop:Generator_RowEvArgName="ProvinceListRowChangeEvent" msprop:Generator_RowClassName="ProvinceListRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="cliProvince" msprop:Generator_ColumnVarNameInTable="columncliProvince" msprop:Generator_ColumnPropNameInRow="cliProvince" msprop:Generator_ColumnPropNameInTable="cliProvinceColumn" msprop:Generator_UserColumnName="cliProvince" minOccurs="0">
@@ -432,7 +438,7 @@ ORDER BY CLIENT.cliName</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="BidLookup" msprop:Generator_TableClassName="BidLookupDataTable" msprop:Generator_TableVarName="tableBidLookup" msprop:Generator_RowChangedName="BidLookupRowChanged" msprop:Generator_TablePropName="BidLookup" msprop:Generator_RowDeletingName="BidLookupRowDeleting" msprop:Generator_RowChangingName="BidLookupRowChanging" msprop:Generator_RowEvHandlerName="BidLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="BidLookupRowDeleted" msprop:Generator_RowClassName="BidLookupRow" msprop:Generator_UserTableName="BidLookup" msprop:Generator_RowEvArgName="BidLookupRowChangeEvent">
+        <xs:element name="BidLookup" msprop:Generator_TableClassName="BidLookupDataTable" msprop:Generator_TableVarName="tableBidLookup" msprop:Generator_TablePropName="BidLookup" msprop:Generator_RowDeletingName="BidLookupRowDeleting" msprop:Generator_RowChangingName="BidLookupRowChanging" msprop:Generator_RowEvHandlerName="BidLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="BidLookupRowDeleted" msprop:Generator_UserTableName="BidLookup" msprop:Generator_RowChangedName="BidLookupRowChanged" msprop:Generator_RowEvArgName="BidLookupRowChangeEvent" msprop:Generator_RowClassName="BidLookupRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -444,8 +450,6 @@ ORDER BY CLIENT.cliName</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="clientID" msprop:Generator_ColumnVarNameInTable="columnclientID" msprop:Generator_ColumnPropNameInRow="clientID" msprop:Generator_ColumnPropNameInTable="clientIDColumn" msprop:Generator_UserColumnName="clientID" type="xs:int" />
-              <xs:element name="designerID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columndesignerID" msprop:Generator_ColumnPropNameInRow="designerID" msprop:Generator_ColumnPropNameInTable="designerIDColumn" msprop:Generator_UserColumnName="designerID" type="xs:int" />
-              <xs:element name="bidDate" msprop:Generator_ColumnVarNameInTable="columnbidDate" msprop:Generator_ColumnPropNameInRow="bidDate" msprop:Generator_ColumnPropNameInTable="bidDateColumn" msprop:Generator_UserColumnName="bidDate" type="xs:dateTime" />
               <xs:element name="bidAmount" msprop:Generator_ColumnVarNameInTable="columnbidAmount" msprop:Generator_ColumnPropNameInRow="bidAmount" msprop:Generator_ColumnPropNameInTable="bidAmountColumn" msprop:Generator_UserColumnName="bidAmount" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -453,7 +457,27 @@ ORDER BY CLIENT.cliName</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="salesAssocID" msprop:Generator_ColumnVarNameInTable="columnsalesAssocID" msprop:Generator_ColumnPropNameInRow="salesAssocID" msprop:Generator_ColumnPropNameInTable="salesAssocIDColumn" msprop:Generator_UserColumnName="salesAssocID" type="xs:int" />
+              <xs:element name="designer" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndesigner" msprop:Generator_ColumnPropNameInRow="designer" msprop:Generator_ColumnPropNameInTable="designerColumn" msprop:Generator_UserColumnName="designer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="61" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="salesAssoc" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsalesAssoc" msprop:Generator_ColumnPropNameInRow="salesAssoc" msprop:Generator_ColumnPropNameInTable="salesAssocColumn" msprop:Generator_UserColumnName="salesAssoc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="61" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bidDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnbidDate" msprop:Generator_ColumnPropNameInRow="bidDate" msprop:Generator_ColumnPropNameInTable="bidDateColumn" msprop:Generator_UserColumnName="bidDate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -482,10 +506,10 @@ ORDER BY CLIENT.cliName</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_PROJECT_CLIENT" msdata:parent="Client" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT" msprop:Generator_UserParentTable="Client" msprop:Generator_ParentPropName="ClientRow" />
-      <msdata:Relationship name="FK_PROJECT_WORKER" msdata:parent="Worker" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="designerID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_WORKER" msprop:Generator_ParentPropName="WorkerRow" msprop:Generator_RelationVarName="relationFK_PROJECT_WORKER" msprop:Generator_UserParentTable="Worker" />
-      <msdata:Relationship name="FK_PROJECT_CLIENT1" msdata:parent="BidLookup" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT1" msprop:Generator_ParentPropName="BidLookupRow" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT1" msprop:Generator_UserParentTable="BidLookup" />
-      <msdata:Relationship name="FK_PROJECT_CLIENT2" msdata:parent="BidLookup" msdata:child="ProjectLookup" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="ProjectLookup" msprop:Generator_ChildPropName="GetProjectLookupRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT2" msprop:Generator_ParentPropName="BidLookupRow" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT2" msprop:Generator_UserParentTable="BidLookup" />
+      <msdata:Relationship name="FK_PROJECT_CLIENT" msdata:parent="Client" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT" msprop:Generator_ParentPropName="ClientRow" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT" msprop:Generator_UserParentTable="Client" />
+      <msdata:Relationship name="FK_PROJECT_WORKER" msdata:parent="Worker" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="designerID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_WORKER" msprop:Generator_RelationVarName="relationFK_PROJECT_WORKER" msprop:Generator_UserParentTable="Worker" msprop:Generator_ParentPropName="WorkerRow" />
+      <msdata:Relationship name="FK_PROJECT_CLIENT1" msdata:parent="BidLookup" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT1" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT1" msprop:Generator_UserParentTable="BidLookup" msprop:Generator_ParentPropName="BidLookupRow" />
+      <msdata:Relationship name="FK_PROJECT_CLIENT2" msdata:parent="BidLookup" msdata:child="ProjectLookup" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="ProjectLookup" msprop:Generator_ChildPropName="GetProjectLookupRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT2" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT2" msprop:Generator_UserParentTable="BidLookup" msprop:Generator_ParentPropName="BidLookupRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
