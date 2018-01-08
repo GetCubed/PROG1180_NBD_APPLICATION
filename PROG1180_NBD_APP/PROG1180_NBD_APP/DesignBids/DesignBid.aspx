@@ -58,7 +58,7 @@
                                             <td runat="server" id="tdClientName"></td>
                                         </tr>
                                         <tr>
-                                            <th>Address:</h6>
+                                            <th>Address:</th>
                                             <td runat="server" id="tdClientAddress"></td>
                                         </tr>
                                     </table>
