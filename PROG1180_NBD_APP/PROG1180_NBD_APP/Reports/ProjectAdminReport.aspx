@@ -6,7 +6,6 @@
 
         <div class="container">
 
-
             <!--Grid row--------------------------------------------------------------------------------------------------------->
             <div class="row mb-3">
 
@@ -15,12 +14,19 @@
                     <!--Panel-->
                     <div class="card">
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            <h4>Project Admin Report</h4>
+                            <h4>Project Administration Report for</h4>
+                            
                         </div>
+                        <div class="card-footer text-center">
+                           
+                            <h5><%: DateTime.Now %></h5>
+                        </div>
+
                     </div>
                     <!--/.Panel-->
                 </div>
             </div>
+
 
 
             <!-------------------------Bid Stage Projects-------------------------------------------------------------------------------->

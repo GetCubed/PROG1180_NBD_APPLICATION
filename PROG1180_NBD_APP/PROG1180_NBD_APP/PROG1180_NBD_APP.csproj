@@ -195,6 +195,9 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="App_Data\NBD_SB.mdf" />
+    <Content Include="App_Data\NBD_SB_log.ldf">
+      <DependentUpon>NBD_SB.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\PROG1180_NBD_APP.mdf" />
     <Content Include="App_Data\PROG1180_NBD_APP_log.ldf">
       <DependentUpon>PROG1180_NBD_APP.mdf</DependentUpon>
@@ -233,7 +236,6 @@
     <Content Include="ProductionPlans\ProductionPlan.aspx" />
     <Content Include="ProductionPlans\ProductionPlans.aspx" />
     <Content Include="Reports\ProjectAdminReport.aspx" />
-    <Content Include="Reports\ProjectAdminReports.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -567,13 +569,6 @@
     </Compile>
     <Compile Include="Reports\ProjectAdminReport.aspx.designer.cs">
       <DependentUpon>ProjectAdminReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\ProjectAdminReports.aspx.cs">
-      <DependentUpon>ProjectAdminReports.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reports\ProjectAdminReports.aspx.designer.cs">
-      <DependentUpon>ProjectAdminReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
