@@ -222,8 +222,10 @@
     <Content Include="DailyWorkReports\ProductionDailyWorkReports.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DesignBids\DesignBid.aspx" />
+    <Content Include="DesignBids\DesignBidCreate.aspx" />
     <Content Include="DesignBids\DesignBids.aspx" />
     <Content Include="DesignBudgets\DesignBudget.aspx" />
+    <Content Include="DesignBudgets\DesignBudgetCreate.aspx" />
     <Content Include="DesignBudgets\DesignBudgets.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -523,6 +525,13 @@
     <Compile Include="DesignBids\DesignBid.aspx.designer.cs">
       <DependentUpon>DesignBid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesignBids\DesignBidCreate.aspx.cs">
+      <DependentUpon>DesignBidCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBids\DesignBidCreate.aspx.designer.cs">
+      <DependentUpon>DesignBidCreate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesignBids\DesignBids.aspx.cs">
       <DependentUpon>DesignBids.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -536,6 +545,13 @@
     </Compile>
     <Compile Include="DesignBudgets\DesignBudget.aspx.designer.cs">
       <DependentUpon>DesignBudget.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudgetCreate.aspx.cs">
+      <DependentUpon>DesignBudgetCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudgetCreate.aspx.designer.cs">
+      <DependentUpon>DesignBudgetCreate.aspx</DependentUpon>
     </Compile>
     <Compile Include="DesignBudgets\DesignBudgets.aspx.cs">
       <DependentUpon>DesignBudgets.aspx</DependentUpon>

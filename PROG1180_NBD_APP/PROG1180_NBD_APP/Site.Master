@@ -90,7 +90,7 @@
                                                 <a class='nav-link dropdown-toggle' id='navbarDesignBid' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Bids</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../DesignBids/DesignBids'>Bids</a>
-                                                    <a class='dropdown-item' href='../Clients/CreateClient'>Create Bid</a>
+                                                    <a class='dropdown-item' href='../DesignBids/DesignBidCreate'>Create Bid</a>
                                                 </div>
                                             </li>
 
@@ -98,7 +98,7 @@
                                                 <a class='nav-link dropdown-toggle' id='navbarDesignBudget' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Budgets</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../DesignBudgets/DesignBudgets'>Budgets</a>
-                                                    <a class='dropdown-item' href='../Clients/CreateClient'>Create Budget</a>
+                                                    <a class='dropdown-item' href='../DesignBudgets/DesignBudgetCreate'>Create Budget</a>
                                                 </div>
                                             </li>
 
@@ -115,8 +115,8 @@
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReports'>Designer Daily Work Reports</a>
                                                     <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReports'>Create DDWP</a>
-                                                    <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReports'>Production Daily Work Report</a>
-                                                    <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReports'>Create PDWP</a>
+                                                    <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReports'>Production Daily Work Report</a>
+                                                    <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReports'>Create PDWP</a>
                                                 </div>
                                             </li>
 

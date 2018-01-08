@@ -6,7 +6,8 @@
         <div class="container">
 
 
-            <!--Grid row--------------------------------------------------------------------------------------------------------->
+                
+              <!--Grid row--------------------------------------------------------------------------------------------------------->
             <div class="row mb-3">
 
                 <!--Grid column-->
@@ -16,10 +17,25 @@
                         <div class="card-header NBDColourDarkBlue white-text text-center">
                             <h4>Create Client</h4>
                         </div>
+                        <div class="row text-center">
+
+                            <div class="col-lg-4">
+                                <a href="Clients" class="btn btn-primary py-2">Save </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="Clients" class="btn btn-primary py-2"">Cancel</a>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="btn btn-primary py-2">Clear All</div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <!--/.Panel-->
                 </div>
             </div>
+
 
 
 
