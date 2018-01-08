@@ -8,7 +8,7 @@
         <div class="container">
 
 
-            <!--Grid row--------------------------------------------------------------------------------------------------------->
+        <!--Grid row--------------------------------------------------------------------------------------------------------->
             <div class="row mb-3">
 
                 <!--Grid column-->
@@ -18,6 +18,23 @@
                         <div class="card-header NBDColourDarkBlue white-text text-center">
                             <h4>Design Budget</h4>
                         </div>
+                        <div class="row text-center">
+
+                            <div class="col-lg-4">
+                                <a href="DesignBudget" class="btn btn-primary py-2">Edit </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="DesignBudget" class="btn btn-primary py-2"">Delete</a>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="btn btn-primary active py-2"" data-toggle="buttons">
+                                    Approved
+                                <input type="checkbox" checked="checked">
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <!--/.Panel-->
                 </div>
@@ -259,7 +276,7 @@
 
 
 
-           
+           </div>
     </main>
     <!--Main layout-->
 

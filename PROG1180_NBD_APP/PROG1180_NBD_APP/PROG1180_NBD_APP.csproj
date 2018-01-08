@@ -220,6 +220,7 @@
     <Content Include="DailyWorkReports\DesignerDailyWorkReportCreate.aspx" />
     <Content Include="DailyWorkReports\DesignerDailyWorkReports.aspx" />
     <Content Include="DailyWorkReports\ProductionDailyWorkReport.aspx" />
+    <Content Include="DailyWorkReports\ProductionDailyWorkReportCreate.aspx" />
     <Content Include="DailyWorkReports\ProductionDailyWorkReports.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DesignBids\DesignBid.aspx" />
@@ -505,6 +506,13 @@
     </Compile>
     <Compile Include="DailyWorkReports\ProductionDailyWorkReport.aspx.designer.cs">
       <DependentUpon>ProductionDailyWorkReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DailyWorkReports\ProductionDailyWorkReportCreate.aspx.cs">
+      <DependentUpon>ProductionDailyWorkReportCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DailyWorkReports\ProductionDailyWorkReportCreate.aspx.designer.cs">
+      <DependentUpon>ProductionDailyWorkReportCreate.aspx</DependentUpon>
     </Compile>
     <Compile Include="DailyWorkReports\ProductionDailyWorkReports.aspx.cs">
       <DependentUpon>ProductionDailyWorkReports.aspx</DependentUpon>

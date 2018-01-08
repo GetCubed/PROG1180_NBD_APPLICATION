@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Design Bid" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignBidCreate.aspx.cs" Inherits="PROG1180_NBD_APP.DesignBids.DesignBidCreate" %>
+﻿<%@ Page Title="Create Design Bid" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignBidCreate.aspx.cs" Inherits="PROG1180_NBD_APP.DesignBids.DesignBidCreate" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
