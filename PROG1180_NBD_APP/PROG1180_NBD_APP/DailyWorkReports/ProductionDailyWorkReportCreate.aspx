@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Production Daily Work Report" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ProductionDailyWorkReportCreate.aspx.cs" Inherits="PROG1180_NBD_APP.DailyWorkReports.ProductionDailyWorkReportCreate" %>
+﻿<%@ Page Title="Create Production Daily Work Report" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ProductionDailyWorkReportCreate.aspx.cs" Inherits="PROG1180_NBD_APP.DailyWorkReports.ProductionDailyWorkReportCreate" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">

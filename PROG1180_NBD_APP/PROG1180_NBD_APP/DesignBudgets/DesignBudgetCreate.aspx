@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Design Budget" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignBudgetCreate.aspx.cs" Inherits="PROG1180_NBD_APP.DesignBudgets.DesignBudgetCreate" %>
+﻿<%@ Page Title="Create Design Budget" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignBudgetCreate.aspx.cs" Inherits="PROG1180_NBD_APP.DesignBudgets.DesignBudgetCreate" %>
 
 
 

@@ -19,7 +19,7 @@
                         </div>
                         <div class="card-footer text-center">
                            
-                            <h5><%: DateTime.Now %></h5>
+                            <h5><%: DateTime.Now.ToString("D") %></h5>
                         </div>
 
                     </div>
@@ -78,7 +78,7 @@
                 <div class="col-md-12">
                     <!--Panel-->
                     <div class="card card-body">
-                        <h5 class="card-title black-text">Bid Stage Projects</h5>
+                        <h5 class="card-title black-text">Production Stage Projects</h5>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12">

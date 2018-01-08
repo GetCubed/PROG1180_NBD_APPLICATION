@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Designer Daily Work Report" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignerDailyWorkReportCreate.aspx.cs" Inherits="PROG1180_NBD_APP.DailyWorkReports.DesignerDailyWorkReportCreate" %>
+﻿<%@ Page Title="Create Designer Daily Work Report" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignerDailyWorkReportCreate.aspx.cs" Inherits="PROG1180_NBD_APP.DailyWorkReports.DesignerDailyWorkReportCreate" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main class="mt-5">
@@ -14,7 +14,7 @@
                     <!--Panel-->
                     <div class="card">
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            <h4>Create DDWR</h4>
+                            <h4>Create Designer Daily Work Report</h4>
                         </div>
                         <div class="row text-center">
 
