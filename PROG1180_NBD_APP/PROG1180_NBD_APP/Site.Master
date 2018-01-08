@@ -114,7 +114,7 @@
                                                 <a class='nav-link dropdown-toggle' id='navbarDailyWorkReports' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Daily Work Reports</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReports'>Designer Daily Work Reports</a>
-                                                    <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReports'>Create DDWP</a>
+                                                    <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReportCreate'>Create DDWP</a>
                                                     <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReports'>Production Daily Work Report</a>
                                                     <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReports'>Create PDWP</a>
                                                 </div>
