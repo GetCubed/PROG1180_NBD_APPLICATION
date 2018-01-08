@@ -217,6 +217,7 @@
     <Content Include="Content\SiteZ.css" />
     <None Include="DAL\Zcommands" />
     <Content Include="DailyWorkReports\DesignerDailyWorkReport.aspx" />
+    <Content Include="DailyWorkReports\DesignerDailyWorkReportCreate.aspx" />
     <Content Include="DailyWorkReports\DesignerDailyWorkReports.aspx" />
     <Content Include="DailyWorkReports\ProductionDailyWorkReport.aspx" />
     <Content Include="DailyWorkReports\ProductionDailyWorkReports.aspx" />
@@ -483,6 +484,13 @@
     </Compile>
     <Compile Include="DailyWorkReports\DesignerDailyWorkReport.aspx.designer.cs">
       <DependentUpon>DesignerDailyWorkReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DailyWorkReports\DesignerDailyWorkReportCreate.aspx.cs">
+      <DependentUpon>DesignerDailyWorkReportCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DailyWorkReports\DesignerDailyWorkReportCreate.aspx.designer.cs">
+      <DependentUpon>DesignerDailyWorkReportCreate.aspx</DependentUpon>
     </Compile>
     <Compile Include="DailyWorkReports\DesignerDailyWorkReports.aspx.cs">
       <DependentUpon>DesignerDailyWorkReports.aspx</DependentUpon>
