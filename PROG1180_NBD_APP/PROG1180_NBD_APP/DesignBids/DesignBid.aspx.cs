@@ -95,7 +95,8 @@ namespace PROG1180_NBD_APP.DesignBids
                     {
                         HtmlGenericControl td = new HtmlGenericControl();
                         td.TagName = "td";
-                        td.InnerHtml = r[fields[i]].ToString();
+                        td.Attributes["name"] = "fill";
+                        td.InnerText = r[fields[i]].ToString();
                         tr.Controls.Add(td);
                     }
 
@@ -129,7 +130,8 @@ namespace PROG1180_NBD_APP.DesignBids
                     {
                         HtmlGenericControl td = new HtmlGenericControl();
                         td.TagName = "td";
-                        td.InnerHtml = r[fields[i]].ToString();
+                        td.Attributes["name"] = "fill";
+                        td.InnerText = r[fields[i]].ToString();
                         tr.Controls.Add(td);
                     }
                     // add row to table
