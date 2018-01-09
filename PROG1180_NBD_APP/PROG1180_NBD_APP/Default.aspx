@@ -10,7 +10,7 @@
 
             <asp:LoginView ID="RoleCards" runat="server" ViewStateMode="Disabled">
                 <RoleGroups>
-                    <asp:RoleGroup Roles="Owner">
+                    <asp:RoleGroup Roles="Owner, Manager">
                         <ContentTemplate>
 
                             <!---------------------Title---------------------------------------------------------------------------------------->
@@ -300,6 +300,12 @@
                         </ContentTemplate>
                     </asp:RoleGroup>
                 </RoleGroups>
+                <LoggedInTemplate>
+                    <div class="col-md-12">
+                        <!--Featured image -->
+                        <img src="../Images/NBDLogo.png" class="img-fluid">
+                    </div>
+                </LoggedInTemplate>
                 <AnonymousTemplate>
                     <div class="col-md-12">
                         <!--Featured image -->

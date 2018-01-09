@@ -22,40 +22,40 @@
     <asp:ContentPlaceHolder ID="headPlaceHolder" runat="server" />
 
     <style type="text/css">
-        .hidden{display:none}
+        .hidden {
+            display: none
+        }
 
-        .req, .reqFieldMsg{color: red}
+        .req, .reqFieldMsg {
+            color: red
+        }
     </style>
 
     <script type="text/javascript">
 
         // clears/resets form controls
-        function clearForm()
-        {
+        function clearForm() {
             $("input[type='text'").val("");
             $("select").val("0");
             hideValidationMsgs();
         }
-        
+
 
         // validates form controls
-        function validate()
-        {
+        function validate() {
             hideValidationMsgs();
 
             var $this;
 
             // check required fields
-            $(".required").each(function ()
-            {
+            $(".required").each(function () {
                 $this = $(this);
-                if ($this.val() == "")
-                {
-                     // indicate required field
+                if ($this.val() == "") {
+                    // indicate required field
                     showMsg = true;
                     $this.after("<span class='req'>*</span>");
                 }
-                    
+
             });
             // show "* Required Fields" message if necessary
             $(".tbl").each(function () {
@@ -65,16 +65,14 @@
             });
 
             // validate phone numbers (10 digits, any format)
-            $(".phoneNumber").each(function ()
-            {
+            $(".phoneNumber").each(function () {
                 $this = $(this);
                 if ($this.val() != "" && !/^\d{10}$/.test($this.val()))
                     addValidationMessage($this, "Please enter a valid 10-digit phone number.");
             });
 
             // validate numeric values
-            $("input[type='number']").each(function ()
-            {
+            $("input[type='number']").each(function () {
                 $this = $(this);
                 if ($this.val() != "" && $this.val() < 0)
                     addValidationMessage($this, "Value must be positive.");
@@ -82,13 +80,11 @@
         }
 
         // adds a validation message to the control with the specified message text
-        function addValidationMessage(control, messageText)
-        {
+        function addValidationMessage(control, messageText) {
             control.after("<p class='req'>* " + messageText + "</p>");
         }
 
-        function hideValidationMsgs()
-        {
+        function hideValidationMsgs() {
             $(".reqFieldMsg").addClass("hidden");
             $(".req").remove();
         }
@@ -105,7 +101,7 @@
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
                 <%--<asp:ScriptReference Name="bootstrap" />--%>
-                <asp:ScriptReference path="~/Scripts/bootstrap.js" />
+                <asp:ScriptReference Path="~/Scripts/bootstrap.js" />
                 <asp:ScriptReference Name="respond" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
@@ -146,6 +142,10 @@
                         <!-- Links -->
                         <ul class="navbar-nav mr-auto">
 
+                            <asp:LoginView ID="navClients" runat="server">
+                                <RoleGroups>
+                                    <asp:RoleGroup Roles="SalesAssoc">
+                                        <ContentTemplate>
                                             <li class='nav-item dropdown'>
                                                 <a class='nav-link dropdown-toggle' id='navbarClients' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Clients</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
@@ -153,7 +153,15 @@
                                                     <a class='dropdown-item' href='../Clients/ClientCreate'>Create Client</a>
                                                 </div>
                                             </li>
-                                      
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                            </asp:LoginView>
+
+                            <asp:LoginView ID="navBids" runat="server">
+                                <RoleGroups>
+                                    <asp:RoleGroup Roles="Designer">
+                                        <ContentTemplate>
                                             <li class='nav-item dropdown'>
                                                 <a class='nav-link dropdown-toggle' id='navbarDesignBid' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Bids</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
@@ -161,41 +169,91 @@
                                                     <a class='dropdown-item' href='../DesignBids/DesignBidCreate'>Create Bid</a>
                                                 </div>
                                             </li>
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                            </asp:LoginView>
 
+                             <asp:LoginView ID="navBudgets" runat="server">
+                                 <RoleGroups>
+                                     <asp:RoleGroup Roles="Designer">
+                                         <ContentTemplate>
                                              <li class='nav-item dropdown'>
-                                                <a class='nav-link dropdown-toggle' id='navbarDesignBudget' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Budgets</a>
-                                                <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
-                                                    <a class='dropdown-item' href='../DesignBudgets/DesignBudgets'>Budgets</a>
-                                                    <a class='dropdown-item' href='../DesignBudgets/DesignBudgetCreate'>Create Budget</a>
-                                                </div>
-                                            </li>
+                                                 <a class='nav-link dropdown-toggle' id='navbarDesignBudget' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Budgets</a>
+                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
+                                                     <a class='dropdown-item' href='../DesignBudgets/DesignBudgets'>Budgets</a>
+                                                     <a class='dropdown-item' href='../DesignBudgets/DesignBudgetCreate'>Create Budget</a>
+                                                 </div>
+                                             </li>
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                            </asp:LoginView>
 
-                                             <li class='nav-item dropdown'>
+
+                            <asp:LoginView ID="navProdPlans" runat="server">
+                                <RoleGroups>
+                                    <asp:RoleGroup Roles="Manager">
+                                        <ContentTemplate>
+                                            <li class='nav-item dropdown'>
                                                 <a class='nav-link dropdown-toggle' id='navbarProductionPlan' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Production Plans</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../ProductionPlans/ProductionPlans'>Production Plans</a>
-                                                    <a class='dropdown-item' href='../Clients/CreateClient'>Create Plan</a>
+                                                    <a class='dropdown-item' href='../ProductionPlans/ProductionPlanCreate'>Create Plan</a>
                                                 </div>
                                             </li>
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                            </asp:LoginView>
 
+                             <asp:LoginView ID="navDailies" runat="server">
+                                <RoleGroups>
+                                    <asp:RoleGroup Roles="Manager, Designer">
+                                        <ContentTemplate>
                                             <li class='nav-item dropdown'>
                                                 <a class='nav-link dropdown-toggle' id='navbarDailyWorkReports' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Daily Work Reports</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReports'>Designer Daily Work Reports</a>
                                                     <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReportCreate'>Create DDWP</a>
                                                     <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReports'>Production Daily Work Report</a>
-                                                    <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReports'>Create PDWP</a>
+                                                    <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReportCreate'>Create PDWP</a>
                                                 </div>
                                             </li>
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                            </asp:LoginView>
 
-                                              <li class='nav-item dropdown'>
+                             <asp:LoginView ID="navReports" runat="server">
+                                <RoleGroups>
+                                    <asp:RoleGroup Roles="Owner">
+                                        <ContentTemplate>
+                                            <li class='nav-item dropdown'>
                                                 <a class='nav-link dropdown-toggle' id='navbarReports' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Reports</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../Reports/ProjectAdminReport'>Project Admin Report</a>
                                                 </div>
                                             </li>
+                                        </ContentTemplate>
+                                    </asp:RoleGroup>
+                                </RoleGroups>
+                            </asp:LoginView>
 
- 
+
+
+
+
+                            
+
+                            
+
+
+                            
+
+                           
+
+
                         </ul>
                         <!-------------------------- USER LOGIN NAV ----------------------------->
                         <ul class="navbar-nav ml-auto">
