@@ -11,6 +11,7 @@
                     $(this).replaceWith($("<td class='px-4'><input type='text' class='input-alternate' placeholder='"+this.innerText+"'></td> "));
                 });
                 $(this).replaceWith("<a href='DesignBids' class='btn btn-primary py-2'>Save </a>");
+                $("#title").replaceWith("<h4>Edit Design Bid<h4>");
             });
 
         });
@@ -32,7 +33,7 @@
                     <!--Panel-->
                     <div class="card">
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            <h4>Design Bid</h4>
+                            <h4 id="title">Design Bid</h4>
                         </div>
                         <div class="row text-center">
 
