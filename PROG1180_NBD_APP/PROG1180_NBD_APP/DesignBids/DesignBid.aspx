@@ -44,7 +44,7 @@
                                 <a href="DesignBid" class="btn btn-primary py-2"">Delete</a>
                             </div>
                             <div class="col-lg-4">
-                                <div class="btn btn-primary active py-2"" data-toggle="buttons">
+                                <div class="btn btn-primary py-2"" data-toggle="buttons">
                                     Approved
                                 </div>
                             </div>
