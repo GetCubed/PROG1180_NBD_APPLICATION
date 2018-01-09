@@ -194,7 +194,8 @@ FROM            CLIENT</CommandText>
                                WHERE        (ID = PROJECT.designerID)) AS designer,
                              (SELECT        wrkFName + ' ' + wrkLName AS Expr1
                                FROM            WORKER AS WORKER_1
-                               WHERE        (ID = PROJECT.salesAssocID)) AS salesAssoc, CONVERT(VARCHAR(12), CONVERT(datetime, PROJECT.projBidDate), 107) AS bidDate, '$' + CONVERT(nvarchar, PROJECT.projEstCost) AS bidAmount
+                               WHERE        (ID = PROJECT.salesAssocID)) AS salesAssoc, CONVERT(VARCHAR(12), CONVERT(datetime, PROJECT.projBidDate), 107) AS displayDate, PROJECT.projBidDate AS bidDate, '$' + CONVERT(nvarchar, 
+                         PROJECT.projEstCost) AS displayAmount, PROJECT.projEstCost AS bidAmount
 FROM            PROJECT INNER JOIN
                          CLIENT ON PROJECT.clientID = CLIENT.ID
 ORDER BY CLIENT.cliName</CommandText>
@@ -210,7 +211,47 @@ ORDER BY CLIENT.cliName</CommandText>
               <Mapping SourceColumn="bidAmount" DataSetColumn="bidAmount" />
               <Mapping SourceColumn="designer" DataSetColumn="designer" />
               <Mapping SourceColumn="salesAssoc" DataSetColumn="salesAssoc" />
+              <Mapping SourceColumn="displayDate" DataSetColumn="displayDate" />
               <Mapping SourceColumn="bidDate" DataSetColumn="bidDate" />
+              <Mapping SourceColumn="displayAmount" DataSetColumn="displayAmount" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DesignerLookupTableAdapter" GeneratorDataComponentClassName="DesignerLookupTableAdapter" Name="DesignerLookup" UserDataComponentName="DesignerLookupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        WORKER.wrkFName + ' ' + WORKER.wrkLName AS designer
+FROM            WORKER INNER JOIN
+                         WORKER_TYPE ON WORKER.wrkTypeID = WORKER_TYPE.ID
+WHERE        (WORKER_TYPE.wrkTypeDesc = 'Designer')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="designer" DataSetColumn="designer" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SalesAssocLookupTableAdapter" GeneratorDataComponentClassName="SalesAssocLookupTableAdapter" Name="SalesAssocLookup" UserDataComponentName="SalesAssocLookupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        WORKER.wrkFName + ' ' + WORKER.wrkLName AS salesAssoc
+FROM            WORKER INNER JOIN
+                         WORKER_TYPE ON WORKER.wrkTypeID = WORKER_TYPE.ID
+WHERE        (WORKER_TYPE.wrkTypeDesc = 'Sales Associate')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="salesAssoc" DataSetColumn="salesAssoc" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -471,10 +512,44 @@ ORDER BY CLIENT.cliName</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="bidDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnbidDate" msprop:Generator_ColumnPropNameInRow="bidDate" msprop:Generator_ColumnPropNameInTable="bidDateColumn" msprop:Generator_UserColumnName="bidDate" minOccurs="0">
+              <xs:element name="displayDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndisplayDate" msprop:Generator_ColumnPropNameInRow="displayDate" msprop:Generator_ColumnPropNameInTable="displayDateColumn" msprop:Generator_UserColumnName="displayDate" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bidDate" msprop:Generator_ColumnVarNameInTable="columnbidDate" msprop:Generator_ColumnPropNameInRow="bidDate" msprop:Generator_ColumnPropNameInTable="bidDateColumn" msprop:Generator_UserColumnName="bidDate" type="xs:dateTime" />
+              <xs:element name="displayAmount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndisplayAmount" msprop:Generator_ColumnPropNameInRow="displayAmount" msprop:Generator_ColumnPropNameInTable="displayAmountColumn" msprop:Generator_UserColumnName="displayAmount" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="31" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DesignerLookup" msprop:Generator_TableClassName="DesignerLookupDataTable" msprop:Generator_TableVarName="tableDesignerLookup" msprop:Generator_RowChangedName="DesignerLookupRowChanged" msprop:Generator_TablePropName="DesignerLookup" msprop:Generator_RowDeletingName="DesignerLookupRowDeleting" msprop:Generator_RowChangingName="DesignerLookupRowChanging" msprop:Generator_RowEvHandlerName="DesignerLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="DesignerLookupRowDeleted" msprop:Generator_RowClassName="DesignerLookupRow" msprop:Generator_UserTableName="DesignerLookup" msprop:Generator_RowEvArgName="DesignerLookupRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="designer" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndesigner" msprop:Generator_ColumnPropNameInRow="designer" msprop:Generator_ColumnPropNameInTable="designerColumn" msprop:Generator_UserColumnName="designer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="61" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SalesAssocLookup" msprop:Generator_TableClassName="SalesAssocLookupDataTable" msprop:Generator_TableVarName="tableSalesAssocLookup" msprop:Generator_RowChangedName="SalesAssocLookupRowChanged" msprop:Generator_TablePropName="SalesAssocLookup" msprop:Generator_RowDeletingName="SalesAssocLookupRowDeleting" msprop:Generator_RowChangingName="SalesAssocLookupRowChanging" msprop:Generator_RowEvHandlerName="SalesAssocLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesAssocLookupRowDeleted" msprop:Generator_RowClassName="SalesAssocLookupRow" msprop:Generator_UserTableName="SalesAssocLookup" msprop:Generator_RowEvArgName="SalesAssocLookupRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="salesAssoc" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsalesAssoc" msprop:Generator_ColumnPropNameInRow="salesAssoc" msprop:Generator_ColumnPropNameInTable="salesAssocColumn" msprop:Generator_UserColumnName="salesAssoc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="61" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
