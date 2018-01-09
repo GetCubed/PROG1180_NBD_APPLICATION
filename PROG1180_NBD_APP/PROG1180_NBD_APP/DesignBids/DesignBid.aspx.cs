@@ -59,11 +59,11 @@ namespace PROG1180_NBD_APP.DesignBids
             if (project != null)
             {
                 // project info   
-                tdBidDate.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["bidDate"].ToString() + " '>" : project["bidDate"].ToString();
-                tdBeginDate.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["startDate"].ToString() + " '>" : project["startDate"].ToString();
-                tdEndDate.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["endDate"].ToString() + " '>" : project["endDate"].ToString();
-                tdProjectSite.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["projSite"].ToString() + " '>" : project["projSite"].ToString();
-                tdBidAmount.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + "$" + project["projEstCost"].ToString() + " '>" : "$" + project["projEstCost"].ToString();
+                tdBidDate.InnerHtml = project["bidDate"].ToString();
+                tdBeginDate.InnerHtml =  project["startDate"].ToString();
+                tdEndDate.InnerHtml =  project["endDate"].ToString();
+                tdProjectSite.InnerHtml =  project["projSite"].ToString();
+                tdBidAmount.InnerHtml =  "$" + project["projEstCost"].ToString();
 
 
                 // client info
