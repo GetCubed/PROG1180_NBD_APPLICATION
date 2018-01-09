@@ -2,6 +2,23 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#btnEdit").click(function () {
+                $("[name='fill']").each(function () {
+                    $(this).replaceWith($("<td class='px-4'><input type='text' class='input-alternate' placeholder='"+this.innerText+"'></td> "));
+                });
+                $(this).replaceWith("<a href='DesignBids' class='btn btn-primary py-2'>Save </a>");
+            });
+
+        });
+    </script>
+
+
+
+
     <main class="mt-5">
 
         <div class="container">
@@ -20,7 +37,7 @@
                         <div class="row text-center">
 
                             <div class="col-lg-4">
-                                <a href="DesignBid" class="btn btn-primary py-2">Edit </a>
+                                <a class="btn btn-primary py-2" id="btnEdit">Edit </a>
                             </div>
                             <div class="col-lg-4">
                                 <a href="DesignBid" class="btn btn-primary py-2"">Delete</a>
@@ -54,11 +71,11 @@
                                     <table class="table">
                                         <tr>
                                             <th>Client Name:</th>
-                                            <td runat="server" id="tdClientName"></td>
+                                            <td name="fill" runat="server" id="tdClientName"></td>
                                         </tr>
                                         <tr>
                                             <th>Address:</th>
-                                            <td runat="server" id="tdClientAddress"></td>
+                                            <td name="fill" runat="server" id="tdClientAddress"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -67,11 +84,11 @@
                                     <table class="table">
                                         <tr>
                                             <th>Contact:</th>
-                                            <td runat="server" id="tdClientContact"></td>
+                                            <td name="fill" runat="server" id="tdClientContact"></td>
                                         </tr>
                                         <tr>
                                             <th>Phone:</th>
-                                            <td runat="server" id="tdClientPhone"></td>
+                                            <td name="fill" runat="server" id="tdClientPhone"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -98,7 +115,7 @@
                                     <table class="table">
                                         <tr>
                                             <th>Sales Assoc:</th>
-                                            <td runat="server" id="tdSalesAssoc"></td>
+                                            <td name="fill" runat="server" id="tdSalesAssoc"></td>
                                             
                                         </tr>
                                     </table>
@@ -108,7 +125,7 @@
                                     <table class="table">
                                         <tr>
                                             <th>Designer:</th>
-                                            <td runat="server" id="tdDesigner"></td>
+                                            <td name="fill" runat="server" id="tdDesigner"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -135,15 +152,15 @@
                                     <table class="table">
                                         <tr>
                                             <th>Bid Date:</th>
-                                            <td runat="server" id="tdBidDate"></td>
+                                            <td name="fill" runat="server" id="tdBidDate"></td>
                                         </tr>
                                         <tr>
                                             <th>Est. Begin Date:</th>
-                                            <td runat="server" id="tdBeginDate"></td>
+                                            <td name="fill" runat="server" id="tdBeginDate"></td>
                                         </tr>
                                         <tr>
                                             <th>Est. Compl. Date:</th>
-                                            <td runat="server" id="tdEndDate"></td>
+                                            <td name="fill" runat="server" id="tdEndDate"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -152,11 +169,11 @@
                                     <table class="table">
                                         <tr>
                                             <th>Project Site:</th>
-                                            <td runat="server" id="tdProjectSite"></td>
+                                            <td name="fill" runat="server" id="tdProjectSite"></td>
                                         </tr>
                                         <tr>
                                             <th>Bid Amount:</th>
-                                            <td runat="server" id="tdBidAmount"></td>
+                                            <td name="fill" runat="server" id="tdBidAmount"></td>
                                         </tr>
                                     </table>
                                 </div>
