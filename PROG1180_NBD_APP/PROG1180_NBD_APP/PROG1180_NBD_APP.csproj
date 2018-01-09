@@ -235,8 +235,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\designBid.png" />
+    <Content Include="Images\designBudget.png" />
     <Content Include="Images\NBDLogo.png" />
     <Content Include="Images\NBDLogoSmall.png" />
+    <Content Include="Images\productionPlan.png" />
     <Content Include="ProductionPlans\ProductionPlan.aspx" />
     <Content Include="ProductionPlans\ProductionPlanCreate.aspx" />
     <Content Include="ProductionPlans\ProductionPlans.aspx" />
