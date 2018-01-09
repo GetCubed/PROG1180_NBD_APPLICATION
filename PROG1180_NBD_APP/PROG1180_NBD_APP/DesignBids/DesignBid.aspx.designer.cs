@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PROG1180_NBD_APP.DesignBid {
+namespace PROG1180_NBD_APP.DesignBids {
     
     
     public partial class DesignBid {

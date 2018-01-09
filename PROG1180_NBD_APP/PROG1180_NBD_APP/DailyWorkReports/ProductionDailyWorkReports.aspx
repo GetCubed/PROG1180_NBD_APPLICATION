@@ -1,4 +1,4 @@
-﻿  <%@ Page Title="Production Daily Work Reports" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductionDailyWorkReports.aspx.cs" Inherits="PROG1180_NBD_APP.DailyWorkReports.ProductionDailyWorkReports" %>
+﻿<%@ Page Title="Production Daily Work Reports" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductionDailyWorkReports.aspx.cs" Inherits="PROG1180_NBD_APP.DailyWorkReports.ProductionDailyWorkReports" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -17,7 +17,7 @@
 
                         <!--Card header-->
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            <h4>Production Daily Work Report</h4>
+                            <h4>Production Daily Work Reports</h4>
                         </div>
                         <!--/Card header-->
 
@@ -30,43 +30,38 @@
                                 <table class="table ">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th class="th-lg">First column</th>
-                                            <th class="th-lg">Second column</th>
-                                            <th class="th-lg">Third column</th>
-                                            <th class="th-lg">Fourth column</th>
-                                            <th class="th-lg">Fifth column</th>
-                                            <th class="th-lg">Sixth column</th>
+                                            <th>Lead Worker</th>
+                                            <th>Date</th>
+                                            <th>Project</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
+                                            <td>Monica Goce</td>
+                                            <td>6/16/2016</td>
+                                            <td>LS Mall</td>
+                                            <td><a href='ProductionDailyWorkReport' class='btn btn-primary py-1'>View</a></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">2</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
+                                            <td>Monica Goce</td>
+                                            <td>6/17/2016</td>
+                                            <td>LS Mall</td>
+                                            <td><a href='ProductionDailyWorkReport' class='btn btn-primary py-1'>View</a></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">3</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
+                                            <td>Monica Goce</td>
+                                            <td>6/18/2016</td>
+                                            <td>LS Mall</td>
+                                            <td><a href='ProductionDailyWorkReport' class='btn btn-primary py-1'>View</a></td>
                                         </tr>
+                                        <tr>
+                                            <td>Monica Goce</td>
+                                            <td>6/18/2016</td>
+                                            <td>LS Mall</td>
+                                            <td><a href='ProductionDailyWorkReport' class='btn btn-primary py-1'>View</a></td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -77,12 +72,10 @@
                     </div>
                     <!--/.Card-->
 
-
                 </div>
 
-
             </div>
-            <a href="ProductionDailyWorkReport" class="btn btn-primary">PDWR</a>
+
         </div>
     </main>
     <!--Main layout-->

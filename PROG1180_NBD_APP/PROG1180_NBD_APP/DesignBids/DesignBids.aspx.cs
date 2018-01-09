@@ -13,7 +13,7 @@ using System.Web.UI.WebControls;
 
 namespace PROG1180_NBD_APP.DesignBid
 {
-    public partial class DesignBids : System.Web.UI.Page
+    public partial class DesignBids : Page
     {
         // data reference
         private static NBD_DataSet dsNBD;
@@ -37,12 +37,26 @@ namespace PROG1180_NBD_APP.DesignBid
         {
             if (dsNBD.BidLookup.Count > 0)
             {
-                // select and display all Clients
+                // select and display all Bids
                 rows = dsNBD.BidLookup.Select();
                 DisplayBids();
             }
         }
 
+        protected void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (dsNBD.BidLookup.Count > 0)
+            {
+                // clear the existing results
+                tboDesignBids.Controls.Clear();
+
+                // select and display a filtered list of Bids
+                rows = dsNBD.BidLookup.Select(GetBidCriteria());
+                DisplayBids();
+            }
+        }
+
+        // displays the list of bids
         private void DisplayBids()
         {
             if (rows.Length > 0)
@@ -54,7 +68,7 @@ namespace PROG1180_NBD_APP.DesignBid
                     HtmlGenericControl tr = new HtmlGenericControl();
                     tr.TagName = "tr";
 
-                    string[] fields = new string[] { "cliName", "bidDate", "bidAmount", "designerID", "salesAssocID" };// the fields to be displayed
+                    string[] fields = new string[] { "cliName", "displayDate", "displayAmount", "designer", "salesAssoc" };// the fields to be displayed
 
                     // create a new cell for each display field in the row
                     for (int i = 0; i < fields.Length; i++)
@@ -74,6 +88,48 @@ namespace PROG1180_NBD_APP.DesignBid
                     tboDesignBids.Controls.Add(tr);
                 }
             }
+            else // display status message
+                tboDesignBids.InnerHtml = "<td class='text-danger'>No Results</td>";
+        }
+
+        // builds and returns a WHERE clause string for selecting Bids
+        // based on the filters specified by the user
+        private string GetBidCriteria()
+        {
+            string criteria = "";
+            // Client Name (contains)
+            if (txtClientName.Text.Length > 0)
+                criteria = "cliName LIKE '*" + txtClientName.Text + "*'";
+            // minimum Bid Date
+            if (txtMinDate.Text.Length > 0)
+                criteria += And(criteria) + "bidDate >= '" + txtMinDate.Text + "'";
+            // maximum Bid Date
+            if (txtMaxDate.Text.Length > 0)
+                criteria += And(criteria) + "bidDate <= '" + txtMaxDate.Text + "'";
+            // designer
+            if (ddlDesigner.SelectedValue != "0")
+                criteria += And(criteria) + "designer = '" + ddlDesigner.SelectedValue + "'";
+            // sales associate
+            if (ddlSalesAssoc.SelectedValue != "0")
+                criteria += And(criteria) + "salesAssoc = '" + ddlSalesAssoc.SelectedValue + "'";
+            return criteria;
+        }
+
+        // returns " AND " if the argument string's length is > 0 -- otherwise returns ""
+        // useful for building a WHERE clause with potentially many conditions
+        private string And(string s)
+        {
+            return s.Length > 0 ? " AND " : "";
+        }
+
+        // clears all filters
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            txtClientName.Text = "";
+            txtMinDate.Text = "";
+            txtMaxDate.Text = "";
+            ddlDesigner.SelectedValue = "0";
+            ddlSalesAssoc.SelectedValue = "0";
         }
     }
 }

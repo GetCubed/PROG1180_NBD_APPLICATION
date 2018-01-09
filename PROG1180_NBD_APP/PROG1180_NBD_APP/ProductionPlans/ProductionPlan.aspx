@@ -1,6 +1,21 @@
 ﻿<%@ Page Title="Production Plan" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductionPlan.aspx.cs" Inherits="PROG1180_NBD_APP.ProductionPlans.ProductionPlan" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+     <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#btnEdit").click(function () {
+                $("td").each(function () {
+                    $(this).replaceWith($("<td class='px-4'><input type='text' class='input-alternate' placeholder='"+this.innerText+"'></td> "));
+                });
+                $(this).replaceWith("<a href='ProductionPlan' class='btn btn-primary py-2'>Save </a>");
+                $("#title").replaceWith("<h4>Edit Production Plan<h4>");
+            });
+
+        });
+    </script>
+
     <main class="mt-5">
 
         <div class="container">
@@ -14,15 +29,31 @@
                     <!--Panel-->
                     <div class="card">
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            <h4>Production Plan</h4>
+                            <h4 id="title">Production Plan</h4>
                         </div>
+                        <div class="row text-center">
+
+                            <div class="col-lg-4">
+                                <a class="btn btn-primary py-2" id="btnEdit">Edit </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="ProductionPlans" class="btn btn-primary py-2"">Delete</a>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="btn btn-primary py-2"" data-toggle="buttons">
+                                    Approved
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <!--/.Panel-->
                 </div>
             </div>
 
 
-            <!--Client Info-------------------------------------------------------------------------------------------------------->
+            <!-----Project Bid Information------------------------------------------------------------------------------------------------------->
             <div class="row mb-3">
                 <!--Grid column-->
                 <div class="col-md-12">
@@ -34,12 +65,12 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Client Name</td>
-                                            <td>London Sq Mall</td>
+                                            <th>Project</th>
+                                            <td>LS Mall</td>
                                         </tr>
                                         <tr>
-                                            <td>Client Address</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <th>Begin Date</th>
+                                            <td>June 16, 2016</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -47,12 +78,12 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Contact</td>
-                                            <td>Amy Benson</td>
+                                            <th>Project Site</th>
+                                            <td>Main Entrance</td>
                                         </tr>
                                         <tr>
-                                            <td>Phone</td>
-                                            <td>(408)843-5603</td>
+                                            <th>Bid Amount</th>
+                                            <td>$7651</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -78,12 +109,12 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Client Name</td>
-                                            <td>London Sq Mall</td>
+                                            <th>Sales Assoc</th>
+                                            <td>Rob Reinhardt</td>
                                         </tr>
                                         <tr>
-                                            <td>Client Address</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <th>Designer</th>
+                                            <td>Tamara Bakken</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -91,13 +122,10 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Contact</td>
-                                            <td>Amy Benson</td>
+                                            <th>Production</th>
+                                            <td>Sue Kaufman, Monica Goce, Bert Swenson</td>
                                         </tr>
-                                        <tr>
-                                            <td>Phone</td>
-                                            <td>(408)843-5603</td>
-                                        </tr>
+ 
                                     </table>
                                 </div>
 
@@ -124,14 +152,31 @@
                                 <div class="col-lg-12">
                                     <table class="table">
                                         <tr>
-                                            <th>Task</th>
-                                            <th>Date</th>
-                                            <th>Hours</th>
+                                            <th>QNTY</th>
+                                            <th>Code</th>
+                                            <th>Size</th>
+                                            <th>Net/Unit</th>
+                                            <th>Est. Cost</th>
+                                            <th>Deliver</th>
+                                            <th>Install</th>
                                         </tr>
                                         <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>3</td>
+                                            <td>lacco</td>
+                                            <td>15 gal</td>
+                                            <td>450</td>
+                                            <td>1350</td>
+                                            <td>6/16@8am</td>
+                                            <td>6/16</td>
+                                        </tr>
+                                         <tr>
+                                            <td>3</td>
+                                            <td>lacco</td>
+                                            <td>15 gal</td>
+                                            <td>450</td>
+                                            <td>1350</td>
+                                            <td>6/16@8am</td>
+                                            <td>6/16</td>
                                         </tr>
 
                                     </table>
@@ -145,24 +190,31 @@
                                 <div class="col-lg-12">
                                     <table class="table">
                                         <tr>
-                                            <th>Task</th>
-                                            <th>Date</th>
-                                            <th>Hours</th>
+                                            <th>QNTY</th>
+                                            <th>Code</th>
+                                            <th>Size</th>
+                                            <th>Net/Unit</th>
+                                            <th>Est. Cost</th>
+                                            <th>Deliver</th>
+                                            <th>Install</th>
                                         </tr>
                                         <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>3</td>
+                                            <td>lacco</td>
+                                            <td>15 gal</td>
+                                            <td>450</td>
+                                            <td>1350</td>
+                                            <td>6/16@8am</td>
+                                            <td>6/16</td>
                                         </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                         <tr>
+                                            <td>3</td>
+                                            <td>lacco</td>
+                                            <td>15 gal</td>
+                                            <td>450</td>
+                                            <td>1350</td>
+                                            <td>6/16@8am</td>
+                                            <td>6/16</td>
                                         </tr>
 
                                     </table>
@@ -175,24 +227,31 @@
                                 <div class="col-lg-12">
                                     <table class="table">
                                         <tr>
-                                            <th>Task</th>
-                                            <th>Date</th>
-                                            <th>Hours</th>
+                                            <th>QNTY</th>
+                                            <th>Code</th>
+                                            <th>Size</th>
+                                            <th>Net/Unit</th>
+                                            <th>Est. Cost</th>
+                                            <th>Deliver</th>
+                                            <th>Install</th>
                                         </tr>
                                         <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>3</td>
+                                            <td>lacco</td>
+                                            <td>15 gal</td>
+                                            <td>450</td>
+                                            <td>1350</td>
+                                            <td>6/16@8am</td>
+                                            <td>6/16</td>
                                         </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                         <tr>
+                                            <td>3</td>
+                                            <td>lacco</td>
+                                            <td>15 gal</td>
+                                            <td>450</td>
+                                            <td>1350</td>
+                                            <td>6/16@8am</td>
+                                            <td>6/16</td>
                                         </tr>
 
                                     </table>
@@ -205,24 +264,31 @@
                                 <div class="col-lg-12">
                                     <table class="table">
                                         <tr>
-                                            <th>Task</th>
-                                            <th>Date</th>
-                                            <th>Hours</th>
+                                            <th>QNTY</th>
+                                            <th>Code</th>
+                                            <th>Size</th>
+                                            <th>Net/Unit</th>
+                                            <th>Est. Cost</th>
+                                            <th>Deliver</th>
+                                            <th>Install</th>
                                         </tr>
                                         <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>3</td>
+                                            <td>lacco</td>
+                                            <td>15 gal</td>
+                                            <td>450</td>
+                                            <td>1350</td>
+                                            <td>6/16@8am</td>
+                                            <td>6/16</td>
                                         </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                        </tr>
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                         <tr>
+                                            <td>3</td>
+                                            <td>lacco</td>
+                                            <td>15 gal</td>
+                                            <td>450</td>
+                                            <td>1350</td>
+                                            <td>6/16@8am</td>
+                                            <td>6/16</td>
                                         </tr>
 
                                     </table>
@@ -251,47 +317,44 @@
                                 <div class="col-lg-12">
                                     <table class="table">
                                         <tr>
-                                            <th>Task</th>
-                                            <th>Date</th>
+                                            <th>Desc</th>
                                             <th>Hours</th>
-                                            <th>Task</th>
-                                            <th>Date</th>
-                                            <th>Hours</th>
+                                            <th>Cost/Hr</th>
+                                            <th>Est. Cost</th>
+                                            <th>Time</th>
+                                            <th>Tasks</th>
                                         </tr>
                                         <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>Tamara</td>
+                                            <td>12</td>
+                                            <td>40</td>
+                                            <td>480</td>
+                                            <td>by 6/10</td>
+                                            <td>Bid Process</td>
                                         </tr>
-
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                         <tr>
+                                            <td>Tamara</td>
+                                            <td>12</td>
+                                            <td>40</td>
+                                            <td>480</td>
+                                            <td>by 6/10</td>
+                                            <td>Bid Process</td>
                                         </tr>
-
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                         <tr>
+                                            <td>Tamara</td>
+                                            <td>12</td>
+                                            <td>40</td>
+                                            <td>480</td>
+                                            <td>by 6/10</td>
+                                            <td>Bid Process</td>
                                         </tr>
-
-                                        <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                         <tr>
+                                            <td>Tamara</td>
+                                            <td>12</td>
+                                            <td>40</td>
+                                            <td>480</td>
+                                            <td>by 6/10</td>
+                                            <td>Bid Process</td>
                                         </tr>
 
                                     </table>
@@ -306,41 +369,47 @@
             </div>
             <!---Material Requirements-------------------------------------------------------------------------------------------------------->
 
-
-            <!--Client Info-------------------------------------------------------------------------------------------------------->
+            
+            <!--------total est designer hours/costs------------------------------------------------------------------------------------------------->
             <div class="row mb-3">
                 <!--Grid column-->
                 <div class="col-md-12">
                     <!--Panel-->
                     <div class="card card-body">
-                        <h5 class="card-title black-text">Project Bid Information</h5>
+                        <h6 class="card-title black-text">Total Est. Designer Hours/Costs</h6>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <table class="table">
                                         <tr>
-                                            <td>Client Name</td>
-                                            <td>London Sq Mall</td>
+                                            <th>Bid Process</th>
+                                            <td>12</td>
+                                            <td>$480</td>
                                         </tr>
                                         <tr>
-                                            <td>Client Address</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <th>Production</th>
+                                            <td>12</td>
+                                            <td>$480</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total Est. Prod. Labor Hours/Costs</th>
+                                            <td>12</td>
+                                            <td>$480</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total Est. Material Costs</th>
+                                            <td>12</td>
+                                            <td>$480</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total Est. Hours/Costs</th>
+                                            <td>12</td>
+                                            <td>$480</td>
                                         </tr>
                                     </table>
                                 </div>
 
-                                <div class="col-lg-6">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Contact</td>
-                                            <td>Amy Benson</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Phone</td>
-                                            <td>(408)843-5603</td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                
 
                             </div>
                         </div>

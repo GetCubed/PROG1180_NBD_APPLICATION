@@ -3,12 +3,28 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+     <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#btnEdit").click(function () {
+                $("td").each(function () {
+                    $(this).replaceWith($("<td class='px-4'><input type='text' class='input-alternate' placeholder='"+this.innerText+"'></td> "));
+                });
+                $(this).replaceWith("<a href='DesignBudget' class='btn btn-primary py-2'>Save </a>");
+                $("#title").replaceWith("<h4>Edit Design Budget<h4>");
+            });
+
+        });
+    </script>
+
+
     <main class="mt-5">
 
         <div class="container">
 
 
-            <!--Grid row--------------------------------------------------------------------------------------------------------->
+        <!--Grid row--------------------------------------------------------------------------------------------------------->
             <div class="row mb-3">
 
                 <!--Grid column-->
@@ -16,8 +32,24 @@
                     <!--Panel-->
                     <div class="card">
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            <h4>Design Budget</h4>
+                            <h4 id="title">Design Budget</h4>
                         </div>
+                        <div class="row text-center">
+
+                            <div class="col-lg-4">
+                                <a class="btn btn-primary py-2" id="btnEdit">Edit </a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="DesignBudgets" class="btn btn-primary py-2"">Delete</a>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="btn btn-primary py-2"" data-toggle="buttons">
+                                    Approved
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <!--/.Panel-->
                 </div>
@@ -38,12 +70,12 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Client Name</td>
-                                            <td>London Sq Mall</td>
+                                            <th>Client Name</th>
+                                            <td >London Sq Mall</td>
                                         </tr>
                                         <tr>
-                                            <td>Client Address</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <th>Client Address</th>
+                                            <td >123 Mall Drive, Scotts Valley</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -51,11 +83,11 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Contact</td>
+                                            <th>Contact</th>
                                             <td>Amy Benson</td>
                                         </tr>
                                         <tr>
-                                            <td>Phone</td>
+                                            <th>Phone</th>
                                             <td>(408)843-5603</td>
                                         </tr>
                                     </table>
@@ -70,7 +102,7 @@
             </div>
             <!--Grid row-->
 
-            <!--NBD STAFF-------------------------------------------------------------------------------------------------------->
+            <!------NBD STAFF-------------------------------------------------------------------------------------->
             <div class="row mb-3">
                 <!--Grid column-->
                 <div class="col-md-12">
@@ -82,12 +114,12 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Client Name</td>
-                                            <td>London Sq Mall</td>
+                                            <th>Client Name</th>
+                                            <td>Rob Reinhardt</td>
                                         </tr>
                                         <tr>
-                                            <td>Client Address</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <th>Phone</th>
+                                            <td>(289)123-1232</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -95,11 +127,11 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Contact</td>
-                                            <td>Amy Benson</td>
+                                            <th>Designer</th>
+                                            <td>Tamara Bakken</td>
                                         </tr>
                                         <tr>
-                                            <td>Phone</td>
+                                            <th>Phone</th>
                                             <td>(408)843-5603</td>
                                         </tr>
                                     </table>
@@ -126,12 +158,12 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Client Name</td>
-                                            <td>London Sq Mall</td>
+                                            <th>Budget Submitted</th>
+                                            <td>April 19, 2016</td>
                                         </tr>
                                         <tr>
-                                            <td>Client Address</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <th>Project Site</th>
+                                            <td>Main Entrance</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -139,11 +171,11 @@
                                 <div class="col-lg-6">
                                     <table class="table">
                                         <tr>
-                                            <td>Contact</td>
+                                            <th>Contact</th>
                                             <td>Amy Benson</td>
                                         </tr>
                                         <tr>
-                                            <td>Phone</td>
+                                            <th>Phone</th>
                                             <td>(408)843-5603</td>
                                         </tr>
                                     </table>
@@ -178,9 +210,9 @@
                                             <th>Hours</th>
                                         </tr>
                                         <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>Initial client Meeting</td>
+                                            <td>April 15</td>
+                                            <td>1</td>
                                         </tr>
 
                                     </table>
@@ -199,20 +231,21 @@
                                             <th>Hours</th>
                                         </tr>
                                         <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>Prepare Sketches</td>
+                                            <td>April 21</td>
+                                            <td>2</td>
                                         </tr>
                                         <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>Prepare Design Bid</td>
+                                            <td>April 21</td>
+                                            <td>2</td>
                                         </tr>
                                         <tr>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
-                                            <td>123 Mall Drive, Scotts Valley</td>
+                                            <td>Meet with Client</td>
+                                            <td>April 25</td>
+                                            <td>2</td>
                                         </tr>
+
 
                                     </table>
                                 </div>
@@ -223,10 +256,7 @@
                                 <div class="col-lg-12">
                                     <table class="table">
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td>12</td>
-
+                                            <td>7</td>
                                         </tr>
 
                                     </table>
@@ -234,7 +264,7 @@
                             </div>
 
 
-      
+
                             <div class="row mb-1">
                                 <div class="col-lg-12">
                                     <table class="table">
@@ -242,6 +272,11 @@
                                             <th>Submitted By</th>
                                             <th>Date</th>
                                         </tr>
+                                        <tr>
+                                            <td>Tamara Bakken</td>
+                                            <td>April 15, 2016</td>
+                                        </tr>
+
 
                                     </table>
                                 </div>
@@ -259,7 +294,7 @@
 
 
 
-           
+           </div>
     </main>
     <!--Main layout-->
 

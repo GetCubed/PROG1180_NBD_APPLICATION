@@ -195,6 +195,9 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="App_Data\NBD_SB.mdf" />
+    <Content Include="App_Data\NBD_SB_log.ldf">
+      <DependentUpon>NBD_SB.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\PROG1180_NBD_APP.mdf" />
     <Content Include="App_Data\PROG1180_NBD_APP_log.ldf">
       <DependentUpon>PROG1180_NBD_APP.mdf</DependentUpon>
@@ -214,13 +217,17 @@
     <Content Include="Content\SiteZ.css" />
     <None Include="DAL\Zcommands" />
     <Content Include="DailyWorkReports\DesignerDailyWorkReport.aspx" />
+    <Content Include="DailyWorkReports\DesignerDailyWorkReportCreate.aspx" />
     <Content Include="DailyWorkReports\DesignerDailyWorkReports.aspx" />
     <Content Include="DailyWorkReports\ProductionDailyWorkReport.aspx" />
+    <Content Include="DailyWorkReports\ProductionDailyWorkReportCreate.aspx" />
     <Content Include="DailyWorkReports\ProductionDailyWorkReports.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DesignBids\DesignBid.aspx" />
+    <Content Include="DesignBids\DesignBidCreate.aspx" />
     <Content Include="DesignBids\DesignBids.aspx" />
     <Content Include="DesignBudgets\DesignBudget.aspx" />
+    <Content Include="DesignBudgets\DesignBudgetCreate.aspx" />
     <Content Include="DesignBudgets\DesignBudgets.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -228,12 +235,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\designBid.png" />
+    <Content Include="Images\designBudget.png" />
     <Content Include="Images\NBDLogo.png" />
     <Content Include="Images\NBDLogoSmall.png" />
+    <Content Include="Images\productionPlan.png" />
     <Content Include="ProductionPlans\ProductionPlan.aspx" />
+    <Content Include="ProductionPlans\ProductionPlanCreate.aspx" />
     <Content Include="ProductionPlans\ProductionPlans.aspx" />
     <Content Include="Reports\ProjectAdminReport.aspx" />
-    <Content Include="Reports\ProjectAdminReports.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -480,6 +490,13 @@
     <Compile Include="DailyWorkReports\DesignerDailyWorkReport.aspx.designer.cs">
       <DependentUpon>DesignerDailyWorkReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DailyWorkReports\DesignerDailyWorkReportCreate.aspx.cs">
+      <DependentUpon>DesignerDailyWorkReportCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DailyWorkReports\DesignerDailyWorkReportCreate.aspx.designer.cs">
+      <DependentUpon>DesignerDailyWorkReportCreate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DailyWorkReports\DesignerDailyWorkReports.aspx.cs">
       <DependentUpon>DesignerDailyWorkReports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -493,6 +510,13 @@
     </Compile>
     <Compile Include="DailyWorkReports\ProductionDailyWorkReport.aspx.designer.cs">
       <DependentUpon>ProductionDailyWorkReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DailyWorkReports\ProductionDailyWorkReportCreate.aspx.cs">
+      <DependentUpon>ProductionDailyWorkReportCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DailyWorkReports\ProductionDailyWorkReportCreate.aspx.designer.cs">
+      <DependentUpon>ProductionDailyWorkReportCreate.aspx</DependentUpon>
     </Compile>
     <Compile Include="DailyWorkReports\ProductionDailyWorkReports.aspx.cs">
       <DependentUpon>ProductionDailyWorkReports.aspx</DependentUpon>
@@ -521,6 +545,13 @@
     <Compile Include="DesignBids\DesignBid.aspx.designer.cs">
       <DependentUpon>DesignBid.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DesignBids\DesignBidCreate.aspx.cs">
+      <DependentUpon>DesignBidCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBids\DesignBidCreate.aspx.designer.cs">
+      <DependentUpon>DesignBidCreate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DesignBids\DesignBids.aspx.cs">
       <DependentUpon>DesignBids.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -534,6 +565,13 @@
     </Compile>
     <Compile Include="DesignBudgets\DesignBudget.aspx.designer.cs">
       <DependentUpon>DesignBudget.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudgetCreate.aspx.cs">
+      <DependentUpon>DesignBudgetCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesignBudgets\DesignBudgetCreate.aspx.designer.cs">
+      <DependentUpon>DesignBudgetCreate.aspx</DependentUpon>
     </Compile>
     <Compile Include="DesignBudgets\DesignBudgets.aspx.cs">
       <DependentUpon>DesignBudgets.aspx</DependentUpon>
@@ -553,6 +591,13 @@
     <Compile Include="ProductionPlans\ProductionPlan.aspx.designer.cs">
       <DependentUpon>ProductionPlan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProductionPlans\ProductionPlanCreate.aspx.cs">
+      <DependentUpon>ProductionPlanCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductionPlans\ProductionPlanCreate.aspx.designer.cs">
+      <DependentUpon>ProductionPlanCreate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProductionPlans\ProductionPlans.aspx.cs">
       <DependentUpon>ProductionPlans.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -567,13 +612,6 @@
     </Compile>
     <Compile Include="Reports\ProjectAdminReport.aspx.designer.cs">
       <DependentUpon>ProjectAdminReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\ProjectAdminReports.aspx.cs">
-      <DependentUpon>ProjectAdminReports.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reports\ProjectAdminReports.aspx.designer.cs">
-      <DependentUpon>ProjectAdminReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

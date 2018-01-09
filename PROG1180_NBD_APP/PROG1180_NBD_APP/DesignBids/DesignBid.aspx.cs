@@ -12,7 +12,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-namespace PROG1180_NBD_APP.DesignBid
+namespace PROG1180_NBD_APP.DesignBids
 {
     public partial class DesignBid : Page
     {
@@ -59,11 +59,11 @@ namespace PROG1180_NBD_APP.DesignBid
             if (project != null)
             {
                 // project info   
-                tdBidDate.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["bidDate"].ToString() + " '>" : project["bidDate"].ToString();
-                tdBeginDate.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["startDate"].ToString() + " '>" : project["startDate"].ToString();
-                tdEndDate.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["endDate"].ToString() + " '>" : project["endDate"].ToString();
-                tdProjectSite.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + project["projSite"].ToString() + " '>" : project["projSite"].ToString();
-                tdBidAmount.InnerHtml = editStatus ? "<input type='text' class='input-alternate' placeholder=' " + "$" + project["projEstCost"].ToString() + " '>" : "$" + project["projEstCost"].ToString();
+                tdBidDate.InnerHtml = project["bidDate"].ToString();
+                tdBeginDate.InnerHtml =  project["startDate"].ToString();
+                tdEndDate.InnerHtml =  project["endDate"].ToString();
+                tdProjectSite.InnerHtml =  project["projSite"].ToString();
+                tdBidAmount.InnerHtml =  "$" + project["projEstCost"].ToString();
 
 
                 // client info
@@ -95,7 +95,8 @@ namespace PROG1180_NBD_APP.DesignBid
                     {
                         HtmlGenericControl td = new HtmlGenericControl();
                         td.TagName = "td";
-                        td.InnerHtml = r[fields[i]].ToString();
+                        td.Attributes["name"] = "fill";
+                        td.InnerText = r[fields[i]].ToString();
                         tr.Controls.Add(td);
                     }
 
@@ -129,7 +130,8 @@ namespace PROG1180_NBD_APP.DesignBid
                     {
                         HtmlGenericControl td = new HtmlGenericControl();
                         td.TagName = "td";
-                        td.InnerHtml = r[fields[i]].ToString();
+                        td.Attributes["name"] = "fill";
+                        td.InnerText = r[fields[i]].ToString();
                         tr.Controls.Add(td);
                     }
                     // add row to table
