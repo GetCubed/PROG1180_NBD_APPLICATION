@@ -106,7 +106,7 @@
                                                 <a class='nav-link dropdown-toggle' id='navbarProductionPlan' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Production Plans</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../ProductionPlans/ProductionPlans'>Production Plans</a>
-                                                    <a class='dropdown-item' href='../Clients/CreateClient'>Create Plan</a>
+                                                    <a class='dropdown-item' href='../ProductionPlans/ProductionPlanCreate'>Create Plan</a>
                                                 </div>
                                             </li>
 
