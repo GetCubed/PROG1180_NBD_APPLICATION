@@ -154,7 +154,8 @@ FROM            LABOUR_SUMMARY INNER JOIN
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT DISTINCT CITY.city, CLIENT.cityID
 FROM            CITY INNER JOIN
-                         CLIENT ON CITY.ID = CLIENT.cityID</CommandText>
+                         CLIENT ON CITY.ID = CLIENT.cityID
+ORDER BY CITY.city</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -172,7 +173,8 @@ FROM            CITY INNER JOIN
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT DISTINCT cliProvince
-FROM            CLIENT</CommandText>
+FROM            CLIENT
+ORDER BY cliProvince</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -225,7 +227,8 @@ ORDER BY CLIENT.cliName</CommandText>
                     <CommandText>SELECT        WORKER.wrkFName + ' ' + WORKER.wrkLName AS designer
 FROM            WORKER INNER JOIN
                          WORKER_TYPE ON WORKER.wrkTypeID = WORKER_TYPE.ID
-WHERE        (WORKER_TYPE.wrkTypeDesc = 'Designer')</CommandText>
+WHERE        (WORKER_TYPE.wrkTypeDesc = 'Designer')
+ORDER BY designer</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -244,7 +247,8 @@ WHERE        (WORKER_TYPE.wrkTypeDesc = 'Designer')</CommandText>
                     <CommandText>SELECT        WORKER.wrkFName + ' ' + WORKER.wrkLName AS salesAssoc
 FROM            WORKER INNER JOIN
                          WORKER_TYPE ON WORKER.wrkTypeID = WORKER_TYPE.ID
-WHERE        (WORKER_TYPE.wrkTypeDesc = 'Sales Associate')</CommandText>
+WHERE        (WORKER_TYPE.wrkTypeDesc = 'Sales Associate')
+ORDER BY salesAssoc</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -252,6 +256,85 @@ WHERE        (WORKER_TYPE.wrkTypeDesc = 'Sales Associate')</CommandText>
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="salesAssoc" DataSetColumn="salesAssoc" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClientLookupTableAdapter" GeneratorDataComponentClassName="ClientLookupTableAdapter" Name="ClientLookup" UserDataComponentName="ClientLookupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectName="dbo.CLIENT" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, cliName
+FROM            CLIENT
+ORDER BY cliName</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="cliName" DataSetColumn="cliName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PlantLookupTableAdapter" GeneratorDataComponentClassName="PlantLookupTableAdapter" Name="PlantLookup" UserDataComponentName="PlantLookupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectName="dbo.MATERIAL" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        matDesc, ID
+FROM            MATERIAL
+WHERE        (matType = 'Plant')
+ORDER BY matDesc</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="matDesc" DataSetColumn="matDesc" />
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PotteryLookupTableAdapter" GeneratorDataComponentClassName="PotteryLookupTableAdapter" Name="PotteryLookup" UserDataComponentName="PotteryLookupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectName="dbo.MATERIAL" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        matDesc, ID
+FROM            MATERIAL
+WHERE        (matType = 'Pottery')
+ORDER BY matDesc</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="matDesc" DataSetColumn="matDesc" />
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MaterialLookupTableAdapter" GeneratorDataComponentClassName="MaterialLookupTableAdapter" Name="MaterialLookup" UserDataComponentName="MaterialLookupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="NBD_ConnectionString (Settings)" DbObjectName="dbo.MATERIAL" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        matDesc, ID
+FROM            MATERIAL
+WHERE        (matType = 'Materials')
+ORDER BY matDesc</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="matDesc" DataSetColumn="matDesc" />
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -556,6 +639,62 @@ WHERE        (WORKER_TYPE.wrkTypeDesc = 'Sales Associate')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="ClientLookup" msprop:Generator_TableClassName="ClientLookupDataTable" msprop:Generator_TableVarName="tableClientLookup" msprop:Generator_TablePropName="ClientLookup" msprop:Generator_RowDeletingName="ClientLookupRowDeleting" msprop:Generator_RowChangingName="ClientLookupRowChanging" msprop:Generator_RowEvHandlerName="ClientLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientLookupRowDeleted" msprop:Generator_UserTableName="ClientLookup" msprop:Generator_RowChangedName="ClientLookupRowChanged" msprop:Generator_RowEvArgName="ClientLookupRowChangeEvent" msprop:Generator_RowClassName="ClientLookupRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="cliName" msprop:Generator_ColumnVarNameInTable="columncliName" msprop:Generator_ColumnPropNameInRow="cliName" msprop:Generator_ColumnPropNameInTable="cliNameColumn" msprop:Generator_UserColumnName="cliName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PlantLookup" msprop:Generator_TableClassName="PlantLookupDataTable" msprop:Generator_TableVarName="tablePlantLookup" msprop:Generator_TablePropName="PlantLookup" msprop:Generator_RowDeletingName="PlantLookupRowDeleting" msprop:Generator_RowChangingName="PlantLookupRowChanging" msprop:Generator_RowEvHandlerName="PlantLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="PlantLookupRowDeleted" msprop:Generator_UserTableName="PlantLookup" msprop:Generator_RowChangedName="PlantLookupRowChanged" msprop:Generator_RowEvArgName="PlantLookupRowChangeEvent" msprop:Generator_RowClassName="PlantLookupRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="matDesc" msprop:Generator_ColumnVarNameInTable="columnmatDesc" msprop:Generator_ColumnPropNameInRow="matDesc" msprop:Generator_ColumnPropNameInTable="matDescColumn" msprop:Generator_UserColumnName="matDesc">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PotteryLookup" msprop:Generator_TableClassName="PotteryLookupDataTable" msprop:Generator_TableVarName="tablePotteryLookup" msprop:Generator_TablePropName="PotteryLookup" msprop:Generator_RowDeletingName="PotteryLookupRowDeleting" msprop:Generator_RowChangingName="PotteryLookupRowChanging" msprop:Generator_RowEvHandlerName="PotteryLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="PotteryLookupRowDeleted" msprop:Generator_UserTableName="PotteryLookup" msprop:Generator_RowChangedName="PotteryLookupRowChanged" msprop:Generator_RowEvArgName="PotteryLookupRowChangeEvent" msprop:Generator_RowClassName="PotteryLookupRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="matDesc" msprop:Generator_ColumnVarNameInTable="columnmatDesc" msprop:Generator_ColumnPropNameInRow="matDesc" msprop:Generator_ColumnPropNameInTable="matDescColumn" msprop:Generator_UserColumnName="matDesc">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MaterialLookup" msprop:Generator_TableClassName="MaterialLookupDataTable" msprop:Generator_TableVarName="tableMaterialLookup" msprop:Generator_TablePropName="MaterialLookup" msprop:Generator_RowDeletingName="MaterialLookupRowDeleting" msprop:Generator_RowChangingName="MaterialLookupRowChanging" msprop:Generator_RowEvHandlerName="MaterialLookupRowChangeEventHandler" msprop:Generator_RowDeletedName="MaterialLookupRowDeleted" msprop:Generator_UserTableName="MaterialLookup" msprop:Generator_RowChangedName="MaterialLookupRowChanged" msprop:Generator_RowEvArgName="MaterialLookupRowChangeEvent" msprop:Generator_RowClassName="MaterialLookupRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="matDesc" msprop:Generator_ColumnVarNameInTable="columnmatDesc" msprop:Generator_ColumnPropNameInRow="matDesc" msprop:Generator_ColumnPropNameInTable="matDescColumn" msprop:Generator_UserColumnName="matDesc">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -578,13 +717,21 @@ WHERE        (WORKER_TYPE.wrkTypeDesc = 'Sales Associate')</CommandText>
       <xs:selector xpath=".//mstns:BidLookup" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
+    <xs:unique name="ClientLookup_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ClientLookup" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="PlantLookup_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PlantLookup" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="PotteryLookup_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PotteryLookup" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="MaterialLookup_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MaterialLookup" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
   </xs:element>
-  <xs:annotation>
-    <xs:appinfo>
-      <msdata:Relationship name="FK_PROJECT_CLIENT" msdata:parent="Client" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT" msprop:Generator_ParentPropName="ClientRow" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT" msprop:Generator_UserParentTable="Client" />
-      <msdata:Relationship name="FK_PROJECT_WORKER" msdata:parent="Worker" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="designerID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_WORKER" msprop:Generator_RelationVarName="relationFK_PROJECT_WORKER" msprop:Generator_UserParentTable="Worker" msprop:Generator_ParentPropName="WorkerRow" />
-      <msdata:Relationship name="FK_PROJECT_CLIENT1" msdata:parent="BidLookup" msdata:child="Project" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="Project" msprop:Generator_ChildPropName="GetProjectRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT1" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT1" msprop:Generator_UserParentTable="BidLookup" msprop:Generator_ParentPropName="BidLookupRow" />
-      <msdata:Relationship name="FK_PROJECT_CLIENT2" msdata:parent="BidLookup" msdata:child="ProjectLookup" msdata:parentkey="ID" msdata:childkey="clientID" msprop:Generator_UserChildTable="ProjectLookup" msprop:Generator_ChildPropName="GetProjectLookupRows" msprop:Generator_UserRelationName="FK_PROJECT_CLIENT2" msprop:Generator_RelationVarName="relationFK_PROJECT_CLIENT2" msprop:Generator_UserParentTable="BidLookup" msprop:Generator_ParentPropName="BidLookupRow" />
-    </xs:appinfo>
-  </xs:annotation>
 </xs:schema>

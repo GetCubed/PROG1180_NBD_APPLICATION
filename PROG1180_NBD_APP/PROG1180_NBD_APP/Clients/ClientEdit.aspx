@@ -6,7 +6,7 @@
         <div class="container">
 
 
-            <!--Grid row--------------------------------------------------------------------------------------------------------->
+                <!--Grid row--------------------------------------------------------------------------------------------------------->
             <div class="row mb-3">
 
                 <!--Grid column-->
@@ -16,6 +16,20 @@
                         <div class="card-header NBDColourDarkBlue white-text text-center">
                             <h4>Edit Client</h4>
                         </div>
+                        <div class="row text-center">
+
+                            <div class="col-lg-4">
+                                <a href="Clients" class="btn btn-primary py-2">Save</a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="Clients" class="btn btn-primary py-2">Cancel</a>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="btn btn-primary py-2">Clear All</div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <!--/.Panel-->
                 </div>
@@ -43,7 +57,7 @@
                                         </tr>
                                         <tr>
                                             <th>Client Address</th>
-                                            <td><input type="text" class="input-alternate" placeholder="123 Mall Drive, Scotts Valley"></td>
+                                            <td><input type="text" class="input-alternate" placeholder="12638 Mall Dr., St Catharines, Ontario L2R9N5"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -52,19 +66,17 @@
                                     <table class="table">
                                         <tr>
                                             <th>Contact</th>
-                                            <td><input type="text" class="input-alternate" placeholder="John Doe"></td>
+                                            <td><input type="text" class="input-alternate" placeholder="Amy Benson"></td>
                                         </tr>
                                         <tr>
                                             <th>Phone</th>                                        
-                                            <td><input type="text" class="input-alternate" placeholder="(408)843-5603"></td>
+                                            <td><input type="text" class="input-alternate" placeholder="(905) 687-9900"></td>
                                         </tr>
                                     </table>
                                 </div>
 
                             </div>
 
-                            <!-- --- submit button -->
-                            <a href="Clients.aspx" class="btn btn-primary">Save</a>
                         </div>
 
                     </div>

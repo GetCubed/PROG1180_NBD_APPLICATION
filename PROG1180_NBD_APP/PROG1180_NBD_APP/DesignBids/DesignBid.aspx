@@ -41,7 +41,7 @@
                                 <a class="btn btn-primary py-2" id="btnEdit">Edit </a>
                             </div>
                             <div class="col-lg-4">
-                                <a href="DesignBid" class="btn btn-primary py-2"">Delete</a>
+                                <a href="DesignBids" class="btn btn-primary py-2"">Delete</a>
                             </div>
                             <div class="col-lg-4">
                                 <div class="btn btn-primary py-2"" data-toggle="buttons">
