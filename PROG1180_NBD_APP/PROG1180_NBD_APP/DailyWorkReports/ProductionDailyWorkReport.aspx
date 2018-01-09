@@ -2,6 +2,21 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+     <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#btnEdit").click(function () {
+                $("td").each(function () {
+                    $(this).replaceWith($("<td class='px-4'><input type='text' class='input-alternate' placeholder='"+this.innerText+"'></td> "));
+                });
+                $(this).replaceWith("<a href='ProductionDailyWorkReports' class='btn btn-primary py-2'>Save </a>");
+                $("#title").replaceWith("<h4>Edit Production Daily Work Report<h4>");
+            });
+
+        });
+    </script>
+
     <main class="mt-5">
 
         <div class="container">
@@ -15,20 +30,19 @@
                     <!--Panel-->
                     <div class="card">
                         <div class="card-header NBDColourDarkBlue white-text text-center">
-                            <h4>Production Daily Work Report</h4>
+                            <h4 id="title">Production Daily Work Report</h4>
                         </div>
                         <div class="row text-center">
 
                             <div class="col-lg-4">
-                                <a href="ProductionDailyWorkReport" class="btn btn-primary py-2">Edit </a>
+                                <a class="btn btn-primary py-2" id="btnEdit">Edit </a>
                             </div>
                             <div class="col-lg-4">
-                                <a href="ProductionDailyWorkReport" class="btn btn-primary py-2"">Delete</a>
+                                <a href="ProductionDailyWorkReports" class="btn btn-primary py-2">Delete</a>
                             </div>
                             <div class="col-lg-4">
                                 <div class="btn btn-primary active py-2"" data-toggle="buttons">
                                     Approved
-                                <input type="checkbox" checked="checked">
                                 </div>
                             </div>
                         </div>
@@ -183,6 +197,10 @@
                                                 <tr>
                                                     <th>Submitted By</th>
                                                     <th>Date</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Monica Goce</td>
+                                                    <td>May 7, 2018</td>
                                                 </tr>
 
                                             </table>

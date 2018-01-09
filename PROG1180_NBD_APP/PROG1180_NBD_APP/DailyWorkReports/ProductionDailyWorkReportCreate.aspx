@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Create Production Daily Work Report" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="ProductionDailyWorkReportCreate.aspx.cs" Inherits="PROG1180_NBD_APP.DailyWorkReports.ProductionDailyWorkReportCreate" %>
+﻿<%@ Page Title="Create Production Daily Work Report" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductionDailyWorkReportCreate.aspx.cs" Inherits="PROG1180_NBD_APP.DailyWorkReports.ProductionDailyWorkReportCreate" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -23,7 +23,7 @@
                                 <a href="ProductionDailyWorkReports" class="btn btn-primary py-2">Save </a>
                             </div>
                             <div class="col-lg-4">
-                                <a href="ProductionDailyWorkReports" class="btn btn-primary py-2"">Cancel</a>
+                                <a href="ProductionDailyWorkReports" class="btn btn-primary py-2">Cancel</a>
                             </div>
                             <div class="col-lg-4">
                                 <div class="btn btn-primary py-2">Clear All</div>
@@ -47,12 +47,16 @@
                             <div class="col-lg-6">
                                 <table class="table">
                                     <tr>
+                                        <th>Name</th>
+                                        <td><input type='text' class='input-alternate' placeholder="" /></td>
+                                    </tr>
+                                    <tr>
                                         <th>Date</th>
-                                        <td>6/7/2018</td>
+                                        <td><input type='text' class='input-alternate' placeholder="" /></td>
                                     </tr>
                                     <tr>
                                         <th>Project</th>
-                                        <td>LS MALL</td>
+                                        <td><input type='text' class='input-alternate' placeholder="" /></td>
                                     </tr>
                                 </table>
                             </div>
@@ -84,26 +88,19 @@
                                             <th>Approved By</th>
                                         </tr>
                                         <tr>
-                                            <td>cary</td>
-                                            <td>5</td>
-                                            <td>142</td>
-                                            <td>600</td>
-                                            <td>Johnson</td>
+                                            <td class="px-4">
+                                                <input type='text' class='input-alternate' placeholder="" /></td>
+                                            <td class="px-4">
+                                                <input type='text' class='input-alternate' placeholder="" /></td>
+                                            <td class="px-4">
+                                                <input type='text' class='input-alternate' placeholder="" /></td>
+                                            <td class="px-4">
+                                                <input type='text' class='input-alternate' placeholder="" /></td>
+                                            <td class="px-4">
+                                                <input type='text' class='input-alternate' placeholder="" /></td>
                                         </tr>
-                                        <tr>
-                                            <td>cary</td>
-                                            <td>5</td>
-                                            <td>142</td>
-                                            <td>600</td>
-                                            <td>Johnson</td>
-                                        </tr>
-                                       <tr>
-                                            <td>cary</td>
-                                            <td>5</td>
-                                            <td>142</td>
-                                            <td>600</td>
-                                            <td>Johnson</td>
-                                        </tr>
+    
+
                                     </table>
                                 </div>
 
@@ -116,7 +113,7 @@
             </div>
             <!--NBD STAFF-------------------------------------------------------------------------------------------------------->
 
-             <!----------------Materials used------------------------------------------------------------------------------------------>
+            <!----------------Materials used------------------------------------------------------------------------------------------>
             <div class="row mb-3">
                 <!--Grid column-->
                 <div class="col-md-12">
@@ -135,26 +132,18 @@
                                             <th>Task</th>
                                         </tr>
                                         <tr>
-                                            <td>Monica</td>
-                                            <td>5</td>
-                                            <td>18</td>
-                                            <td>144</td>
-                                            <td>installed plants</td>
+                                            <td class="px-4">
+                                                <input type='text' class='input-alternate' placeholder="" /></td>
+                                            <td class="px-4">
+                                                <input type='text' class='input-alternate' placeholder="" /></td>
+                                            <td class="px-4">
+                                                <input type='text' class='input-alternate' placeholder="" /></td>
+                                            <td class="px-4">
+                                                <input type='text' class='input-alternate' placeholder="" /></td>
+                                            <td class="px-4">
+                                                <input type='text' class='input-alternate' placeholder="" /></td>
                                         </tr>
-                                         <tr>
-                                            <td>Monica</td>
-                                            <td>5</td>
-                                            <td>18</td>
-                                            <td>144</td>
-                                            <td>installed plants</td>
-                                        </tr>
-                                         <tr>
-                                            <td>Monica</td>
-                                             <td>5</td>
-                                             <td>18</td>
-                                             <td>144</td>
-                                             <td>installed plants</td>
-                                         </tr>
+
 
                                     </table>
 
@@ -166,7 +155,8 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td>12</td>
+                                                    <td class="px-4">
+                                                        <input type='text' class='input-alternate' placeholder="" /></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -179,7 +169,8 @@
                                             <table class="table">
                                                 <tr>
                                                     <th>Submitted By</th>
-                                                    <th>Date</th>
+                                                    <td class="px-4">
+                                                        <input type='text' class='input-alternate' placeholder="" /></td>
                                                 </tr>
 
                                             </table>
@@ -197,7 +188,7 @@
             </div>
             <!--------labor--------------------------------------------------------------------------------------------->
         </div>
-           
+
 
 
     </main>

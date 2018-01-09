@@ -46,6 +46,10 @@
                             <div class="col-lg-6">
                                 <table class="table">
                                     <tr>
+                                        <th>Name</th>
+                                        <td><input type="text" class="input-alternate" placeholder=""></td>
+                                    </tr>
+                                    <tr>
                                         <th>Date</th>
                                         <td><input type="text" class="input-alternate" placeholder=""></td>
                                     </tr>

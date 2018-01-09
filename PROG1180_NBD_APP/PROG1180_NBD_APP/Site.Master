@@ -116,7 +116,7 @@
                                                     <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReports'>Designer Daily Work Reports</a>
                                                     <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReportCreate'>Create DDWP</a>
                                                     <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReports'>Production Daily Work Report</a>
-                                                    <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReports'>Create PDWP</a>
+                                                    <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReportCreate'>Create PDWP</a>
                                                 </div>
                                             </li>
 

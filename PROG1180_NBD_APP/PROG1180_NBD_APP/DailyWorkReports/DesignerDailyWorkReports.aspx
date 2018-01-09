@@ -32,43 +32,38 @@
                                 <table class="table ">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th class="th-lg">First column</th>
-                                            <th class="th-lg">Second column</th>
-                                            <th class="th-lg">Third column</th>
-                                            <th class="th-lg">Fourth column</th>
-                                            <th class="th-lg">Fifth column</th>
-                                            <th class="th-lg">Sixth column</th>
+                                            <th>Worker</th>
+                                            <th>Date</th>
+                                            <th>Project</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
+                                            <td>Tamara</td>
+                                            <td>6/16/2016</td>
+                                            <td>LS Mall</td>
+                                            <td><a href='DesignerDailyWorkReport' class='btn btn-primary py-1'>View</a></td>
+                                        </tr>
+                                         <tr>
+                                            <td>Tamara</td>
+                                            <td>6/17/2016</td>
+                                            <td>LS Mall</td>
+                                             <td><a href='DesignerDailyWorkReport' class='btn btn-primary py-1'>View</a></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">2</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
+                                            <td>Tamara</td>
+                                            <td>6/18/2016</td>
+                                            <td>LS Mall</td>
+                                            <td><a href='DesignerDailyWorkReport' class='btn btn-primary py-1'>View</a></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">3</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
+                                            <td>Tamara</td>
+                                            <td>6/18/2016</td>
+                                            <td>LS Mall</td>
+                                            <td><a href='DesignerDailyWorkReport' class='btn btn-primary py-1'>View</a></td>
                                         </tr>
+   
                                     </tbody>
                                 </table>
                             </div>
@@ -79,12 +74,10 @@
                     </div>
                     <!--/.Card-->
 
-
                 </div>
 
-
             </div>
-            <a href="DesignerDailyWorkReport" class="btn btn-primary">DDWR Test</a>
+
         </div>
     </main>
     <!--Main layout-->
