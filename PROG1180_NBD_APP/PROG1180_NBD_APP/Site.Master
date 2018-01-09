@@ -21,6 +21,78 @@
 
     <asp:ContentPlaceHolder ID="headPlaceHolder" runat="server" />
 
+    <style type="text/css">
+        .hidden{display:none}
+
+        .req, .reqFieldMsg{color: red}
+    </style>
+
+    <script type="text/javascript">
+
+        // clears/resets form controls
+        function clearForm()
+        {
+            $("input[type='text'").val("");
+            $("select").val("0");
+            hideValidationMsgs();
+        }
+        
+
+        // validates form controls
+        function validate()
+        {
+            hideValidationMsgs();
+
+            var $this;
+
+            // check required fields
+            $(".required").each(function ()
+            {
+                $this = $(this);
+                if ($this.val() == "")
+                {
+                     // indicate required field
+                    showMsg = true;
+                    $this.after("<span class='req'>*</span>");
+                }
+                    
+            });
+            // show "* Required Fields" message if necessary
+            $(".tbl").each(function () {
+                $this = $(this);
+                if ($this.find(".req").length)
+                    $this.find(".reqFieldMsg").removeClass("hidden");
+            });
+
+            // validate phone numbers (10 digits, any format)
+            $(".phoneNumber").each(function ()
+            {
+                $this = $(this);
+                if ($this.val() != "" && !/^\d{10}$/.test($this.val()))
+                    addValidationMessage($this, "Please enter a valid 10-digit phone number.");
+            });
+
+            // validate numeric values
+            $("input[type='number']").each(function ()
+            {
+                $this = $(this);
+                if ($this.val() != "" && $this.val() < 0)
+                    addValidationMessage($this, "Value must be positive.");
+            });
+        }
+
+        // adds a validation message to the control with the specified message text
+        function addValidationMessage(control, messageText)
+        {
+            control.after("<p class='req'>* " + messageText + "</p>");
+        }
+
+        function hideValidationMsgs()
+        {
+            $(".reqFieldMsg").addClass("hidden");
+            $(".req").remove();
+        }
+    </script>
 </head>
 
 
@@ -73,11 +145,7 @@
 
                         <!-- Links -->
                         <ul class="navbar-nav mr-auto">
-                            <asp:LoginView ID="RoleLinks" runat="server" ViewStateMode="Disabled">
-                                <RoleGroups>
 
-                                    <asp:RoleGroup Roles="TestAdmin">
-                                        <ContentTemplate>
                                             <li class='nav-item dropdown'>
                                                 <a class='nav-link dropdown-toggle' id='navbarClients' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Clients</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
@@ -85,7 +153,7 @@
                                                     <a class='dropdown-item' href='../Clients/ClientCreate'>Create Client</a>
                                                 </div>
                                             </li>
-
+                                      
                                             <li class='nav-item dropdown'>
                                                 <a class='nav-link dropdown-toggle' id='navbarDesignBid' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Bids</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
@@ -106,7 +174,7 @@
                                                 <a class='nav-link dropdown-toggle' id='navbarProductionPlan' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Production Plans</a>
                                                 <div class='dropdown-menu dropdown-primary' aria-labelledby='navbarDropdownMenuLink'>
                                                     <a class='dropdown-item' href='../ProductionPlans/ProductionPlans'>Production Plans</a>
-                                                    <a class='dropdown-item' href='../ProductionPlans/ProductionPlanCreate'>Create Plan</a>
+                                                    <a class='dropdown-item' href='../Clients/CreateClient'>Create Plan</a>
                                                 </div>
                                             </li>
 
@@ -116,7 +184,7 @@
                                                     <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReports'>Designer Daily Work Reports</a>
                                                     <a class='dropdown-item' href='../DailyWorkReports/DesignerDailyWorkReportCreate'>Create DDWP</a>
                                                     <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReports'>Production Daily Work Report</a>
-                                                    <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReportCreate'>Create PDWP</a>
+                                                    <a class='dropdown-item' href='../DailyWorkReports/ProductionDailyWorkReports'>Create PDWP</a>
                                                 </div>
                                             </li>
 
@@ -126,17 +194,6 @@
                                                     <a class='dropdown-item' href='../Reports/ProjectAdminReport'>Project Admin Report</a>
                                                 </div>
                                             </li>
-
-
-                                        </ContentTemplate>
-                                    </asp:RoleGroup>
-
-
-
-
-
-                                </RoleGroups>
-                            </asp:LoginView>
 
  
                         </ul>

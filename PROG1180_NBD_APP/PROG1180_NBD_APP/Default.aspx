@@ -10,7 +10,7 @@
 
             <asp:LoginView ID="RoleCards" runat="server" ViewStateMode="Disabled">
                 <RoleGroups>
-                    <asp:RoleGroup Roles="TestAdmin">
+                    <asp:RoleGroup Roles="Owner">
                         <ContentTemplate>
 
                             <!---------------------Title---------------------------------------------------------------------------------------->
