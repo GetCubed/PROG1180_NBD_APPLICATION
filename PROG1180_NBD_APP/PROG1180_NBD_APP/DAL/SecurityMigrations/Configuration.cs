@@ -66,35 +66,6 @@ namespace PROG1180_NBD_APP.DAL.SecurityMigrations
                 new UserStore<ApplicationUser>(context));
 
 
-            //Now the Admin user named admin with password password ----------------------------test admin
-            var testadminuser = new ApplicationUser
-            {
-                UserName = "testadmin@nbd.com",
-                Email = "testadmin@nbd.com"
-            };
-
-            //Assign admin user to role
-            if (!context.Users.Any(u => u.UserName == "testadmin@nbd.com"))
-            {
-                manager.Create(testadminuser, "password");
-                manager.AddToRole(testadminuser.Id, "TestAdmin");
-            }
-
-            //-----------------------------------------------------
-            //Now the TestStaff user named TestStaff with password password----------------------test admin
-            var teststaffuser = new ApplicationUser
-            {
-                UserName = "teststaff@nbd.com",
-                Email = "teststaff@nbd.com"
-            };
-
-            //Assign teststaff user to role
-            if (!context.Users.Any(u => u.UserName == "teststaff@nbd.com"))
-            {
-                manager.Create(teststaffuser, "password");
-                manager.AddToRole(teststaffuser.Id, "TestStaff");
-            }
-
             //-------------------------------------------------------------------------------------KERI - OWNER
             //Now the user named user with password password
             
@@ -109,6 +80,9 @@ namespace PROG1180_NBD_APP.DAL.SecurityMigrations
             {
                 manager.Create(keri, "password");
                 manager.AddToRole(keri.Id, "Owner");
+                manager.AddToRole(keri.Id, "Manager");
+                manager.AddToRole(keri.Id, "Designer");
+                manager.AddToRole(keri.Id, "SalesAssoc");
             }
 
             //-------------------------------------------------------------------------------------STAN - OWNER
@@ -125,6 +99,9 @@ namespace PROG1180_NBD_APP.DAL.SecurityMigrations
             {
                 manager.Create(stan, "password");
                 manager.AddToRole(stan.Id, "Owner");
+                manager.AddToRole(stan.Id, "Manager");
+                manager.AddToRole(stan.Id, "Designer");
+                manager.AddToRole(stan.Id, "SalesAssoc");
             }
 
             //-------------------------------------------------------------------------------------CONNIE OWNER
@@ -141,6 +118,9 @@ namespace PROG1180_NBD_APP.DAL.SecurityMigrations
             {
                 manager.Create(connie, "password");
                 manager.AddToRole(connie.Id, "Owner");
+                manager.AddToRole(connie.Id, "Manager");
+                manager.AddToRole(connie.Id, "Designer");
+                manager.AddToRole(connie.Id, "SalesAssoc");
             }
 
 
@@ -158,6 +138,8 @@ namespace PROG1180_NBD_APP.DAL.SecurityMigrations
             {
                 manager.Create(cheryl, "password");
                 manager.AddToRole(cheryl.Id, "Manager");
+                manager.AddToRole(cheryl.Id, "Designer");
+                manager.AddToRole(cheryl.Id, "SalesAssoc");
             }
 
             //-------------------------------------------------------------------------------------Sue Manager
@@ -174,6 +156,8 @@ namespace PROG1180_NBD_APP.DAL.SecurityMigrations
             {
                 manager.Create(sue, "password");
                 manager.AddToRole(sue.Id, "Manager");
+                manager.AddToRole(sue.Id, "Designer");
+                manager.AddToRole(sue.Id, "SalesAssoc");
             }
 
             //-------------------------------------------------------------------------------------Tamara Designer
