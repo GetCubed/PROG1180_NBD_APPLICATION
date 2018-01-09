@@ -39,7 +39,7 @@
                         <div class="row text-center">
 
                             <div class="col-lg-4">
-                                <a class="btn btn-primary py-2" onclick="validate()">Save</a>
+                                <a class="btn btn-primary py-2" onclick="validate('DesignBids.aspx')">Save</a>
                             </div>
                             <div class="col-lg-4">
                                 <a href="DesignBids" class="btn btn-primary py-2"">Cancel</a>
@@ -73,7 +73,7 @@
                                             <th>Client Name:</th>
                                             <td>
                                                 <asp:DropDownList ID="ddlClient" runat="server" DataSourceID="odsClients" DataTextField="cliName" DataValueField="ID" OnSelectedIndexChanged="ddlClient_SelectedIndexChanged" AppendDataBoundItems="True" AutoPostBack="True">
-                                                    <asp:ListItem Selected="True" Value="0">Select a Client...</asp:ListItem>
+                                                    <asp:ListItem Selected="True" Value="">Select a Client...</asp:ListItem>
                                                 </asp:DropDownList>
                                             </td>
                                         </tr>

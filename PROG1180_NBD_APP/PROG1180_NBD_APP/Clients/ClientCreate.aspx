@@ -30,7 +30,7 @@
                         <div class="row text-center">
 
                             <div class="col-lg-4">
-                                <a class="btn btn-primary py-2" onclick="validate()">Save</a>
+                                <a class="btn btn-primary py-2" onclick="validate('Clients.aspx')">Save</a>
                             </div>
                             <div class="col-lg-4">
                                 <a href="Clients" class="btn btn-primary py-2"">Cancel</a>

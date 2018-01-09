@@ -35,7 +35,7 @@ namespace PROG1180_NBD_APP.DesignBids
 
         protected void ddlClient_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlClient.SelectedValue != "0")
+            if (ddlClient.SelectedValue != "")
                 DisplayClientInfo(Convert.ToInt32(ddlClient.SelectedValue));
             else
                 ClientScript.RegisterStartupScript(GetType(), "clearClient", "clearClient()", true);

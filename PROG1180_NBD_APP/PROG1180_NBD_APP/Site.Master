@@ -42,7 +42,7 @@
 
 
         // validates form controls
-        function validate() {
+        function validate(destination) {
             hideValidationMsgs();
 
             var $this;
@@ -77,6 +77,12 @@
                 if ($this.val() != "" && $this.val() < 0)
                     addValidationMessage($this, "Value must be positive.");
             });
+
+            if ($(".req").length == 0) // success
+            {
+                alert("Success");
+                window.location.replace(destination);
+            }
         }
 
         // adds a validation message to the control with the specified message text
