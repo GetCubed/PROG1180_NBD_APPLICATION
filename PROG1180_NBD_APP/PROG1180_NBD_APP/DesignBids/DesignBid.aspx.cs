@@ -12,7 +12,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-namespace PROG1180_NBD_APP.DesignBid
+namespace PROG1180_NBD_APP.DesignBids
 {
     public partial class DesignBid : Page
     {

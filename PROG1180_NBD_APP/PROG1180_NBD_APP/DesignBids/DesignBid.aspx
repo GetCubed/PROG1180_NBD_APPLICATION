@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Design Bid" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignBid.aspx.cs" Inherits="PROG1180_NBD_APP.DesignBid.DesignBid" %>
+﻿<%@ Page Title="Design Bid" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignBid.aspx.cs" Inherits="PROG1180_NBD_APP.DesignBids.DesignBid" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -20,15 +20,14 @@
                         <div class="row text-center">
 
                             <div class="col-lg-4">
-                                <a href="DesignBid.aspx?Project=1&Edit=true" class="btn btn-primary py-2">Edit </a>
+                                <a href="DesignBid" class="btn btn-primary py-2">Edit </a>
                             </div>
                             <div class="col-lg-4">
-                                <a href="DesignBids.aspx" class="btn btn-primary py-2"">Delete</a>
+                                <a href="DesignBid" class="btn btn-primary py-2"">Delete</a>
                             </div>
                             <div class="col-lg-4">
                                 <div class="btn btn-primary active py-2"" data-toggle="buttons">
                                     Approved
-                                <input type="checkbox" checked="checked">
                                 </div>
                             </div>
                         </div>
@@ -58,7 +57,7 @@
                                             <td runat="server" id="tdClientName"></td>
                                         </tr>
                                         <tr>
-                                            <th>Address:</h6>
+                                            <th>Address:</th>
                                             <td runat="server" id="tdClientAddress"></td>
                                         </tr>
                                     </table>
