@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Design Budgets" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="DesignBudgets.aspx.cs" Inherits="PROG1180_NBD_APP.DesignBudgets.DesignBudgets" %>
+﻿<%@ Page Title="Design Budgets" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DesignBudgets.aspx.cs" Inherits="PROG1180_NBD_APP.DesignBudgets.DesignBudgets" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -32,43 +32,43 @@
                                 <table class="table ">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th class="th-lg">First column</th>
-                                            <th class="th-lg">Second column</th>
-                                            <th class="th-lg">Third column</th>
-                                            <th class="th-lg">Fourth column</th>
-                                            <th class="th-lg">Fifth column</th>
-                                            <th class="th-lg">Sixth column</th>
+                                            <th>Client</th>
+                                            <th>Budget Date</th>
+                                            <th>Est. Total Hours</th>
+                                            <th>Designer</th>
+                                            <th>Sales Assoc</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
+                                            <td>London Square Mall</td>
+                                            <td>May 10, 2011</td>
+                                            <td>12</td>
+                                            <td>Tamara Bakken</td>
+                                            <td>Bob Reinhardt</td>
+                                            <td><a href='DesignBudget' class='btn btn-primary py-1'>View</a></td>
+
                                         </tr>
                                         <tr>
-                                            <th scope="row">2</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
+                                            <td>Niagara OutletN</td>
+                                            <td>May 10, 2012</td>
+                                            <td>13</td>
+                                            <td>Yakubu Alheri</td>
+                                            <td>Bob Reinhardt</td>
+                                            <td><a href='DesignBudget' class='btn btn-primary py-1'>View</a></td>
+
                                         </tr>
                                         <tr>
-                                            <th scope="row">3</th>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
-                                            <td>Lorem Ipsum</td>
+                                            <td>Soccer Niagara</td>
+                                            <td>May 10, 2013</td>
+                                            <td>14</td>
+                                            <td>Sandile Abubakar</td>
+                                            <td>Bob Reinhardt</td>
+                                            <td><a href='DesignBudget' class='btn btn-primary py-1'>View</a></td>
+
                                         </tr>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -79,12 +79,9 @@
                     </div>
                     <!--/.Card-->
 
-
                 </div>
 
-
             </div>
-            <a href="DesignBudget" class="btn btn-primary">Budget Test</a>
         </div>
     </main>
     <!--Main layout-->
