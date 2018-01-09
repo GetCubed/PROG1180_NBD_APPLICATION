@@ -18,7 +18,7 @@ namespace PROG1180_NBD_APP.DAL.SecurityMigrations
 
         protected override void Seed(PROG1180_NBD_APP.DAL.ApplicationDbContext context)
         {
-            //Create a Role Manager
+            //Create a Role Manager ---------------------------------------------------------------------------------------------------------ROLES-------------
             var roleManager = new RoleManager<IdentityRole>(new
                                           RoleStore<IdentityRole>(context));
 
@@ -34,7 +34,7 @@ namespace PROG1180_NBD_APP.DAL.SecurityMigrations
                 var roleresult = roleManager.Create(new IdentityRole("TestStaff"));
             }
 
-            //Create a User Manager
+            //Create a User Manager ---------------------------------------------------------------------------------------------------------USERS------------
             var manager = new UserManager<ApplicationUser>(
                 new UserStore<ApplicationUser>(context));
 
